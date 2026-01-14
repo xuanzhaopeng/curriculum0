@@ -14,8 +14,5 @@ else
 fi
 
 cd /workspace/verl
-if ! conda env list | grep -q "^verl"; then
-    conda create -n verl python==3.12
-fi
-conda activate verl
+conda activate agent0-curriculum
 USE_MEGATRON=0 bash scripts/install_vllm_sglang_mcore.sh
