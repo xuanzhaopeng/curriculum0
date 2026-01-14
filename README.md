@@ -15,4 +15,6 @@ bash scripts/conda-install.sh
 bash scripts/cuda-install.sh
 # install cuDNN 9.10.2
 bash scripts/cudnn-install.sh
+# install vLLM
+bash scripts/vllm-install.sh
 ```

@@ -2,8 +2,14 @@
 
 mkdir -p /workspace/.cuda
 cd /workspace/.cuda
-wget https://developer.download.nvidia.com/compute/cuda/12.8.1/local_installers/cuda-repo-ubuntu2204-12-8-local_12.8.1-570.124.06-1_amd64.deb
-dpkg -i cuda-repo-ubuntu2204-12-8-local_12.8.1-570.124.06-1_amd64.deb
+
+CUDA_DEB="cuda-repo-ubuntu2204-12-8-local_12.8.1-570.124.06-1_amd64.deb"
+
+if [ ! -f "$CUDA_DEB" ]; then
+    wget https://developer.download.nvidia.com/compute/cuda/12.8.1/local_installers/$CUDA_DEB
+fi
+
+dpkg -i $CUDA_DEB
 cp /var/cuda-repo-ubuntu2204-12-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
 apt-get update
 apt-get -y install cuda-toolkit-12-8 
