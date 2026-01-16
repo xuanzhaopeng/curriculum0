@@ -1,0 +1,235 @@
+# https://verl.readthedocs.io/en/latest/examples/config.html 
+# Based on Verl 0.7.0
+
+# ============================================================================
+# For Curriculum Model Only:  Ray setup, it's customsied configuration
+# ============================================================================
+ray_init:
+  num_cpus: 1
+
+# ============================================================================
+# For Curriculum Model Only: Customise Reward configuration
+# ============================================================================
+reward:
+  reward_type: batch # sequential or batch, currently only support batch.
+  reward_function: ./curriculum/reward_function/curriculum.py::compute_score
+  num_cpus: 1
+  skip_special_tokens: False
+  reward_function_kwargs: null
+
+# ============================================================================
+# Data Configuration
+# ============================================================================
+data:
+  tokenizer: null
+  train_files: null
+  val_files: null
+  train_max_samples: -1  # set to -1 to use full dataset
+  val_max_samples: -1  # set to -1 to use full dataset
+  prompt_key: prompt
+  max_prompt_length: 512
+  max_response_length: 512
+  train_batch_size: 64
+  return_raw_input_ids: False  # This should be set to true when the tokenizer between policy and rm differs
+  return_raw_chat: False
+  return_full_prompt: False
+  shuffle: False
+  seed: null
+  filter_overlong_prompts: False
+  filter_overlong_prompts_workers: 0
+  truncation: right
+  image_key: images
+  trust_remote_code: True
+  custom_cls:
+     path: null
+     name: null
+  custom_format_prompt: ./format_prompt/questioner.jinja # custom field
+  custom_fake_data_size: 12000 # custom field
+
+# ============================================================================
+# Ray Workers configuration: Actor, Rollout and Ref
+# ============================================================================
+actor_rollout_ref:
+ hybrid_engine: True
+ model:
+   path: Qwen/Qwen3-0.6B
+   external_lib: null
+   override_config:
+     attn_implementation: flash_attention_2  # or eager, sdpa - attention implementation override
+     model_config: {}
+     moe_config:  # Megatron only, can adjust moe configuration
+       freeze_moe_router: False  # Megatron only, can freeze moe router (no grad)
+   enable_gradient_checkpointing: True
+   enable_activation_offload: False
+   trust_remote_code: True
+   use_remove_padding: True
+   custom_chat_template_path: null # custom field, a file path to chat template jinja file
+ actor:
+   strategy: fsdp  # This is for backward-compatibility
+   ppo_mini_batch_size: 16
+   ppo_micro_batch_size: null # will be deprecated, use ppo_micro_batch_size_per_gpu
+   ppo_micro_batch_size_per_gpu: 2
+   use_dynamic_bsz: False
+   ppo_max_token_len_per_gpu: 2048 # rollout.n * (${data.max_prompt_length} + ${data.max_response_length})
+   grad_clip: 1.0
+   clip_ratio: 0.2
+   entropy_coeff: 0.0
+   use_kl_loss: True # True for GRPO
+   # Rollout Correction (corrects distribution mismatch between rollout and training)
+   rollout_correction:
+     rollout_is: token # IS weights: token/sequence/null
+     rollout_is_threshold: 2.0 # Upper threshold for IS weights
+     rollout_rs: null # Rejection sampling: token/sequence/geometric/null
+     rollout_rs_threshold: null # RS upper threshold
+     rollout_rs_threshold_lower: null # RS lower threshold
+     rollout_token_veto_threshold: null # Per-token veto (null to disable)
+   use_torch_compile: True # False to disable torch compile
+   kl_loss_coef: 0.001 # for grpo
+   kl_loss_type: low_var_kl # for grpo
+   ppo_epochs: 1
+   data_loader_seed: null
+   shuffle: False
+   ulysses_sequence_parallel_size: 1 # sp size
+   optim:
+     lr: 1e-6
+     lr_warmup_steps: -1 # Prioritized. Negative values mean delegating to lr_warmup_steps_ratio.
+     lr_warmup_steps_ratio: 0.  # the total steps will be injected during runtime
+     min_lr_ratio: 0.0   # only used with cosine lr scheduler, default to 0.0
+     num_cycles: 0.5     # only used with cosine lr scheduler, default to 0.5
+     lr_scheduler_type: constant  # select from constant/cosine
+     total_training_steps: -1  # must be override by program
+   fsdp_config:
+     wrap_policy:
+       # transformer_layer_cls_to_wrap: None
+       min_num_params: 0
+     param_offload: False
+     optimizer_offload: False
+     fsdp_size: -1
+   checkpoint:
+     # What to include in saved checkpoints
+     # with 'hf_model' you can save whole model as hf format, now only use sharded model checkpoint to save space
+     save_contents: ['model', 'optimizer', 'extra']
+     # For more flexibility, you can specify the contents to load from the checkpoint.
+     load_contents: ${actor_rollout_ref.actor.checkpoint.save_contents}
+ ref:
+   fsdp_config:
+     param_offload: False
+     wrap_policy:
+       # transformer_layer_cls_to_wrap: None
+       min_num_params: 0
+   log_prob_micro_batch_size: null # will be deprecated, use log_prob_micro_batch_size_per_gpu
+   log_prob_micro_batch_size_per_gpu: 16
+   log_prob_use_dynamic_bsz: ${actor_rollout_ref.actor.use_dynamic_bsz}
+   log_prob_max_token_len_per_gpu: ${actor_rollout_ref.actor.ppo_max_token_len_per_gpu}
+   ulysses_sequence_parallel_size: ${actor_rollout_ref.actor.ulysses_sequence_parallel_size} # sp size
+ rollout:
+   name: vllm
+   temperature: 1.0
+   top_k: -1 # 0 for hf rollout, -1 for vllm rollout
+   top_p: 1
+   prompt_length: ${data.max_prompt_length}  # not use for opensource
+   response_length: ${data.max_response_length}
+   # for vllm rollout
+   dtype: bfloat16 # should align with FSDP
+   gpu_memory_utilization: 0.5
+   ignore_eos: False
+   enforce_eager: True
+   free_cache_engine: True
+   load_format: dummy_dtensor
+   tensor_model_parallel_size: 2
+   max_num_batched_tokens: 8192
+   max_num_seqs: 1024
+   log_prob_micro_batch_size: null # will be deprecated, use log_prob_micro_batch_size_per_gpu
+   log_prob_micro_batch_size_per_gpu: 16
+   log_prob_use_dynamic_bsz: ${actor_rollout_ref.actor.use_dynamic_bsz}
+   log_prob_max_token_len_per_gpu: ${actor_rollout_ref.actor.ppo_max_token_len_per_gpu}
+   # for hf rollout
+   do_sample: True
+   engine_kwargs: # inference engine parameters, please refer vllm/sglang official doc for detail
+     vllm: {}
+     sglang: {}
+
+   n: 2 # for each prompt, sample n responses (i.e. num sample times). set it to values > 1 for grpo, rloo
+   calculate_log_probs: True # set to True for computing log probs via rollouts
+   val_kwargs:
+     # sampling parameters for validation
+     top_k: -1 # 0 for hf rollout, -1 for vllm rollout
+     top_p: 1.0
+     temperature: 1
+     n: 1
+     do_sample: False # default eager for validation
+
+   agent:
+     custom_async_server: # Use custom async server implementation for rollout
+       path: null
+       name: null
+
+# ============================================================================
+# Reward Model Configuration, not used
+# ============================================================================
+reward_model:
+  enable: False
+  model:
+    input_tokenizer: null  # set this to null if the chat template is identical
+    path: null
+    external_lib: nul
+    trust_remote_code: False
+    fsdp_config:
+      min_num_params: 0
+      param_offload: False
+  micro_batch_size_per_gpu: 16
+  max_length: null
+  reward_manager: naive
+
+
+# ============================================================================
+# Algorithm Configuration
+# ============================================================================
+algorithm:
+  gamma: 1.0 # not required by GRPO
+  lam: 1.0 # not required by GRPO
+  norm_adv_by_std_in_grpo: True
+  adv_estimator: grpo
+  use_kl_in_reward: True
+  kl_penalty: low_var_kl  # how to estimate kl divergence
+  kl_ctrl:
+    type: fixed
+    kl_coef: 1.0e-2
+    horizon: 10000
+    target_kl: 0.1
+  # Rollout Correction
+  rollout_correction:
+    bypass_mode: False # True use bypass mode, otherwise Decoupled mode
+    rollout_is: null  # IS weights: token/sequence/null
+    rollout_is_threshold: 2.0  # Upper threshold for IS weights
+    rollout_rs: null  # Rejection sampling: token/sequence/geometric/null
+    rollout_rs_threshold: null  # RS upper threshold
+    rollout_rs_threshold_lower: null  # RS lower threshold
+    rollout_token_veto_threshold: null  # Per-token veto (null to disable)
+
+
+# ============================================================================
+# Trainer setup
+# ============================================================================
+trainer:
+  device: cuda
+  total_epochs: 5
+  project_name: curriculum_agent
+  experiment_name: curriculum_agent
+  logger: ['console']
+  log_val_generations: 0
+  nnodes: 1
+  n_gpus_per_node: 1
+  save_freq: -1
+  val_freq: -1 # -1 to disable 
+  val_before_train: False
+  test_freq: 0
+  critic_warmup: 0
+  default_hdfs_dir: null # hdfs checkpoint path
+  default_local_dir: checkpoints/${trainer.project_name}/${trainer.experiment_name} # local checkpoint path
+  resume_mode: auto # or disable or resume_path if resume_from_path is set
+  resume_from_path: null
+  remove_previous_ckpt_in_save: False
+  del_local_ckpt_after_load: False
+  ray_wait_register_center_timeout: 300
+  total_training_steps: 6 # customfiled, overwrite the total_epochs

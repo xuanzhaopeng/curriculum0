@@ -1,0 +1,132 @@
+import hydra
+import ray
+from omegaconf import OmegaConf
+
+
+from curriculum.trainer.cc_ray_trainer import CCRayGRPOTrainer
+from curriculum.trainer.data_loader import create_dataloader
+from curriculum.utils.parser import parse_formt_prompt_path, parse_reward_func
+from curriculum.utils.tokenizer import get_processor, get_tokenizer
+from curriculum.workers.reward_manager import SequentialFunctionRewardManager, BatchFunctionRewardManager
+
+from verl.single_controller.ray.base import RayWorkerGroup
+from verl.trainer.ppo.ray_trainer import Role, ResourcePoolManager
+from verl.workers.fsdp_workers import ActorRolloutRefWorker
+
+
+@ray.remote(num_cpus=1)
+class Runner:
+    """
+    Main entrypoint for Curriculum Agent training
+    """
+    def run(self, config):
+        tokenizer = get_tokenizer(
+            model_path=config.actor_rollout_ref.model.path,
+            chat_template_path=config.actor_rollout_ref.model.custom_chat_template_path
+        )
+        processor = get_processor(
+            model_path=config.actor_rollout_ref.model.path,
+            chat_template_path=config.actor_rollout_ref.model.custom_chat_template_path
+        )
+
+        # =======================
+        # Init the dataset
+        # =======================
+        train_dataloader = create_dataloader(config=config.data, tokenizer=tokenizer, processor=processor)
+
+
+        # =======================
+        # Set up Ray roles, pools and mappings
+        # =======================
+        ray_worker_group_cls = RayWorkerGroup
+        role_worker_mapping = {
+            Role.ActorRollout: ray.remote(ActorRolloutRefWorker),
+            Role.RefPolicy: ray.remote(ActorRolloutRefWorker)
+        }
+        global_pool_id = "global_pool"
+        resource_pool_spec = {
+            global_pool_id: [config.trainer.n_gpus_per_node] * config.trainer.nnodes
+        }
+        role_pool_mapping = {
+            Role.ActorRollout: global_pool_id,
+            Role.RefPolicy: global_pool_id
+        }
+        resource_pool_manager = ResourcePoolManager(resource_pool_spec=resource_pool_spec, mapping=role_pool_mapping)
+
+
+        # =======================
+        # Init Reward functions, the reward functions are also Ray actors
+        # =======================
+        if config.reward.reward_type == "sequential":
+            RewardManager = SequentialFunctionRewardManager
+        elif config.reward.reward_type == "batch":
+            RewardManager = BatchFunctionRewardManager
+        else:
+            raise NotImplementedError(f"Unknown reward type {config.reward.reward_type}")
+        RemoteRewardManager = ray.remote(RewardManager).options(num_cpus=config.reward.num_cpus)
+        reward_fn = RemoteRewardManager(config, tokenizer)
+
+
+        cc_trainer = CCRayGRPOTrainer(
+            config=config,
+            tokenizer=tokenizer,
+            processor=processor,
+            train_dataloader=train_dataloader,
+            role_worker_mapping=role_worker_mapping,
+            resource_pool_manager=resource_pool_manager,
+            ray_worker_group_cls=ray_worker_group_cls,
+            reward_fn=reward_fn,
+        )
+        cc_trainer.init_workers()
+        cc_trainer.fit()
+
+# use Hydra to load the configs
+@hydra.main(config_path='../configs', config_name='curriculum_config')
+def main(config):
+    """
+    Main entry point to start the Ray
+        * read configurations
+        * initialise the ray
+        * start the the Ray Actor
+    """
+    #========= Config parsing and Update ==============
+    reward_function, reward_function_name = parse_reward_func(config.reward.reward_function)
+    if reward_function is None:
+        raise RuntimeError(f"You must define the config.reward.reward_function with a valid file path")
+    config.reward.reward_function = reward_function
+    config.reward.reward_function_name = reward_function_name
+    print(f"🔔 Updated the config.reward.reward_function = {config.reward.reward_function}")
+    print(f"🔔 Updated the config.reward.reward_function_name = {config.reward.reward_function_name}")
+    
+    format_prompt_path = parse_formt_prompt_path(config.data.custom_format_prompt)
+    if format_prompt_path is None:
+        raise RuntimeError(f"You must define the config.data.custom_format_prompt with a valid file path")
+    config.data.custom_format_prompt = format_prompt_path
+    print(f"🔔 Updated the config.data.custom_format_prompt = {config.data.custom_format_prompt}")
+
+    if not ray.is_initialized():
+        runtime_env = {
+            "env_vars": {
+                "TOKENIZERS_PARALLELISM": "true",
+                "NCCL_DEBUG": "WARN",
+                "VLLM_LOGGING_LEVEL": "WARN",
+                "VLLM_ALLOW_RUNTIME_LORA_UPDATING": "true",
+                "VLLM_USE_V1": "1"
+            }
+        }
+        # https://docs.ray.io/en/latest/ray-core/api/doc/ray.init.html
+        ray.init(
+            runtime_env=runtime_env,
+            num_cpus=config.ray_init.num_cpus
+        )
+        from pprint import pprint
+        print("=" * 60)
+        print("Trainer Configration:")
+        pprint(OmegaConf.to_container(config, resolve=True))
+        print("=" * 60)
+
+        runner = Runner.remote()
+        ray.get(runner.run.remote(config)) # start the Actor in Ray
+
+if __name__ == '__main__':
+    main()

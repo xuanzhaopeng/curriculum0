@@ -20,6 +20,6 @@ bash scripts/vllm-install.sh
 ## Install Dependencies
 ```bash
 conda activate agent0-curriculum
-bash scripts/vllm-install.sh
+bash scripts/verl-install.sh
 pip install -r requirements.txt
 ```
