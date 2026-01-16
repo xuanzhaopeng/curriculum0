@@ -6,4 +6,5 @@ if [ ! -d "$CONDA_ROOT" ]; then
     rm Miniconda3-latest-Linux-x86_64.sh
 fi
 
+rm -rf Miniconda3-latest-Linux-x86_64.sh
 $CONDA_ROOT/bin/conda init bash && source ~/.bashrc
