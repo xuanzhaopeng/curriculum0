@@ -41,6 +41,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         self.processor = processor
         self.config = config
         self.reward_fn = reward_fn
+        self.val_reward_fn = None
 
         self.hybrid_engine = config.actor_rollout_ref.hybrid_engine
         assert self.hybrid_engine, "Currently, only support hybrid engine"

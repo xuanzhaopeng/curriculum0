@@ -11,7 +11,7 @@ from curriculum.workers.reward_manager import SequentialFunctionRewardManager, B
 
 from verl.single_controller.ray.base import RayWorkerGroup
 from verl.trainer.ppo.ray_trainer import Role, ResourcePoolManager
-from verl.workers.fsdp_workers import ActorRolloutRefWorker
+from verl.workers.fsdp_workers import AsyncActorRolloutRefWorker
 
 
 @ray.remote(num_cpus=1)
@@ -22,11 +22,9 @@ class Runner:
     def run(self, config):
         tokenizer = get_tokenizer(
             model_path=config.actor_rollout_ref.model.path,
-            chat_template_path=config.actor_rollout_ref.model.custom_chat_template_path
         )
         processor = get_processor(
             model_path=config.actor_rollout_ref.model.path,
-            chat_template_path=config.actor_rollout_ref.model.custom_chat_template_path
         )
 
         # =======================
@@ -40,8 +38,8 @@ class Runner:
         # =======================
         ray_worker_group_cls = RayWorkerGroup
         role_worker_mapping = {
-            Role.ActorRollout: ray.remote(ActorRolloutRefWorker),
-            Role.RefPolicy: ray.remote(ActorRolloutRefWorker)
+            Role.ActorRollout: ray.remote(AsyncActorRolloutRefWorker),
+            Role.RefPolicy: ray.remote(AsyncActorRolloutRefWorker)
         }
         global_pool_id = "global_pool"
         resource_pool_spec = {
@@ -72,10 +70,10 @@ class Runner:
             tokenizer=tokenizer,
             processor=processor,
             train_dataloader=train_dataloader,
-            role_worker_mapping=role_worker_mapping,
+            role_worker_mapping=role_worker_mapping, # type: ignore
             resource_pool_manager=resource_pool_manager,
             ray_worker_group_cls=ray_worker_group_cls,
-            reward_fn=reward_fn,
+            reward_fn=reward_fn, # type: ignore
         )
         cc_trainer.init_workers()
         cc_trainer.fit()
