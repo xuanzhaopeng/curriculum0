@@ -52,5 +52,5 @@ def create_dataloader(config, tokenizer: PreTrainedTokenizer, processor: Optiona
     )
 
     assert len(train_dataloader) >= 1
-    print(f"Size of train dataloader: {len(train_dataloader)}")
+    print(f"Size of train dataloader(batches): {len(train_dataloader)}")
     return train_dataloader

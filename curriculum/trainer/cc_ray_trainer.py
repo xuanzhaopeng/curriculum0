@@ -12,7 +12,7 @@ from verl.trainer.ppo.ray_trainer import (RayPPOTrainer, Role, WorkerType, Resou
 from verl.single_controller.ray.base import RayWorkerGroup
 from verl.trainer.ppo import core_algos
 from verl.trainer.ppo.utils import need_reference_policy
-from verl.trainer.ppo.metric_utils import compute_data_metrics, compute_timing_metrics, compute_throughout_metrics, compute_variance_proxy_metrics
+from verl.trainer.ppo.metric_utils import compute_data_metrics, compute_timing_metrics, compute_throughout_metrics
 from verl.utils.profiler.performance import marked_timer
 
 from curriculum.workers.reward_manager.function import FunctionRewardManager
@@ -34,8 +34,8 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                  train_dataloader: StatefulDataLoader,
                  role_worker_mapping: dict[Role, WorkerType],
                  resource_pool_manager: ResourcePoolManager,
+                 reward_fn:FunctionRewardManager,
                  ray_worker_group_cls: type[RayWorkerGroup] = RayWorkerGroup,
-                 reward_fn:FunctionRewardManager = None,
     ):
         self.tokenizer = tokenizer
         self.processor = processor
@@ -111,6 +111,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         self.total_training_steps = total_training_steps
         print(f"Total training steps: {self.total_training_steps}")
 
+        # Update optim.total_training_steps
         try:
             OmegaConf.set_struct(self.config, True)
             with open_dict(self.config):
@@ -247,7 +248,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                     with marked_timer("reward", timing_raw, color="yellow"):
                         # compute reward model score
                         # This will call RewardManager.compute_reward function
-                        reward_ref = self.reward_fn.compute_reward.remote(batch)
+                        reward_ref = self.reward_fn.compute_reward.remote(batch) # type: ignore
                     
                     # =========================================
                     # Customised: Always calculate old_log_prob
@@ -294,6 +295,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
 
                         # compute rewards. apply_kl_penalty if available
                         if self.config.algorithm.use_kl_in_reward:
+                            assert isinstance(self.kl_ctrl_in_reward, core_algos.AdaptiveKLController), f"Expected AdaptiveKLController, got {type(self.kl_ctrl_in_reward)}"
                             batch, kl_metrics = apply_kl_penalty(
                                 batch, kl_ctrl=self.kl_ctrl_in_reward, kl_penalty=self.config.algorithm.kl_penalty
                             )
@@ -362,9 +364,6 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                 # TODO: implement actual tflpo and theoretical tflpo
                 n_gpus = self.resource_pool_manager.get_n_gpus()
                 metrics.update(compute_throughout_metrics(batch=batch, timing_raw=timing_raw, n_gpus=n_gpus))
-                # compute variance proxy metrics
-                gradient_norm = metrics.get("actor/grad_norm", None)
-                metrics.update(compute_variance_proxy_metrics(batch=batch, gradient_norm=gradient_norm))
 
                 logger.log(data=metrics, step=self.global_steps)
 

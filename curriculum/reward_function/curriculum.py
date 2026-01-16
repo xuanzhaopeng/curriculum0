@@ -7,13 +7,13 @@ from mathruler.grader import extract_boxed_content
 from tqdm import tqdm
 
 
-def compute_socre(predicts: List[str], ground_truhts: List[str]) -> List[Dict[str,float]]:
+def compute_score(predicts: List[str], ground_truhts: List[str]) -> List[Dict[str,float]]:
     results = []
     with open('test.json','w') as f:
         json.dump(predicts,f,indent=4)
 
     # extract the question and predicted answer
-    for i in tqdm(range(len(predicts), desc=" - Parsing predictions")):
+    for i in tqdm(range(len(predicts)), desc=" - Parsing predictions"):
         questions = re.findall(r"<question>(.*?)</question>", predicts[i], re.DOTALL)
         answers = extract_boxed_content(predicts[i])
         if questions and answers:

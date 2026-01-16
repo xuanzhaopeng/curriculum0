@@ -4,6 +4,8 @@
 
 ## Pre-requisite in Runpod
 ```bash
+huggingface-cli login
+
 # Instal miniconda
 bash scripts/conda-install.sh
 # install cuda 12.8

@@ -1,3 +1,4 @@
+import os
 import hydra
 import ray
 from omegaconf import OmegaConf
@@ -5,7 +6,6 @@ from omegaconf import OmegaConf
 
 from curriculum.trainer.cc_ray_trainer import CCRayGRPOTrainer
 from curriculum.trainer.data_loader import create_dataloader
-from curriculum.utils.parser import parse_formt_prompt_path, parse_reward_func
 from curriculum.utils.tokenizer import get_processor, get_tokenizer
 from curriculum.workers.reward_manager import SequentialFunctionRewardManager, BatchFunctionRewardManager
 
@@ -64,7 +64,7 @@ class Runner:
         else:
             raise NotImplementedError(f"Unknown reward type {config.reward.reward_type}")
         RemoteRewardManager = ray.remote(RewardManager).options(num_cpus=config.reward.num_cpus)
-        reward_fn = RemoteRewardManager(config, tokenizer)
+        reward_fn = RemoteRewardManager.remote(config, tokenizer)
 
 
         cc_trainer = CCRayGRPOTrainer(
@@ -90,19 +90,8 @@ def main(config):
         * start the the Ray Actor
     """
     #========= Config parsing and Update ==============
-    reward_function, reward_function_name = parse_reward_func(config.reward.reward_function)
-    if reward_function is None:
-        raise RuntimeError(f"You must define the config.reward.reward_function with a valid file path")
-    config.reward.reward_function = reward_function
-    config.reward.reward_function_name = reward_function_name
-    print(f"🔔 Updated the config.reward.reward_function = {config.reward.reward_function}")
-    print(f"🔔 Updated the config.reward.reward_function_name = {config.reward.reward_function_name}")
-    
-    format_prompt_path = parse_formt_prompt_path(config.data.custom_format_prompt)
-    if format_prompt_path is None:
-        raise RuntimeError(f"You must define the config.data.custom_format_prompt with a valid file path")
-    config.data.custom_format_prompt = format_prompt_path
-    print(f"🔔 Updated the config.data.custom_format_prompt = {config.data.custom_format_prompt}")
+    assert os.path.exists(config.reward.reward_function) is True, f"the reward_function file is not exist"
+    assert config.reward.reward_function_name is not None, f"the reward_function_name must be defined"
 
     if not ray.is_initialized():
         runtime_env = {
@@ -111,7 +100,7 @@ def main(config):
                 "NCCL_DEBUG": "WARN",
                 "VLLM_LOGGING_LEVEL": "WARN",
                 "VLLM_ALLOW_RUNTIME_LORA_UPDATING": "true",
-                "VLLM_USE_V1": "1"
+                "VLLM_USE_V1": "1",
             }
         }
         # https://docs.ray.io/en/latest/ray-core/api/doc/ray.init.html
@@ -126,7 +115,7 @@ def main(config):
         print("=" * 60)
 
         runner = Runner.remote()
-        ray.get(runner.run.remote(config)) # start the Actor in Ray
+        ray.get(runner.run.remote(config)) # type: ignore
 
 if __name__ == '__main__':
     main()

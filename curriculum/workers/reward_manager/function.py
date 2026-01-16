@@ -42,6 +42,10 @@ class FunctionRewardManager(ABC):
 
     def __init__(self, config, tokenizer: PreTrainedTokenizer):
         spec = importlib.util.spec_from_file_location("custom_reward_fn", config.reward.reward_function)
+
+        assert spec is not None
+        assert spec.loader is not None
+
         module = importlib.util.module_from_spec(spec)
         try:
             sys.modules["custom_reward_fn"] = module
@@ -52,7 +56,7 @@ class FunctionRewardManager(ABC):
         if not hasattr(module, config.reward.reward_function_name):
             raise AttributeError(f"Module {module} does not have function {config.reward.reward_function_name}.")
 
-        reward_fn = getattr(module, config.reward_function_name)
+        reward_fn = getattr(module, config.reward.reward_function_name)
         print(f"Using reward function `{config.reward.reward_function_name}` from `{config.reward.reward_function}`.")
         self.reward_fn = partial(reward_fn, **config.reward.reward_function_kwargs)
         self.config = config
