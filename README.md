@@ -3,17 +3,23 @@
 
 ## Pre-requisite in Runpod
 ```bash
+# ssh login WITHOUT TCP
 bash scripts/ssh-config.sh
-huggingface-cli login
+
+# Then re-login from TCP in VSCode if necessary
 ```
 
 ## Install Dependencies
 ```bash
+huggingface-cli login
 bash scripts/verl-install.sh
 pip install -r requirements.txt
+
+# (Optional) to check
+pip install nvitop
 ```
 
-## Train
+## Start Testing
 ```bash
-bash scripts/train.sh
+bash scripts/start_test.sh
 ```
