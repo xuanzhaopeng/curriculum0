@@ -55,7 +55,6 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         
         self.role_worker_mapping = role_worker_mapping
         self.resource_pool_manager = resource_pool_manager
-        self.use_reference_policy = need_reference_policy(self.config)
 
         self.use_rm = False
         self.use_reward_loop = False
@@ -298,11 +297,14 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                     assert "old_log_probs" in batch.batch, f'"old_log_prob" not in {batch.batch.keys()=}'
 
                     if self.use_reference_policy:
+                        print("!!!! Start Ref log prob calculation!!!!!!!!!")
+
                         # compute reference log_prob
                         with marked_timer(str(Role.RefPolicy), timing_raw, color="olive"):
                             ref_log_prob = self._compute_ref_log_prob(batch)
                             batch = batch.union(ref_log_prob)
 
+                    print("!!!!!!!!! Done for Ref")
                     # !!! skip compute values from critic
 
                     with marked_timer("adv", timing_raw, color="brown"):

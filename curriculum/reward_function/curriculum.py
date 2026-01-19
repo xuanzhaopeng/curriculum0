@@ -7,7 +7,7 @@ from mathruler.grader import extract_boxed_content
 from tqdm import tqdm
 
 
-def compute_score(predicts: List[str], ground_truhts: List[str]) -> List[Dict[str,float]]:
+def compute_score(predicts: List[str]) -> List[Dict[str,float]]:
     results = []
     with open('test.json','w') as f:
         json.dump(predicts,f,indent=4)
