@@ -1,5 +1,6 @@
 from pprint import pprint
 from typing import Dict
+import uuid
 import numpy as np
 from omegaconf import OmegaConf, open_dict
 import ray
@@ -7,6 +8,7 @@ import torch
 from transformers import PreTrainedTokenizer, ProcessorMixin
 from torchdata.stateful_dataloader import StatefulDataLoader
 
+from curriculum.utils.tracking import ValidationGenerationsLogger
 from verl.protocol import DataProto
 from verl.trainer.ppo.ray_trainer import (RayPPOTrainer, Role, WorkerType, ResourcePoolManager, AdvantageEstimator, compute_response_mask, apply_kl_penalty, compute_advantage)
 from verl.single_controller.ray.base import RayWorkerGroup
@@ -61,6 +63,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         self.use_critic = False
         self.ray_worker_group_cls = ray_worker_group_cls
         self.device_name = config.trainer.device
+        self.validation_generations_logger = ValidationGenerationsLogger()
 
         self.train_dataloader = train_dataloader
 
@@ -132,6 +135,9 @@ class CCRayGRPOTrainer(RayPPOTrainer):
             batch_keys=["input_ids", "attention_mask", "position_ids"],
             non_tensor_batch_keys=["raw_prompt_ids"]
         )
+
+        if self.async_rollout_mode:
+            gen_batch.non_tensor_batch.update(batch.non_tensor_batch)
         return gen_batch
     
     def fit(self):
@@ -200,6 +206,10 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                 # =====================================
                 batch: DataProto = DataProto.from_single_dict(batch_dict)
                 batch.meta_info["temperature"] = self.config.actor_rollout_ref.rollout.temperature
+                # add uid to batch
+                batch.non_tensor_batch["uid"] = np.array(
+                    [str(uuid.uuid4()) for _ in range(len(batch.batch))], dtype=object
+                )
 
                 gen_batch = self._get_gen_batch(batch=batch)
 

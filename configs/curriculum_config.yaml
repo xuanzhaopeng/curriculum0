@@ -5,7 +5,7 @@
 # For Curriculum Model Only:  Ray setup, it's customsied configuration
 # ============================================================================
 ray_init:
-  num_cpus: 12 # the cpu cores from the machine
+  num_cpus: 9 # the cpu cores from the machine
 
 # ============================================================================
 # For Curriculum Model Only: Customise Reward configuration
@@ -86,7 +86,7 @@ actor_rollout_ref:
      _target_: verl.workers.config.FSDPOptimizerConfig
      optimizer: "AdamW"
      optimizer_impl: "torch.optim"
-     betas: [0.9, 0.95] # used by adam
+     betas: [0.9, 0.999] # used by adam
      override_optimizer_config: null
      weight_decay: 1.0e-2
      lr: 1e-6
@@ -104,7 +104,7 @@ actor_rollout_ref:
      param_offload: True # true: more CPU memory; false: more GPU memory
      optimizer_offload: True  # true: more CPU memory; false: more GPU memory
      fsdp_size: -1
-     model_dtype: bfloat16
+     model_dtype: bfloat16 # read the model into bfloat16 to supprot FlashAttention2
    checkpoint:
      _target_: verl.trainer.config.CheckpointConfig
      # What to include in saved checkpoints
