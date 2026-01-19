@@ -76,7 +76,7 @@ class Runner:
             reward_fn=reward_fn, # type: ignore
         )
         cc_trainer.init_workers()
-        # cc_trainer.fit()
+        cc_trainer.fit()
 
 # use Hydra to load the configs
 @hydra.main(config_path='../configs', config_name='curriculum_config')

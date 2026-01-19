@@ -128,7 +128,6 @@ class CCRayGRPOTrainer(RayPPOTrainer):
 
     def init_workers(self):
         super().init_workers()
-        print(self.use_reference_policy)
 
     def _get_gen_batch(self, batch: DataProto) -> DataProto:
         reward_model_keys = set({"data_source", "reward_model", "extra_info", "uid"}) & batch.non_tensor_batch.keys()
@@ -270,7 +269,9 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                     
                     # =========================================
                     # Customised: Always calculate old_log_prob
-                    # =========================================                   
+                    # =========================================      
+                    rollout_corr_config = self.config.algorithm.get("rollout_correction", None)
+                    bypass_recomputing_logprobs = rollout_corr_config and rollout_corr_config.get("bypass_mode", False)             
                     with marked_timer("old_log_prob", timing_raw, color="blue"):
                         old_log_prob, old_log_prob_mfu = self._compute_old_log_prob(batch)
                         entropys = old_log_prob.batch["entropys"]
@@ -298,14 +299,12 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                     assert "old_log_probs" in batch.batch, f'"old_log_prob" not in {batch.batch.keys()=}'
 
                     if self.use_reference_policy:
-                        print("!!!! Start Ref log prob calculation!!!!!!!!!")
 
                         # compute reference log_prob
                         with marked_timer(str(Role.RefPolicy), timing_raw, color="olive"):
                             ref_log_prob = self._compute_ref_log_prob(batch)
                             batch = batch.union(ref_log_prob)
 
-                    print("!!!!!!!!! Done for Ref")
                     # !!! skip compute values from critic
 
                     with marked_timer("adv", timing_raw, color="brown"):
@@ -324,19 +323,33 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                         else:
                             batch.batch["token_level_rewards"] = batch.batch["token_level_scores"]
 
-                        # !!! Skip rollout correction
+                        # Compute rollout correction: IS weights, rejection sampling, and metrics
+                        # Only runs in decoupled mode (computes once per batch using stable π_old)
+                        # In bypass mode, this is skipped - actor computes metrics from evolving π_θ vs π_rollout
+                        if (
+                            rollout_corr_config is not None
+                            and "rollout_log_probs" in batch.batch
+                            and not bypass_recomputing_logprobs  # Only in decoupled mode
+                        ):
+                            from verl.trainer.ppo.rollout_corr_helper import compute_rollout_correction_and_add_to_batch
+                            # Compute IS weights, apply rejection sampling, compute metrics
+                            batch, is_metrics = compute_rollout_correction_and_add_to_batch(batch, rollout_corr_config)
+                            # IS and off-policy metrics already have rollout_corr/ prefix
+                            metrics.update(is_metrics)
 
                         # compute advantages, executed on the driver process
                         norm_adv_by_std_in_grpo = self.config.algorithm.get(
                             "norm_adv_by_std_in_grpo", True
                         )  # GRPO adv normalization factor
-
+                        
                         # !!! Specifically for GRPO
                         batch = compute_advantage(
                             data=batch,
                             adv_estimator=self.config.algorithm.adv_estimator,
                             norm_adv_by_std_in_grpo=norm_adv_by_std_in_grpo,
                         )
+                        print(f"[😊 Check me 😊]  Get Current Batch info  {batch.get_data_info()}")
+
 
                     # !!!! Skip Critic update and Critic warmup
                     

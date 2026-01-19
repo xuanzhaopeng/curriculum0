@@ -78,7 +78,7 @@ actor_rollout_ref:
    loss_scale_factor: null
    use_kl_loss: True # True for GRPO
    use_torch_compile: True # False to disable torch compile
-   kl_loss_coef: 0.001 # for grpo
+   kl_loss_coef: 0.01 # for grpo
    kl_loss_type: low_var_kl # for grpo
    ppo_epochs: 1
    data_loader_seed: null
@@ -245,13 +245,13 @@ trainer:
   log_val_generations: 0
   nnodes: 1
   n_gpus_per_node: 1
-  save_freq: -1
+  save_freq: 1 # how frequently save it
   val_freq: -1 # -1 to disable 
   val_before_train: False
   test_freq: 0
   critic_warmup: 0
   default_hdfs_dir: null # hdfs checkpoint path
-  default_local_dir: checkpoints/${trainer.project_name}/${trainer.experiment_name} # local checkpoint path
+  default_local_dir: /workspace/Agent0-curriculum/checkpoints/${trainer.project_name}/${trainer.experiment_name} # local checkpoint path
   resume_mode: auto # or disable or resume_path if resume_from_path is set
   resume_from_path: null
   remove_previous_ckpt_in_save: False
