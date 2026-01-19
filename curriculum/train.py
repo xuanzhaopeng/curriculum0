@@ -76,7 +76,7 @@ class Runner:
             reward_fn=reward_fn, # type: ignore
         )
         cc_trainer.init_workers()
-        cc_trainer.fit()
+        # cc_trainer.fit()
 
 # use Hydra to load the configs
 @hydra.main(config_path='../configs', config_name='curriculum_config')
@@ -106,14 +106,19 @@ def main(config):
             runtime_env=runtime_env,
             num_cpus=config.ray_init.num_cpus
         )
-        from pprint import pprint
-        print("=" * 60)
-        print("Trainer Configration:")
-        pprint(OmegaConf.to_container(config, resolve=True))
-        print("=" * 60)
 
-        runner = Runner.remote()
-        ray.get(runner.run.remote(config)) # type: ignore
+        try:
+            from pprint import pprint
+            print("=" * 60)
+            print("Trainer Configration:")
+            pprint(OmegaConf.to_container(config, resolve=True))
+            print("=" * 60)
+
+            runner = Runner.remote()
+            ray.get(runner.run.remote(config)) # type: ignore
+        finally:
+            if ray.is_initialized():
+                ray.shutdown()
 
 if __name__ == '__main__':
     main()

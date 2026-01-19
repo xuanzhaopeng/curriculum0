@@ -79,7 +79,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         # ============================
         # Define KL
         # ============================
-        self.use_reference_policy = need_reference_policy(self.config)
+        self.use_reference_policy = need_reference_policy(self.role_worker_mapping)
         if self.config.algorithm.use_kl_in_reward:
             self.kl_ctrl_in_reward = core_algos.get_kl_controller(self.config.algorithm.kl_ctrl)
         else :
@@ -128,6 +128,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
 
     def init_workers(self):
         super().init_workers()
+        print(self.use_reference_policy)
 
     def _get_gen_batch(self, batch: DataProto) -> DataProto:
         reward_model_keys = set({"data_source", "reward_model", "extra_info", "uid"}) & batch.non_tensor_batch.keys()
