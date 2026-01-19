@@ -1,8 +1,5 @@
 {
     "python.analysis.extraPaths": [
         "/workspace/verl"
-    ],
-    "python.defaultInterpreterPath": "/workspace/.miniconda3/envs/agent0-curriculum/bin/python",
-    "python.condaPath": "/workspace/.miniconda3/condabin/conda",
-    "python.terminal.activateEnvironment": false
+    ]
 }

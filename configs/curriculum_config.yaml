@@ -44,6 +44,9 @@ data:
   custom_cls:
      path: null
      name: null
+  apply_chat_template_kwargs:  {
+    enable_thinking: False # disable thinking
+  }
   custom_format_prompt: /workspace/Agent0-curriculum/format_prompt/questioner.jinja # custom field
   custom_fake_data_size: 12000 # custom field
 
