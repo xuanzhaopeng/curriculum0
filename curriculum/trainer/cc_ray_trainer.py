@@ -112,6 +112,8 @@ class CCRayGRPOTrainer(RayPPOTrainer):
             total_training_steps = self.config.trainer.total_training_steps
 
         self.total_training_steps = total_training_steps
+        print(f"Total Epoch: {self.config.trainer.total_epochs}")
+        print(f"Total lenght of batches: {len(self.train_dataloader)}")
         print(f"Total training steps: {self.total_training_steps}")
 
         # Update optim.total_training_steps
