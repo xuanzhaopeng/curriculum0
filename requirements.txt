@@ -8,7 +8,7 @@ omegaconf>=2.3.0
 
 # Data processing
 pandas>=2.0.0
-numpy>=1.24.0
+numpy>=1.24.0,<2.0.0
 pyarrow>=14.0.0
 torchdata==0.11.0
 datasets==3.6.0
