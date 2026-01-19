@@ -4,7 +4,9 @@
 
 ## Pre-requisite in Runpod
 ```bash
-huggingface-cli login
+
+curl -LsSf https://hf.co/cli/install.sh | bash
+hf auth login
 
 # Instal miniconda
 bash scripts/conda-install.sh

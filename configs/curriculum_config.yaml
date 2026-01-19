@@ -60,6 +60,7 @@ actor_rollout_ref:
    enable_gradient_checkpointing: True
    enable_activation_offload: False
    trust_remote_code: True
+   use_shm: True
    use_remove_padding: True
  actor:
    _target_: verl.workers.config.FSDPActorConfig
@@ -138,7 +139,7 @@ actor_rollout_ref:
    enforce_eager: False # use cuda graph
    free_cache_engine: True
    data_parallel_size: 1
-   load_format: dummy
+   load_format: safetensors
    tensor_model_parallel_size: 1
    pipeline_model_parallel_size: 1
    max_num_batched_tokens: 8192
