@@ -103,8 +103,9 @@ def main(config):
         }
         # https://docs.ray.io/en/latest/ray-core/api/doc/ray.init.html
         ray.init(
+            address="auto",
             runtime_env=runtime_env,
-            num_cpus=config.ray_init.num_cpus
+            # num_cpus=config.ray_init.num_cpus
         )
 
         try:

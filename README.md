@@ -34,7 +34,12 @@ export MATH_AGENT_URL=https://srxdsrinohfl5f-8000.proxy.runpod.net/solve
 bash scripts/start_disptacher.sh
 ```
 
+### Start Ray and Metrics
+```bash
+bash scripts/start_ray_master.sh
+```
+
 ### Start Testing
 ```bash
-bash scripts/start_test.sh
+bash scripts/train.sh
 ```

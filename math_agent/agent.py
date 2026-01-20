@@ -27,7 +27,12 @@ class MathAgent:
             model: Model name to use.
             sandbox_url: The base URL for the SandboxFusion service.
         """
-        self.client = OpenAI(api_key=api_key, base_url=base_url)
+        # Initialize the client with native retry support
+        self.client = OpenAI(
+            api_key=api_key, 
+            base_url=base_url,
+            max_retries=3 # 3 retries plus initial attempt = 4 total
+        )
         self.model = model
         self.sandbox = SandboxFusionClient(base_url=sandbox_url)
         
@@ -56,11 +61,12 @@ class MathAgent:
         )
 
     def _generate_response(self, messages: List[Dict[str, str]]) -> str:
-        """Helper to get completion from LLM."""
+        """Helper to get completion from LLM using native SDK retry/timeout."""
         response = self.client.chat.completions.create(
             model=self.model,
             messages=messages,
-            temperature=0.1, # Lower temperature for more consistent formatting
+            temperature=0.1,
+            timeout=60.0 # 2 minute timeout per turn
         )
         return response.choices[0].message.content
 
