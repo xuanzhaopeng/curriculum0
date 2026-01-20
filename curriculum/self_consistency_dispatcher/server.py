@@ -12,7 +12,9 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Self-Consistency Dispatcher", description="Dispatcher for calculating self-consistency of Math Agent solutions")
 
-MATH_AGENT_URL = "http://localhost:8000/solve"
+import os
+
+MATH_AGENT_URL = os.getenv("MATH_AGENT_URL", "http://localhost:8000/solve")
 
 class DispatchRequest(BaseModel):
     question: str
@@ -35,7 +37,7 @@ async def call_math_agent(client: httpx.AsyncClient, question: str, max_turns: i
         "model": model
     }
     try:
-        response = await client.post(MATH_AGENT_URL, json=payload, timeout=120.0)
+        response = await client.post(MATH_AGENT_URL, json=payload, timeout=180.0)
         response.raise_for_status()
         return response.json()
     except Exception as e:

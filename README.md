@@ -21,6 +21,7 @@ bash scripts/start_math_agent.sh
 
 ### Install Dependencies
 ```bash
+export MATH_AGENT_URL=https://srxdsrinohfl5f-8000.proxy.runpod.net/solve
 huggingface-cli login
 bash scripts/verl-install.sh
 pip install -r requirements.txt

@@ -6,7 +6,7 @@ class SandboxFusionClient:
     def __init__(self, base_url: str = "http://localhost:8080"):
         self.base_url = base_url.rstrip('/')
 
-    def run_python(self, code: str, compile_timeout: int = 10, run_timeout: int = 10) -> Dict[str, Any]:
+    def run_python(self, code: str, compile_timeout: int = 30, run_timeout: int = 30) -> Dict[str, Any]:
         """
         Executes Python code using SandboxFusion.
         """
