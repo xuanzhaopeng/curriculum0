@@ -12,7 +12,7 @@ if [ -z "$GEMINI_API_KEY" ]; then
 fi
 
 echo "Starting Math Agent Service (Port 8000)..."
-conda run -n math-agent python -m math_agent.server > "$PROJECT_ROOT/math_agent.log" 2>&1 &
+python -m math_agent.server > "$PROJECT_ROOT/math_agent.log" 2>&1 &
 MATH_PID=$!
 
 echo "Services started in background."
