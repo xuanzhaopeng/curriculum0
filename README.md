@@ -1,14 +1,5 @@
 # Agent0 Curriculum Agent
 
-
-## Pre-requisite in Runpod
-```bash
-# ssh login WITHOUT TCP
-bash scripts/ssh-config.sh
-
-# Then re-login from TCP in VSCode if necessary
-```
-
 ## Machine#1 (2xCPU with SandboxFusion)
 
 ### Install depency and start service
@@ -18,6 +9,14 @@ bash scripts/start_math_agent.sh
 ```
 
 ## Machine#2 (1xA40)
+
+## Pre-requisite in Runpod
+```bash
+# ssh login WITHOUT TCP
+bash scripts/ssh-config.sh
+
+# Then re-login from TCP in VSCode if necessary
+```
 
 ### Install Dependencies
 ```bash
