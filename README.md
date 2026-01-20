@@ -20,13 +20,18 @@ bash scripts/ssh-config.sh
 
 ### Install Dependencies
 ```bash
-export MATH_AGENT_URL=https://srxdsrinohfl5f-8000.proxy.runpod.net/solve
 huggingface-cli login
 bash scripts/verl-install.sh
 pip install -r requirements.txt
 
 # (Optional) to check
 pip install nvitop
+```
+
+### Start Distripution Service
+```bash
+export MATH_AGENT_URL=https://srxdsrinohfl5f-8000.proxy.runpod.net/solve
+bash scripts/start_disptacher.sh
 ```
 
 ### Start Testing

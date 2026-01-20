@@ -4,13 +4,6 @@
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 export PYTHONPATH="$PROJECT_ROOT"
 
-# Check for API Key
-if [ -z "$GEMINI_API_KEY" ]; then
-    echo "Error: GEMINI_API_KEY is not set."
-    echo "Please run: export GEMINI_API_KEY='your_key_here'"
-    exit 1
-fi
-
 echo "Starting Self-Consistency Dispatcher Service (Port 8001)..."
 python -m curriculum.self_consistency_dispatcher.server > "$PROJECT_ROOT/dispatcher.log" 2>&1 &
 DISPATCHER_PID=$!
