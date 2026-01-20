@@ -12,21 +12,8 @@ if [ -z "$GEMINI_API_KEY" ]; then
 fi
 
 echo "Starting Math Agent Service (Port 8000)..."
-python -m math_agent.server > "$PROJECT_ROOT/math_agent.log" 2>&1 &
+nohup python -m math_agent.server > "$PROJECT_ROOT/math_agent.log" 2>&1 &
 MATH_PID=$!
 
-echo "Services started in background."
-echo "Math Agent PID: $MATH_PID (Logs: math_agent.log)"
-
-# Function to stop services on exit
-cleanup() {
-    echo "Stopping services..."
-    kill $MATH_PID
-    exit
-}
-
-trap cleanup SIGINT SIGTERM
-
-# Keep script running to monitor or wait
-echo "Press Ctrl+C to stop both services."
-wait
+echo "Math Agent Service started in background with PID: $MATH_PID"
+echo "Logs are being written to: $PROJECT_ROOT/math_agent.log"

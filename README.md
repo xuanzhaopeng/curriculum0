@@ -41,7 +41,7 @@ pip install nvitop
 
 ### Start Distripution Service
 ```bash
-export MATH_AGENT_URL=https://srxdsrinohfl5f-8000.proxy.runpod.net/solve
+export MATH_AGENT_URL=http://localhost:8000/solve
 bash scripts/start_disptacher.sh
 ```
 
@@ -54,21 +54,3 @@ bash scripts/start_ray_master.sh
 ```bash
 bash scripts/train.sh
 ```
-
-## RunPod Automation
-
-If you are managing your pods from a local machine, you can use the automation scripts to resume and prepare both machines in the correct order.
-
-1.  **Set Environment Variables**:
-    ```bash
-    export RUNPOD_API_KEY="your_runpod_api_key"
-    export GEMINI_API_KEY="your_gemini_api_key"
-    ```
-2.  **Run the Setup Script**:
-    ```bash
-    bash scripts/runpod_setup.sh
-    ```
-    This script will:
-    *   Resume both the CPU (`srxdsrinohfl5f`) and GPU (`2oq01s2u35mms7`) pods.
-    *   Wait for them to be ready.
-    *   SSH into each to perform the configuration and start the required services.
