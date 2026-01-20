@@ -8,7 +8,7 @@ export RAY_GRAFANA_HOST="http://localhost:${GF_SERVER_HTTP_PORT}"        # Ray-a
 export RAY_PROMETHEUS_HOST="http://localhost:${PROMETHEUS_PORT}"         # Ray-associated Prometheus address
 
 # Start Ray on master node
-ray start --head --port=${RAY_HEAD_PORT} --dashboard-port=${RAY_DASHBOARD_PORT}
+ray start --head --port=${RAY_HEAD_PORT} --dashboard-host=0.0.0.0 --dashboard-port=${RAY_DASHBOARD_PORT}
 
 # Metrics installation path
 INSTALL_DIR="/workspace/tools"
