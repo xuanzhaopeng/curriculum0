@@ -1,45 +1,64 @@
-import requests
+import socket
 import json
+import struct
 import os
 
-def test_math_agent_service():
-    url = "http://localhost:8000/solve"
-    
-    # We can pass the API key via Header or let the server use its env var
-    api_key = os.getenv("GEMINI_API_KEY")
-    headers = {
-        "Content-Type": "application/json"
-    }
-    if api_key:
-        headers["X-API-Key"] = api_key
+def test_math_agent_tcp():
+    url = os.getenv("MATH_AGENT_URL", "localhost:8000")
+    if ":" in url:
+        host, port_str = url.replace("tcp://", "").replace("http://", "").split(":")
+        port = int(port_str)
+    else:
+        host = "localhost"
+        port = 8000
+
+    print(f"Connecting to {host}:{port} via TCP...")
 
     payload = {
         "problem": "Calculate the sum of primes between 10 and 20.",
-        "max_turns": 5,
+        "max_turns": 4,
         "model": "gemini-2.0-flash"
     }
-
-    print(f"Sending request to {url}...")
+    
     try:
-        response = requests.post(url, json=payload, headers=headers, timeout=60)
-        response.raise_for_status()
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((host, port))
         
-        result = response.json()
-        print("\n--- Response Received ---")
-        print(f"Problem: {result['problem']}")
-        print(f"Final Answer: {result['final_answer']}")
-        print(f"Raw Reasoning:\n{result['raw_reasoning']}")
-        print("-------------------------\n")
+        # Serialize
+        req_bytes = json.dumps(payload).encode('utf-8')
+        req_len = len(req_bytes)
         
-        if result['final_answer']:
-            print(f"SUCCESS: Extracted final answer: {result['final_answer']}")
-        else:
-            print("WARNING: No final answer extracted. Check raw_reasoning.")
+        # Send
+        sock.sendall(struct.pack('>I', req_len))
+        sock.sendall(req_bytes)
+        
+        # Receive Header
+        header_data = sock.recv(4)
+        if not header_data:
+            print("Error: No data received")
+            return
             
+        resp_len = struct.unpack('>I', header_data)[0]
+        
+        # Receive Body
+        body_data = b""
+        while len(body_data) < resp_len:
+            packet = sock.recv(resp_len - len(body_data))
+            if not packet:
+                break
+            body_data += packet
+            
+        response = json.loads(body_data.decode('utf-8'))
+        
+        print("\nParsed Response:")
+        print(f"Final Answer: {response.get('final_answer')}")
+        print("-" * 40)
+        print(f"Raw Reasoning:\n{response.get('raw_reasoning')}")
+        
+        sock.close()
+        
     except Exception as e:
-        if hasattr(e, 'response') and e.response is not None:
-            print(f"ERROR: Service returned: {e.response.text}")
-        print(f"ERROR: Failed to call MathAgent service. {e}")
+        print(f"Error testing service: {e}")
 
 if __name__ == "__main__":
-    test_math_agent_service()
+    test_math_agent_tcp()

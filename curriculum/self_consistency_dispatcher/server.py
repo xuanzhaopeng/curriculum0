@@ -30,27 +30,69 @@ class DispatchResponse(BaseModel):
     all_answers: List[Optional[str]]
     raw_responses: List[Dict[str, Any]]
 
-async def call_math_agent(client: httpx.AsyncClient, question: str, max_turns: int, model: str) -> Dict[str, Any]:
+import struct
+
+async def call_math_agent(question: str, max_turns: int, model: str) -> Dict[str, Any]:
     payload = {
         "problem": question,
         "max_turns": max_turns,
         "model": model
     }
+    
+    # Parse MATH_AGENT_URL to get host/port
+    # Expected format: tcp://host:port or just host:port
+    # For backward compatibility, if it starts with http, we might need logic?
+    # User instruction says MIGRATE to TCP. So we assume it's a TCP address.
+    # Default: localhost:8000
+    
+    agent_addr = MATH_AGENT_URL.replace("tcp://", "").replace("http://", "")
+    if ":" in agent_addr:
+        host, port_str = agent_addr.split(":")
+        port = int(port_str)
+    else:
+        host = agent_addr
+        port = 8000
+    
     try:
-        response = await client.post(MATH_AGENT_URL, json=payload, timeout=180.0)
-        response.raise_for_status()
-        return response.json()
+        reader, writer = await asyncio.open_connection(host, port)
+        
+        # Serialize
+        req_bytes = json.dumps(payload).encode('utf-8')
+        req_len = len(req_bytes)
+        
+        # Send 4 bytes len + body
+        writer.write(struct.pack('>I', req_len))
+        writer.write(req_bytes)
+        await writer.drain()
+        
+        # Read Response
+        # 1. Read 4 bytes len
+        header_data = await reader.readexactly(4)
+        resp_len = struct.unpack('>I', header_data)[0]
+        
+        # 2. Read body
+        body_data = await reader.readexactly(resp_len)
+        resp_json = json.loads(body_data.decode('utf-8'))
+        
+        writer.close()
+        await writer.wait_closed()
+        
+        return resp_json
+        
     except Exception as e:
-        logger.error(f"Error calling Math Agent: {e}")
+        logger.error(f"Error calling Math Agent via TCP: {e}")
         return {"error": str(e), "final_answer": None, "raw_reasoning": ""}
 
 @app.post("/dispatch", response_model=DispatchResponse)
 async def dispatch(request: DispatchRequest):
     logger.info(f"Dispatching question: {request.question} (n={request.n})")
+        
+    # TCP client creates a new connection per request usually, or we could pool.
+    # For now, simple open_connection per call is fine for this scale.
+    # We no longer need httpx client context
     
-    async with httpx.AsyncClient() as client:
-        tasks = [call_math_agent(client, request.question, request.max_turns, request.model) for _ in range(request.n)]
-        results = await asyncio.gather(*tasks)
+    tasks = [call_math_agent(request.question, request.max_turns, request.model) for _ in range(request.n)]
+    results = await asyncio.gather(*tasks)
     
     answers = [r.get("final_answer") for r in results]
     
