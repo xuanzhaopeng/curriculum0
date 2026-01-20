@@ -9,7 +9,17 @@ bash scripts/ssh-config.sh
 # Then re-login from TCP in VSCode if necessary
 ```
 
-## Install Dependencies
+## Machine#1 (2xCPU with SandboxFusion)
+
+### Install depency and start service
+```bash
+pip install -r math_agent/requirements.txt
+bash scripts/start_math_agent.sh
+```
+
+## Machine#2 (1xA40)
+
+### Install Dependencies
 ```bash
 huggingface-cli login
 bash scripts/verl-install.sh
@@ -19,7 +29,7 @@ pip install -r requirements.txt
 pip install nvitop
 ```
 
-## Start Testing
+### Start Testing
 ```bash
 bash scripts/start_test.sh
 ```
