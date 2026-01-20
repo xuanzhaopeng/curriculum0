@@ -16,7 +16,7 @@ class ProblemRequest(BaseModel):
     problem: str
     max_turns: Optional[int] = 5
     sandbox_url: Optional[str] = "http://localhost:8080"
-    model: Optional[str] = "gemini-2.5-flash"
+    model: Optional[str] = "gemini-2.0-flash"
     base_url: Optional[str] = "https://generativelanguage.googleapis.com/v1beta/openai/"
     api_key: Optional[str] = None # Can be passed in request or use env
 

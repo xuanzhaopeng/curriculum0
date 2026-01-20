@@ -15,7 +15,7 @@ class MathAgent:
         self, 
         api_key: str, 
         base_url: str = "https://generativelanguage.googleapis.com/v1beta/openai/",
-        model: str = "gemini-2.5-flash",
+        model: str = "gemini-2.0-flash",
         sandbox_url: str = "http://localhost:8080"
     ):
         """

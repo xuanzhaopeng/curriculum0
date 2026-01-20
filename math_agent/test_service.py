@@ -16,7 +16,7 @@ def test_math_agent_service():
     payload = {
         "problem": "Calculate the sum of primes between 10 and 20.",
         "max_turns": 5,
-        "model": "gemini-2.5-flash"
+        "model": "gemini-2.0-flash"
     }
 
     print(f"Sending request to {url}...")

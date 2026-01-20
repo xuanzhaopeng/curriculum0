@@ -4,8 +4,8 @@ export PROMETHEUS_PORT=9090                         # Prometheus service default
 export RAY_HEAD_PORT=6379                           # Ray master node port (customizable)
 export RAY_DASHBOARD_PORT=8265                      # Ray dashboard default port (customizable)
 export GRAFANA_PATHS_DATA=/tmp/grafana              # Grafana data storage directory (customizable)
-export RAY_GRAFANA_HOST="http://localhost:${GF_SERVER_HTTP_PORT}"        # Ray-associated Grafana address
-export RAY_PROMETHEUS_HOST="http://localhost:${PROMETHEUS_PORT}"         # Ray-associated Prometheus address
+export RAY_GRAFANA_HOST="http://0.0.0.0:${GF_SERVER_HTTP_PORT}"        # Ray-associated Grafana address
+export RAY_PROMETHEUS_HOST="http://0.0.0.0:${PROMETHEUS_PORT}"         # Ray-associated Prometheus address
 
 # Start Ray on master node
 ray start --head --port=${RAY_HEAD_PORT} --dashboard-host=0.0.0.0 --dashboard-port=${RAY_DASHBOARD_PORT}
