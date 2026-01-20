@@ -41,9 +41,17 @@ class MathAgent:
             "You will receive the output in the next turn.\n"
             "4. **Final Answer**: Once you have the solution, provide the final answer clearly. Wrap the numeric "
             "result in \\boxed{} for clarity.\n\n"
+            "### Example Format:\n"
+            "**Plan**\n"
+            "I will first calculate X, then Y...\n\n"
+            "**Chain of Thought**\n"
+            "Step 1: ...\n"
+            "Step 2: ...\n\n"
+            "**Final Answer**\n"
+            "The answer is \\boxed{42}\n\n"
             "Rules:\n"
-            "- Always start with a Plan.\n"
-            "- Use Chain of Thought for transparency.\n"
+            "- Always include 'Plan', 'Chain of Thought', and 'Final Answer' headers.\n"
+            "- The final result MUST be inside \\boxed{}.\n"
             "- Call Python ONLY when necessary for accuracy or efficiency.\n"
         )
 
@@ -52,7 +60,7 @@ class MathAgent:
         response = self.client.chat.completions.create(
             model=self.model,
             messages=messages,
-            temperature=0.7,
+            temperature=0.1, # Lower temperature for more consistent formatting
         )
         return response.choices[0].message.content
 
@@ -61,7 +69,7 @@ class MathAgent:
         pattern = r"\\boxed\{(.*?)\}"
         matches = re.findall(pattern, response)
         if matches:
-            return matches[-1] # Return the last boxed answer found
+            return matches[-1].strip() # Return the last boxed answer found
         return None
 
     def solve(self, problem: str, max_turns: int = 5) -> Dict[str, Any]:
@@ -75,16 +83,29 @@ class MathAgent:
         ]
         
         final_response = ""
+        full_history = []
+        
         for turn in range(max_turns):
             logger.info(f"MathAgent Turn {turn + 1}")
             response = self._generate_response(messages)
             messages.append({"role": "assistant", "content": response})
+            full_history.append(response)
             final_response = response
             
             # Extract python code if present
             code_match = re.search(r"<python>(.*?)</python>", response, re.DOTALL)
             if not code_match:
-                break # Reasoning finished or no more tools
+                # If no tool use, we check if there is a boxed answer
+                if self._extract_final_answer(response):
+                    break # Finished normally
+                else:
+                    # If no boxed answer, we try one more time to ask for it specifically
+                    # but only if we haven't already tried to recover in this loop
+                    if turn < max_turns - 1:
+                        logger.info("No boxed answer found, prompt for final answer.")
+                        messages.append({"role": "user", "content": "Please conclude with your final answer in \\boxed{}"})
+                        continue
+                    break
             
             code = code_match.group(1).strip()
             logger.info(f"Executing Python code:\n{code}")
@@ -106,9 +127,19 @@ class MathAgent:
             messages.append({"role": "user", "content": observation})
             logger.info("Observation received and sent back to agent.")
 
+        # Final check: if still no boxed answer, do a final forceful extraction attempt
+        answer = self._extract_final_answer(final_response)
+        if answer is None:
+            logger.info("Last resort: asking for boxed answer specifically.")
+            messages.append({"role": "user", "content": "Please provide the final numeric answer inside \\boxed{} now. No other text."})
+            recovery_response = self._generate_response(messages)
+            answer = self._extract_final_answer(recovery_response)
+            if answer:
+                final_response += "\n\n**Recovery**\n" + recovery_response
+
         return {
             "raw_reasoning": final_response,
-            "final_answer": self._extract_final_answer(final_response)
+            "final_answer": answer
         }
 
 if __name__ == "__main__":
