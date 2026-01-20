@@ -12,7 +12,7 @@ if [ -z "$GEMINI_API_KEY" ]; then
 fi
 
 echo "Starting Self-Consistency Dispatcher Service (Port 8001)..."
-conda run -n agent0-curriculum python -m curriculum.self_consistency_dispatcher.server > "$PROJECT_ROOT/dispatcher.log" 2>&1 &
+python -m curriculum.self_consistency_dispatcher.server > "$PROJECT_ROOT/dispatcher.log" 2>&1 &
 DISPATCHER_PID=$!
 
 echo "Services started in background."
