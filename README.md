@@ -41,7 +41,7 @@ pip install nvitop
 
 ### Start Distripution Service
 ```bash
-export MATH_AGENT_URL=http://localhost:8000/solve
+export MATH_AGENT_URL=tcp://localhost:8000
 bash scripts/start_disptacher.sh
 ```
 

@@ -4,6 +4,7 @@ from typing import List, Dict, Any, Optional
 import asyncio
 import httpx
 import logging
+import json
 from collections import Counter
 
 # Setup logging
@@ -14,7 +15,7 @@ app = FastAPI(title="Self-Consistency Dispatcher", description="Dispatcher for c
 
 import os
 
-MATH_AGENT_URL = os.getenv("MATH_AGENT_URL", "http://localhost:8000/solve")
+MATH_AGENT_URL = os.getenv("MATH_AGENT_URL", "tcp://localhost:8000")
 
 class DispatchRequest(BaseModel):
     question: str
@@ -46,6 +47,11 @@ async def call_math_agent(question: str, max_turns: int, model: str) -> Dict[str
     # Default: localhost:8000
     
     agent_addr = MATH_AGENT_URL.replace("tcp://", "").replace("http://", "")
+    
+    # Strip any path suffix (e.g. /solve) if present
+    if "/" in agent_addr:
+        agent_addr = agent_addr.split("/")[0]
+
     if ":" in agent_addr:
         host, port_str = agent_addr.split(":")
         port = int(port_str)
@@ -54,31 +60,44 @@ async def call_math_agent(question: str, max_turns: int, model: str) -> Dict[str
         port = 8000
     
     try:
-        reader, writer = await asyncio.open_connection(host, port)
+        async def _tcp_interaction():
+            reader = None
+            writer = None
+            try:
+                reader, writer = await asyncio.open_connection(host, port)
+                
+                # Serialize
+                req_bytes = json.dumps(payload).encode('utf-8')
+                req_len = len(req_bytes)
+                
+                # Send 4 bytes len + body
+                writer.write(struct.pack('>I', req_len))
+                writer.write(req_bytes)
+                await writer.drain()
+                
+                # Read Response
+                # 1. Read 4 bytes len
+                header_data = await reader.readexactly(4)
+                resp_len = struct.unpack('>I', header_data)[0]
+                
+                # 2. Read body
+                body_data = await reader.readexactly(resp_len)
+                resp_json = json.loads(body_data.decode('utf-8'))
+                return resp_json
+            finally:
+                if writer:
+                    try:
+                        writer.close()
+                        await writer.wait_closed()
+                    except Exception:
+                        pass # Ignore errors during close
+
+        # Set strict timeout of 180 seconds for the entire interaction
+        return await asyncio.wait_for(_tcp_interaction(), timeout=180.0)
         
-        # Serialize
-        req_bytes = json.dumps(payload).encode('utf-8')
-        req_len = len(req_bytes)
-        
-        # Send 4 bytes len + body
-        writer.write(struct.pack('>I', req_len))
-        writer.write(req_bytes)
-        await writer.drain()
-        
-        # Read Response
-        # 1. Read 4 bytes len
-        header_data = await reader.readexactly(4)
-        resp_len = struct.unpack('>I', header_data)[0]
-        
-        # 2. Read body
-        body_data = await reader.readexactly(resp_len)
-        resp_json = json.loads(body_data.decode('utf-8'))
-        
-        writer.close()
-        await writer.wait_closed()
-        
-        return resp_json
-        
+    except asyncio.TimeoutError:
+        logger.error(f"Timeout (180s) calling Math Agent via TCP at {host}:{port}")
+        return {"error": "timeout", "final_answer": None, "raw_reasoning": "Timeout waiting for Math Agent"}
     except Exception as e:
         logger.error(f"Error calling Math Agent via TCP: {e}")
         return {"error": str(e), "final_answer": None, "raw_reasoning": ""}
