@@ -23,7 +23,7 @@ class SandboxFusionClient:
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
-            print(f"❌❌❌ Error running code in SandboxFusion: {e}")
+            print(f"[!!!!!!! ERROR !!!!!!!] Error running code in SandboxFusion: {e}")
             return {
                 "status": "error",
                 "message": str(e),
