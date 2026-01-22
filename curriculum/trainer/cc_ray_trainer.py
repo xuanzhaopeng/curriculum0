@@ -1,5 +1,6 @@
 from pprint import pprint
 from typing import Dict
+import json
 import time
 import uuid
 import numpy as np
@@ -415,6 +416,25 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                 metrics.update(compute_throughout_metrics(batch=batch, timing_raw=timing_raw, n_gpus=n_gpus))
 
                 logger.log(data=metrics, step=self.global_steps)
+
+                # Save metrics to a JSON file named with the current step
+                metrics_serializable = {}
+                for k, v in metrics.items():
+                    if hasattr(v, 'item'):
+                        metrics_serializable[k] = v.item()
+                    elif isinstance(v, (np.float32, np.float64, np.int32, np.int64)):
+                        metrics_serializable[k] = v.item()
+                    else:
+                        try:
+                            # Try to make sure it's JSON serializable
+                            json.dumps(v)
+                            metrics_serializable[k] = v
+                        except (TypeError, OverflowError):
+                            metrics_serializable[k] = str(v)
+
+                with open(f"metrics_step_{self.global_steps}.json", "w") as f:
+                    json.dump(metrics_serializable, f, indent=2)
+                
 
                 # Dynamically export ALL metrics to Ray Prometheus
                 if self.enable_prometheus:

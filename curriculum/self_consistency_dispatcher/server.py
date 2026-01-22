@@ -30,6 +30,8 @@ class DispatchResponse(BaseModel):
     total_samples: int
     all_answers: List[Optional[str]]
     raw_responses: List[Dict[str, Any]]
+    tool_calls: List[int] = []
+    
 
 import struct
 
@@ -125,7 +127,8 @@ async def dispatch(request: DispatchRequest):
             self_consistency_score=0.0,
             total_samples=request.n,
             all_answers=answers,
-            raw_responses=results
+            raw_responses=results,
+            tool_calls=[r.get("tool_calls", 0) for r in results]
         )
     
     # Standard majority voting
@@ -141,7 +144,8 @@ async def dispatch(request: DispatchRequest):
         self_consistency_score=score,
         total_samples=request.n,
         all_answers=answers,
-        raw_responses=results
+        raw_responses=results,
+        tool_calls=[r.get("tool_calls", 0) for r in results]
     )
 
 @app.get("/health")

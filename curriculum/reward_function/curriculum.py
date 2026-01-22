@@ -20,6 +20,7 @@ class DispatcherResponse(TypedDict):
     total_samples: int
     all_answers: List[Optional[str]]
     raw_responses: List[Dict[str, Any]]
+    tool_calls: List[int]
 
 def call_self_consistency_dispatcher(question: str) -> DispatcherResponse:
     """Calls the self-consistency dispatcher for a single question."""
@@ -36,7 +37,8 @@ def call_self_consistency_dispatcher(question: str) -> DispatcherResponse:
             "self_consistency_score": 0.0,
             "total_samples": 0,
             "all_answers": [],
-            "raw_responses": []
+            "raw_responses": [],
+            "tool_calls": []
         }
 
     try:
@@ -51,7 +53,8 @@ def call_self_consistency_dispatcher(question: str) -> DispatcherResponse:
             "self_consistency_score": 0.0,
             "total_samples": 0,
             "all_answers": [],
-            "raw_responses": []
+            "raw_responses": [],
+            "tool_calls": []
         }
 
 def reward_self_consistency_scores(questions: List[str], max_threads: int = 5) -> List[DispatcherResponse]:
@@ -130,6 +133,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     results_parsing = []
     lambda_uncertain = 1
     lambda_repetition = 1
+    lambda_tool = 1
     # 1. Parse predictions to extract questions
     for i in tqdm(range(len(predicts)), desc=" - Parsing predictions"):
         questions = re.findall(r"<question>(.*?)</question>", predicts[i], re.DOTALL)
@@ -155,7 +159,8 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         "majority_answer": res.get("majority_answer"),
         "self_consistency_score": res.get("self_consistency_score", 0.0),
         "total_samples": res.get("total_samples", 0),
-        "all_answers": res.get("all_answers", [])
+        "all_answers": res.get("all_answers", []),
+        "tool_calls": res.get("tool_calls", [])
     } for res in sc_results]
 
     with open(f'results_sc_{int(time.time())}.json', 'w') as f:
@@ -177,16 +182,21 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         uncertainty_reward = 1.0 - 2 * abs(p_x - 0.5) # uncertity is 0.5
         repetition_penalty = novelty_proportions[i]
         
+        # Calculate tool calls mean
+        tool_counts = sc_res.get("tool_calls", [])
+        avg_tool_calls = max(np.mean(tool_counts) if tool_counts else 0.0, 4)
+        
         # Combine
         # R = Rformat(xi) · max(0,λuncRunc + λtoolRtool − Rrep(xi))
-        overall_reward = max(0, lambda_uncertain * uncertainty_reward - lambda_repetition * repetition_penalty) if fmt_reward else -1
+        overall_reward = max(0, lambda_uncertain * uncertainty_reward + lambda_tool * avg_tool_calls - lambda_repetition * repetition_penalty) if fmt_reward else -1
 
         final_scores.append({
             "overall": float(overall_reward),
             "format_score": 1 if fmt_reward is True else -1,
             "uncertainty_score":  lambda_uncertain * float(uncertainty_reward),
             "repetition_penalty": lambda_repetition * float(repetition_penalty),
-            "sc_score": float(p_x)
+            "sc_score": float(p_x),
+            "avg_tool_calls": float(avg_tool_calls)
         })
 
     return final_scores

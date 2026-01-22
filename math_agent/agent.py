@@ -143,9 +143,17 @@ class MathAgent:
             if answer:
                 final_response += "\n\n**Recovery**\n" + recovery_response
 
+        # Count how many turns had successful tool extraction (excluding recovery)
+        tool_calls_count = 0
+        for msg in messages:
+            if msg["role"] == "assistant":
+                if re.search(r"<python>(.*?)</python>", msg["content"], re.DOTALL):
+                    tool_calls_count += 1
+
         return {
             "raw_reasoning": final_response,
-            "final_answer": answer
+            "final_answer": answer,
+            "tool_calls": tool_calls_count
         }
 
 if __name__ == "__main__":
