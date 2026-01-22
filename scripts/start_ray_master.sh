@@ -30,9 +30,9 @@ fi
 # Start Grafana
 if [ -f "$INSTALL_DIR/grafana/bin/grafana-server" ]; then
     echo "Starting Grafana..."
-    nohup "$INSTALL_DIR/grafana/bin/grafana-server" \
+    nohup "/workspace/tools/grafana/bin/grafana-server" \
       --config /tmp/ray/session_latest/metrics/grafana/grafana.ini \
-      --homepath "$INSTALL_DIR/grafana" \
+      --homepath "/workspace/tools/grafana" \
       web > grafana.log 2>&1 &
 else
     echo "Grafana binary not found at $INSTALL_DIR/grafana/bin/grafana-server"
