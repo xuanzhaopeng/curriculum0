@@ -46,8 +46,8 @@ if [ -f "$INSTALL_DIR/prometheus/prometheus" ]; then
     echo "Starting Prometheus..."
     nohup "$INSTALL_DIR/prometheus/prometheus" \
       --config.file /tmp/ray/session_latest/metrics/prometheus/prometheus.yml \
-      --storage.tsdb.path=/workspace/tools/prometheus/data \  # <--- PERMANENT FOLDER
-      --storage.tsdb.retention.time=30d                 # <--- Keep for 30 days
+      --storage.tsdb.path=/workspace/tools/prometheus/data \
+      --storage.tsdb.retention.time=30d \
       --web.enable-lifecycle \
       --web.listen-address=:"${PROMETHEUS_PORT}" \
       > prometheus.log 2>&1 &
