@@ -140,7 +140,8 @@ async def dispatch(request: DispatchRequest):
         found = False
         for i in range(len(unique_groups)):
             group_representative, count = unique_groups[i]
-            if ans == group_representative or ('no ' in ans.lower() and 'no ' in group_representative.lower()) or grade_answer(ans, group_representative) or grade_answer(group_representative, ans):
+            is_negative_answer = ('no ' in ans.lower() or 'not ' in ans.lower()) and ('no ' in group_representative.lower() or 'not ' in group_representative.lower())
+            if ans == group_representative or is_negative_answer or grade_answer(ans, group_representative) or grade_answer(group_representative, ans):
                 unique_groups[i] = (group_representative, count + 1)
                 found = True
                 break
