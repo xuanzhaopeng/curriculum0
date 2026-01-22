@@ -149,8 +149,17 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     print(f"🎯🎯🎯 Computed {len(novelty_proportions)} Repetition results")
 
     import json
+    # Filter results for JSON logging - exclude large raw_responses
+    sc_logs = [{
+        "question": res.get("question", ""),
+        "majority_answer": res.get("majority_answer"),
+        "self_consistency_score": res.get("self_consistency_score", 0.0),
+        "total_samples": res.get("total_samples", 0),
+        "all_answers": res.get("all_answers", [])
+    } for res in sc_results]
+
     with open(f'results_sc_{int(time.time())}.json', 'w') as f:
-        json.dump(sc_results, f)
+        json.dump(sc_logs, f, indent=2)
 
     # 3. Get Novelty Penalty (Clustering)
     # We only cluster valid (non-empty) questions to avoid penalization for empty strings
