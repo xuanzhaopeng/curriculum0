@@ -4,6 +4,7 @@ import uuid
 import numpy as np
 from omegaconf import OmegaConf, open_dict
 import ray
+from ray.util.metrics import Gauge
 import torch
 from transformers import PreTrainedTokenizer, ProcessorMixin
 from torchdata.stateful_dataloader import StatefulDataLoader
@@ -130,11 +131,12 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         # ============================
         # Dynamic Ray Prometheus Metrics
         # ============================ 
+        self.enable_prometheus = False
         self._ray_gauges = None
-        if config.actor_rollout_ref.rollout.prometheus is not None and config.actor_rollout_ref.rollout.prometheus.enable:
-            from ray.util import metrics
+        if config.actor_rollout_ref.rollout.prometheus is not None and config.actor_rollout_ref.rollout.prometheus.enable is True:
+            self.enable_prometheus = True
             self._ray_gauges = {}
-
+            print("😊😊 Ray Prometheus Metrics enabled")
 
     def init_workers(self):
         super().init_workers()
@@ -415,14 +417,13 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                 logger.log(data=metrics, step=self.global_steps)
 
                 # Dynamically export ALL metrics to Ray Prometheus
-                if  self._ray_gauges is not None:
-                    from ray.util import metrics as ray_metrics
+                if self.enable_prometheus:
                     for k, v in metrics.items():
                         if isinstance(v, (int, float, np.floating, np.integer)):
                             # Clean key for Prometheus compatibility (only alphanumeric and underscores)
                             prom_key = k.replace("/", "_").replace(".", "_").replace("-", "_").replace("@", "_")
                             if prom_key not in self._ray_gauges:
-                                self._ray_gauges[prom_key] = ray_metrics.Gauge(prom_key, description=f"Metric: {k}")
+                                self._ray_gauges[prom_key] = Gauge(prom_key, description=f"Metric: {k}")
                             self._ray_gauges[prom_key].set(float(v))
 
                 # Concise console summary
@@ -434,7 +435,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                     f"Uncert: {metrics.get('reward/uncertainty_score', 0):.4f} | "
                     f"Time: {steps_duration:.2f}s"
                 )
-                print(curriculum_summary)
+                pprint(curriculum_summary)
 
                 progress_bar.update(1)
                 self.global_steps += 1
@@ -453,4 +454,5 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                         self.actor_rollout_wg.async_calls_finalize_fn_exec(blocking=True)
                     pprint(f"Final validation metrics: {last_val_metrics}")
                     progress_bar.close()
+                    print("[😊 Check me 😊]  Finish all steps")
                     return

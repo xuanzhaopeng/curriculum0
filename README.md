@@ -33,10 +33,10 @@ bash scripts/ssh-config.sh
 ```bash
 bash scripts/verl-install.sh
 pip install -r requirements.txt
-bash scripts/install_metrics.sh
-
 # (Optional) to check
 pip install nvitop
+
+bash scripts/install_metrics.sh
 ```
 
 ### Start Distripution Service
