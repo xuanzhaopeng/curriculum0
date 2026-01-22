@@ -132,7 +132,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         # Dynamic Ray Prometheus Metrics
         # ============================ 
         self.enable_prometheus = False
-        self._ray_gauges = None
+        self._ray_gauges = {}
         if config.actor_rollout_ref.rollout.prometheus is not None and config.actor_rollout_ref.rollout.prometheus.enable:
             self.enable_prometheus = True
             print("😊😊 Ray Prometheus Metrics enabled")
