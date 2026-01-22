@@ -53,5 +53,9 @@ bash scripts/start_ray_master.sh
 
 ### Start Testing
 ```bash
+# clean up previous data
+rm -rf questions
+rm -rf metrics
+rm -rf checkpoints/curriculum_agent
 bash scripts/train.sh
 ```

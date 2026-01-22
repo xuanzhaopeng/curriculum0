@@ -11,17 +11,17 @@ This folder contains utilities to visualize training metrics collected in JSON f
    rm -rf plots
    bash scripts/download_remote_metrics.sh
    bash scripts/download_remote_questions.sh
-   
-   # Generate plots
-   python view/plot_metrics.py
    ```
-3. Run the question diversity plotting script to see the semantic distribution of generated questions:
+3. Run the visualization scripts to see metrics and diversity:
    ```bash
+   python view/plot_metrics.py
    python view/plot_question_diversity.py
+   python view/plot_question_sc_distribution.py
    ```
 4. View the generated plots in the `plots/` subdirectory:
    - `metric_*.png`: Individual trend plots for training metrics.
-   - `question_diversity.png`: 2D t-SNE visualization of question embeddings.
+   - `question_diversity.png`: 2D t-SNE visualization of question embeddings + uncertainty zone.
+   - `question_sc_distribution.png`: Bar chart of self-consistency scores.
 
 ## Requirements
 - `matplotlib`
