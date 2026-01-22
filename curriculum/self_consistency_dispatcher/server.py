@@ -132,7 +132,7 @@ async def dispatch(request: DispatchRequest):
         )
     
     # Use math equivalence to group answers instead of simple string comparison
-    from mathruler.grader import math_equal
+    from mathruler.grader import grade_answer
     
     unique_groups = [] # List of (representative_answer, count)
     
@@ -140,7 +140,7 @@ async def dispatch(request: DispatchRequest):
         found = False
         for i in range(len(unique_groups)):
             group_representative, count = unique_groups[i]
-            if math_equal(ans, group_representative):
+            if ans == group_representative or ('no ' in ans.lower() and 'no ' in group_representative.lower()) or grade_answer(ans, group_representative) or grade_answer(group_representative, ans):
                 unique_groups[i] = (group_representative, count + 1)
                 found = True
                 break

@@ -71,35 +71,44 @@ class MathAgent:
         return response.choices[0].message.content
 
     def _extract_final_answer(self, response: str) -> Optional[str]:
-        """Extract the content inside \boxed{} by handling nested braces."""
-        # Find all occurrences of \boxed{
-        start_indices = [m.start() for m in re.finditer(r"\\boxed\{", response)]
-        if not start_indices:
-            return None
-        
-        # We usually want the last one (the final answer)
-        last_start = start_indices[-1]
-        content_start = last_start + len("\\boxed{")
-        
-        # Use a stack to find the matching closing brace
-        stack_count = 1
-        content_end = content_start
-        
-        while stack_count > 0 and content_end < len(response):
-            char = response[content_end]
-            if char == '{':
-                stack_count += 1
-            elif char == '}':
-                stack_count -= 1
+        """Extract the content inside \boxed{} using mathruler."""
+        try:
+            from mathruler.grader import extract_boxed_content
+            boxed_content = extract_boxed_content(response)
+            if boxed_content is not None and boxed_content != "None":
+                return boxed_content
+            else:
+                return None
+        except ImportError:
+            # Fallback to internal method if mathruler is not available
+            # Find all occurrences of \boxed{
+            start_indices = [m.start() for m in re.finditer(r"\\boxed\{", response)]
+            if not start_indices:
+                return None
             
+            # We usually want the last one (the final answer)
+            last_start = start_indices[-1]
+            content_start = last_start + len("\\boxed{")
+            
+            # Use a stack to find the matching closing brace
+            stack_count = 1
+            content_end = content_start
+            
+            while stack_count > 0 and content_end < len(response):
+                char = response[content_end]
+                if char == '{':
+                    stack_count += 1
+                elif char == '}':
+                    stack_count -= 1
+                
+                if stack_count == 0:
+                    break
+                content_end += 1
+                
             if stack_count == 0:
-                break
-            content_end += 1
-            
-        if stack_count == 0:
-            return response[content_start:content_end].strip()
-            
-        return None
+                return response[content_start:content_end].strip()
+                
+            return None
 
     def solve(self, problem: str, max_turns: int = 5) -> Dict[str, Any]:
         """
@@ -172,6 +181,10 @@ class MathAgent:
             if msg["role"] == "assistant":
                 if re.search(r"<python>(.*?)</python>", msg["content"], re.DOTALL):
                     tool_calls_count += 1
+
+        if answer is None:
+            logger.info("No boxed answer found in final response.")
+            answer = ""
 
         return {
             "raw_reasoning": final_response,
