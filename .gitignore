@@ -4,3 +4,5 @@ checkpoints/
 test.json
 *.log
 .env
+plots/
+questions/

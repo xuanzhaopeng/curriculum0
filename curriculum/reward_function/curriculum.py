@@ -1,5 +1,6 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
+import os
 import re
 import requests
 from typing import Dict, List, Any, Optional, TypedDict
@@ -26,7 +27,7 @@ def call_self_consistency_dispatcher(question: str) -> DispatcherResponse:
     """Calls the self-consistency dispatcher for a single question."""
     payload = {
         "question": question,
-        "n": 5, # Sampling n=5 for efficiency in the reward function
+        "n": 10, # Sampling n=5 for efficiency in the reward function
         "max_turns": 5
     }
 
@@ -163,7 +164,8 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         "tool_calls": res.get("tool_calls", [])
     } for res in sc_results]
 
-    with open(f'results_sc_{int(time.time())}.json', 'w') as f:
+    os.makedirs("questions", exist_ok=True)
+    with open(f'questions/results_sc_{int(time.time())}.json', 'w') as f:
         json.dump(sc_logs, f, indent=2)
 
     # 3. Get Novelty Penalty (Clustering)
