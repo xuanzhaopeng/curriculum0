@@ -15,8 +15,8 @@ def test_math_agent_tcp():
     print(f"Connecting to {host}:{port} via TCP...")
 
     payload = {
-        "problem": "Calculate the sum of primes between 10 and 20.",
-        "max_turns": 4,
+        "problem": "Calculate the 100th Fibonacci number using a list-based approach.",
+        "max_turns": 5,
         "model": "gemini-2.0-flash"
     }
     
@@ -51,7 +51,9 @@ def test_math_agent_tcp():
         response = json.loads(body_data.decode('utf-8'))
         
         print("\nParsed Response:")
+        print(f"Keys: {list(response.keys())}")
         print(f"Final Answer: {response.get('final_answer')}")
+        print(f"Tool Calls: {response.get('tool_calls')}")
         print("-" * 40)
         print(f"Raw Reasoning:\n{response.get('raw_reasoning')}")
         
