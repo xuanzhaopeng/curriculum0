@@ -2,13 +2,6 @@
 
 ## Machine#1 (2xCPU with SandboxFusion)
 
-### Runpod configuration
-```bash
-cp -r /workspace/.ssh /root/.ssh
-chmod 600 /root/.ssh/id_ed25519
-chmod 700 /root/.ssh
-```
-
 ### Install depency and start service
 ```bash
 cd /workspace/Agent0-curriculum
@@ -21,9 +14,6 @@ bash scripts/start_math_agent.sh
 
 ### Runpod configuration
 ```bash
-cp -r /workspace/.ssh /root/.ssh
-chmod 600 /root/.ssh/id_ed25519
-chmod 700 /root/.ssh
 cd /workspace/Agent0-curriculum
 git pull
 bash scripts/ssh-config.sh
