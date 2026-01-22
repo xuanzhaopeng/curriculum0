@@ -448,8 +448,8 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                             continue
                     
                     # Sleep to allow Prometheus scraper to catch the updates
-                    print(f"😊 Sleeping 15s to allow Prometheus scraping...")
-                    time.sleep(15)
+                    print(f"😊 Sleeping 30s to allow Prometheus scraping...")
+                    time.sleep(30)
                 
                 progress_bar.update(1)
                 self.global_steps += 1
