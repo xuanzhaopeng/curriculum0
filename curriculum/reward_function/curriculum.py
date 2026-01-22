@@ -159,7 +159,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     """
     print(f"🎯🎯🎯 compute scores for {len(predicts)} predictions")
     results_parsing = []
-    lambda_uncertain = 1
+    lambda_uncertain = 2
     lambda_repetition = 1
     lambda_tool = 0.05
     # 1. Parse predictions to extract questions
