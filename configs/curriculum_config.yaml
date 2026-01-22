@@ -248,7 +248,7 @@ trainer:
   balance_batch: False
   total_epochs: 3
   project_name: curriculum_agent
-  experiment_name: curriculum_agent
+  experiment_name: 0_6b
   logger: ['console']
   log_val_generations: 0
   nnodes: 1
