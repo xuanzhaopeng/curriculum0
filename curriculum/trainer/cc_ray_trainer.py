@@ -1,5 +1,6 @@
 from pprint import pprint
 from typing import Dict
+import time
 import uuid
 import numpy as np
 from omegaconf import OmegaConf, open_dict
@@ -422,6 +423,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
 
                 # Dynamically export ALL metrics to Ray Prometheus
                 if self.enable_prometheus:
+                    print(f"[😊😊😊 Prometheus] Exporting metrics to Ray Prometheus...")
                     for k, v in metrics.items():
                         try:
                             # Robustly convert to float (handles tensors, numpy types, etc.)
@@ -445,21 +447,15 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                             
                             print(f"[😊😊😊 Prometheus] Set Gauge {prom_key} to {val}")
                             self._ray_gauges[prom_key].set(val)
-                        except (TypeError, ValueError, AttributeError):
+                        except (TypeError, ValueError, AttributeError) as e:
+                            print(f"⚠️⚠️⚠️ [Prometheus] Failed to set Gauge {prom_key} to {val}: {e}")
                             # Skip metrics that cannot be converted to float (e.g., strings, dicts)
                             continue
-
-                # Concise console summary
-                curriculum_summary = (
-                    f"Step {self.global_steps} | "
-                    f"Reward: {metrics.get('reward/mean', 0):.4f} | "
-                    f"SC: {metrics.get('reward/sc_score', 0):.4f} | "
-                    f"Fmt: {metrics.get('reward/format_score', 0):.2f} | "
-                    f"Uncert: {metrics.get('reward/uncertainty_score', 0):.4f} | "
-                    f"Time: {steps_duration:.2f}s"
-                )
-                pprint(curriculum_summary)
-
+                    
+                    # Sleep to allow Prometheus scraper to catch the updates
+                    print(f"😊 Sleeping 15s to allow Prometheus scraping...")
+                    time.sleep(15)
+                
                 progress_bar.update(1)
                 self.global_steps += 1
 

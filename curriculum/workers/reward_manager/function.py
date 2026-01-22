@@ -110,6 +110,6 @@ class BatchFunctionRewardManager(FunctionRewardManager):
         for i, score in enumerate(scores):
             reward_tensor[i, response_length[i] - 1] = score["overall"]
             for key, value in score.items():
-                reward_metrics[key].append(value)
+                reward_metrics[key].append(value) # same key, different values for different questions
 
         return reward_tensor, reward_metrics
