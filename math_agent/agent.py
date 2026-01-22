@@ -137,7 +137,7 @@ class MathAgent:
                     break
             
             code = code_match.group(1).strip()
-            logger.info(f"Executing Python code:\n{code}")
+            logger.info(f"👀👀 Executing Python code:\n{code}")
             
             execution_result = self.sandbox.run_python(code)
             
