@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# Configuration
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
 # Master node environment variables
 export GF_SERVER_HTTP_PORT=3000                     # Grafana service default port (customizable)
 export PROMETHEUS_PORT=9090                         # Prometheus service default port (customizable)
@@ -15,6 +20,13 @@ INSTALL_DIR="/workspace/tools"
 
 echo "Waiting for Ray to initialize metrics directory..."
 sleep 20 # Give Ray a moment to create the session directory
+
+# Overwrite default Grafana config with custom one
+if [ -f "$PROJECT_ROOT/grafana/grafana.ini" ]; then
+    echo "Overwriting Grafana config..."
+    mkdir -p /tmp/ray/session_latest/metrics/grafana
+    cp "$PROJECT_ROOT/grafana/grafana.ini" /tmp/ray/session_latest/metrics/grafana/grafana.ini
+fi
 
 # Start Grafana
 if [ -f "$INSTALL_DIR/grafana/bin/grafana-server" ]; then
