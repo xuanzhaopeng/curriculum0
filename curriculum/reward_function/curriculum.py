@@ -126,6 +126,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     Computes the final reward for curriculum tasks.
     Formula: R = R_format * R_uncertainty * (1 - novelty_penalty)
     """
+    print(f"🎯🎯🎯 compute scores for {len(predicts)} predictions")
     results_parsing = []
     lambda_uncertain = 1
     lambda_repetition = 1
@@ -140,7 +141,10 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     # 2. Get Self-Consistency scores (Uncertainty) and Repetition score
     questions_list = [r["question"] for r in results_parsing]
     sc_results = reward_self_consistency_scores(questions_list, max_threads=5)
+    print(f"🎯🎯🎯 Computed {len(sc_results)} results")
+
     novelty_proportions = penalty_cluster_share_per_problem([q for q in questions_list if q])
+    print(f"🎯🎯🎯 Computed {len(novelty_proportions)} results")
 
     import json
     with open(f'results_sc_{int(time.time())}.json', 'w') as f:
