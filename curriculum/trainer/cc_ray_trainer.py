@@ -133,10 +133,14 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         # ============================ 
         self.enable_prometheus = False
         self._ray_gauges = None
-        if config.actor_rollout_ref.rollout.prometheus is not None and config.actor_rollout_ref.rollout.prometheus.enable is True:
+        if config.actor_rollout_ref.rollout.prometheus is not None and config.actor_rollout_ref.rollout.prometheus.enable:
             self.enable_prometheus = True
-            self._ray_gauges = {}
             print("😊😊 Ray Prometheus Metrics enabled")
+            
+            # Pre-register key curriculum metrics to ensure they are discovered early by Ray
+            base_metrics = ["reward_sc_score", "reward_format_score", "reward_uncertainty_score", "reward_repetition_penalty", "reward_overall_reward"]
+            for m in base_metrics:
+                self._ray_gauges[m] = Gauge(m, description=f"Curriculum Core: {m}")
 
     def init_workers(self):
         super().init_workers()
@@ -419,12 +423,31 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                 # Dynamically export ALL metrics to Ray Prometheus
                 if self.enable_prometheus:
                     for k, v in metrics.items():
-                        if isinstance(v, (int, float, np.floating, np.integer)):
+                        try:
+                            # Robustly convert to float (handles tensors, numpy types, etc.)
+                            if hasattr(v, 'item'):
+                                val = float(v.item())
+                            else:
+                                val = float(v)
+
                             # Clean key for Prometheus compatibility (only alphanumeric and underscores)
+                            # Add 'curriculum_' prefix to avoid collision and make them easy to find
                             prom_key = k.replace("/", "_").replace(".", "_").replace("-", "_").replace("@", "_")
+                            if not prom_key.startswith("curriculum"):
+                                prom_key = f"curriculum_{prom_key}"
+                            
+                            # Ensure name doesn't start with a number (Prometheus rule)
+                            if prom_key[0].isdigit():
+                                prom_key = f"m_{prom_key}"
+
                             if prom_key not in self._ray_gauges:
                                 self._ray_gauges[prom_key] = Gauge(prom_key, description=f"Metric: {k}")
-                            self._ray_gauges[prom_key].set(float(v))
+                            
+                            print(f"[😊😊😊 Prometheus] Set Gauge {prom_key} to {val}")
+                            self._ray_gauges[prom_key].set(val)
+                        except (TypeError, ValueError, AttributeError):
+                            # Skip metrics that cannot be converted to float (e.g., strings, dicts)
+                            continue
 
                 # Concise console summary
                 curriculum_summary = (
