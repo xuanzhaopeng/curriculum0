@@ -2,12 +2,6 @@
 # Based on Verl 0.7.0
 
 # ============================================================================
-# For Curriculum Model Only:  Ray setup, it's customsied configuration
-# ============================================================================
-ray_init:
-  num_cpus: 9 # the cpu cores from the machine
-
-# ============================================================================
 # For Curriculum Model Only: Customise Reward configuration
 # ============================================================================
 reward:
@@ -56,7 +50,7 @@ data:
 actor_rollout_ref:
  hybrid_engine: True
  model:
-   path: Qwen/Qwen3-0.6B
+   path: Qwen/Qwen3-4B-Instruct-2507 #Qwen/Qwen3-0.6B
    external_lib: null
    override_config:
      attn_implementation: flash_attention_2
@@ -248,7 +242,7 @@ trainer:
   balance_batch: False
   total_epochs: 12
   project_name: curriculum_agent
-  experiment_name: 0_6b
+  experiment_name: 4B_instruct
   logger: ['console']
   log_val_generations: 0
   nnodes: 1

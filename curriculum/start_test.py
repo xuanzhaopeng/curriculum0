@@ -105,7 +105,6 @@ def main(config):
         ray.init(
             address="auto",
             runtime_env=runtime_env,
-            # num_cpus=config.ray_init.num_cpus
         )
 
         try:

@@ -131,9 +131,36 @@ async def dispatch(request: DispatchRequest):
             tool_calls=[r.get("tool_calls", 0) for r in results]
         )
     
-    # Standard majority voting
-    counts = Counter(valid_answers)
-    majority_answer, majority_count = counts.most_common(1)[0]
+    # Use math equivalence to group answers instead of simple string comparison
+    from mathruler.grader import math_equal
+    
+    unique_groups = [] # List of (representative_answer, count)
+    
+    for ans in valid_answers:
+        found = False
+        for i in range(len(unique_groups)):
+            group_representative, count = unique_groups[i]
+            if math_equal(ans, group_representative):
+                unique_groups[i] = (group_representative, count + 1)
+                found = True
+                break
+        if not found:
+            unique_groups.append((ans, 1))
+
+    if not unique_groups:
+        return DispatchResponse(
+            question=request.question,
+            majority_answer=None,
+            self_consistency_score=0.0,
+            total_samples=request.n,
+            all_answers=answers,
+            raw_responses=results,
+            tool_calls=[r.get("tool_calls", 0) for r in results]
+        )
+
+    # Sort groups by count descending
+    unique_groups.sort(key=lambda x: x[1], reverse=True)
+    majority_answer, majority_count = unique_groups[0]
     
     # Self-consistency score based on Agent0: p(x) = count(majority) / n
     score = majority_count / request.n
