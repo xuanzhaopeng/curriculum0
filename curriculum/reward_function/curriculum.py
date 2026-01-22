@@ -81,29 +81,13 @@ def reward_format(predict: str):
     if not re.fullmatch(pattern_basic, predict):
         return False
     
-    # Robust check for balanced \boxed{...}
+    # Robust check for balanced \boxed{...} or use mathruler
     try:
-        start_indices = [m.start() for m in re.finditer(r"\\boxed\{", predict)]
-        if not start_indices:
+        boxed_content = extract_boxed_content(predict)
+        if boxed_content is not None and boxed_content != "None" and boxed_content.strip() != "":
+            return True
+        else:
             return False
-            
-        # We check the last one since that's usually the final answer
-        last_start = start_indices[-1]
-        content_idx = last_start + len("\\boxed{")
-        
-        stack_count = 1
-        while stack_count > 0 and content_idx < len(predict):
-            char = predict[content_idx]
-            if char == '{':
-                stack_count += 1
-            elif char == '}':
-                stack_count -= 1
-            
-            if stack_count == 0:
-                return True
-            content_idx += 1
-            
-        return False
     except Exception:
         return False
 
