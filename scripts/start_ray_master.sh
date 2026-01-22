@@ -22,6 +22,8 @@ sleep 20 # Give Ray a moment to create the session directory
 if [ -f "./grafana/grafana.ini" ]; then
     echo "Overwriting Grafana config..."
     mkdir -p /tmp/ray/session_latest/metrics/grafana
+    echo "====== Original config ======"
+    cat /tmp/ray/session_latest/metrics/grafana/grafana.ini
     cp "./grafana/grafana.ini" /tmp/ray/session_latest/metrics/grafana/grafana.ini
 
     echo "[Important] Grafana config overwritten"
