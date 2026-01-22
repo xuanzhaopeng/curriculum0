@@ -127,6 +127,14 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         except Exception as e:
             print(f"Warning: Could not set total_training_steps in config. Structure missing? Error: {e}")            
 
+        # ============================
+        # Dynamic Ray Prometheus Metrics
+        # ============================ 
+        self._ray_gauges = None
+        if config.actor_rollout_ref.rollout.prometheus is not None and config.actor_rollout_ref.rollout.prometheus.enable:
+            from ray.util import metrics
+            self._ray_gauges = {}
+
 
     def init_workers(self):
         super().init_workers()
@@ -314,6 +322,9 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                         batch.batch["token_level_scores"] = reward_tensor
                         if reward_extra_infos_dict:
                             batch.non_tensor_batch.update({k: np.array(v) for k, v in reward_extra_infos_dict.items()})
+                            # Log curriculum sub-scores (means) to metrics
+                            for score_key, score_values in reward_extra_infos_dict.items():
+                                metrics[f"reward/{score_key}"] = np.mean(score_values)
 
                         # compute rewards. apply_kl_penalty if available
                         if self.config.algorithm.use_kl_in_reward:
@@ -402,6 +413,28 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                 metrics.update(compute_throughout_metrics(batch=batch, timing_raw=timing_raw, n_gpus=n_gpus))
 
                 logger.log(data=metrics, step=self.global_steps)
+
+                # Dynamically export ALL metrics to Ray Prometheus
+                if  self._ray_gauges is not None:
+                    from ray.util import metrics as ray_metrics
+                    for k, v in metrics.items():
+                        if isinstance(v, (int, float, np.floating, np.integer)):
+                            # Clean key for Prometheus compatibility (only alphanumeric and underscores)
+                            prom_key = k.replace("/", "_").replace(".", "_").replace("-", "_").replace("@", "_")
+                            if prom_key not in self._ray_gauges:
+                                self._ray_gauges[prom_key] = ray_metrics.Gauge(prom_key, description=f"Metric: {k}")
+                            self._ray_gauges[prom_key].set(float(v))
+
+                # Concise console summary
+                curriculum_summary = (
+                    f"Step {self.global_steps} | "
+                    f"Reward: {metrics.get('reward/mean', 0):.4f} | "
+                    f"SC: {metrics.get('reward/sc_score', 0):.4f} | "
+                    f"Fmt: {metrics.get('reward/format_score', 0):.2f} | "
+                    f"Uncert: {metrics.get('reward/uncertainty_score', 0):.4f} | "
+                    f"Time: {steps_duration:.2f}s"
+                )
+                print(curriculum_summary)
 
                 progress_bar.update(1)
                 self.global_steps += 1
