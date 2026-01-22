@@ -76,9 +76,36 @@ def reward_self_consistency_scores(questions: List[str], max_threads: int = 5) -
     return results
 
 def reward_format(predict: str):
-    pattern = re.compile(r".*<question>.*</question>.*\\boxed\{.*\}.*", re.DOTALL)
-    format_match = re.fullmatch(pattern, predict)
-    return True if format_match else False
+    # Check for basic <question> and \boxed{ existence first
+    pattern_basic = re.compile(r".*<question>.*</question>.*\\boxed\{.*", re.DOTALL)
+    if not re.fullmatch(pattern_basic, predict):
+        return False
+    
+    # Robust check for balanced \boxed{...}
+    try:
+        start_indices = [m.start() for m in re.finditer(r"\\boxed\{", predict)]
+        if not start_indices:
+            return False
+            
+        # We check the last one since that's usually the final answer
+        last_start = start_indices[-1]
+        content_idx = last_start + len("\\boxed{")
+        
+        stack_count = 1
+        while stack_count > 0 and content_idx < len(predict):
+            char = predict[content_idx]
+            if char == '{':
+                stack_count += 1
+            elif char == '}':
+                stack_count -= 1
+            
+            if stack_count == 0:
+                return True
+            content_idx += 1
+            
+        return False
+    except Exception:
+        return False
 
 def _bleu_distance_matrix(sentences):
     n = len(sentences)

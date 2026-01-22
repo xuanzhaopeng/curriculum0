@@ -17,11 +17,13 @@ This folder contains utilities to visualize training metrics collected in JSON f
    python view/plot_metrics.py
    python view/plot_question_diversity.py
    python view/plot_question_sc_distribution.py
+   python view/extract_perfect_questions.py
    ```
-4. View the generated plots in the `plots/` subdirectory:
+4. View the generated results in the `plots/` subdirectory:
    - `metric_*.png`: Individual trend plots for training metrics.
    - `question_diversity.png`: 2D t-SNE visualization of question embeddings + uncertainty zone.
    - `question_sc_distribution.png`: Bar chart of self-consistency scores.
+   - `perfect_questions.json`: Questions with 1.0 SC score.
 
 ## Requirements
 - `matplotlib`
