@@ -184,7 +184,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         
         # Calculate tool calls mean
         tool_counts = sc_res.get("tool_calls", [])
-        avg_tool_calls = max(np.mean(tool_counts) if tool_counts else 0.0, 4)
+        avg_tool_calls = min(np.mean(tool_counts) if tool_counts else 0.0, 4)
         
         # Combine
         # R = Rformat(xi) · max(0,λuncRunc + λtoolRtool − Rrep(xi))

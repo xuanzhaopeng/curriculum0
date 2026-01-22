@@ -19,6 +19,7 @@ mathruler
 # Utilities
 tqdm>=4.65.0
 codetiming>=1.4.0
+matplotlib>=3.7.0
 
 # self_consistency_dispatcher
 fastapi>=0.100.0
