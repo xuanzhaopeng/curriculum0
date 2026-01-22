@@ -24,15 +24,15 @@ if [ -f "./grafana/grafana.ini" ]; then
     mkdir -p /tmp/ray/session_latest/metrics/grafana
     cp "./grafana/grafana.ini" /tmp/ray/session_latest/metrics/grafana/grafana.ini
 
-    echo "Grafana config overwritten"
+    echo "[Important] Grafana config overwritten"
 fi
 
 # Start Grafana
 if [ -f "$INSTALL_DIR/grafana/bin/grafana-server" ]; then
     echo "Starting Grafana..."
-    nohup "/workspace/tools/grafana/bin/grafana-server" \
+    nohup "$INSTALL_DIR/grafana/bin/grafana-server" \
       --config /tmp/ray/session_latest/metrics/grafana/grafana.ini \
-      --homepath "/workspace/tools/grafana" \
+      --homepath "$INSTALL_DIR/grafana" \
       web > grafana.log 2>&1 &
 else
     echo "Grafana binary not found at $INSTALL_DIR/grafana/bin/grafana-server"
