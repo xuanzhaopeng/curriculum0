@@ -137,11 +137,6 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         if config.actor_rollout_ref.rollout.prometheus is not None and config.actor_rollout_ref.rollout.prometheus.enable:
             self.enable_prometheus = True
             print("😊😊 Ray Prometheus Metrics enabled")
-            
-            # Pre-register key curriculum metrics to ensure they are discovered early by Ray
-            base_metrics = ["reward_sc_score", "reward_format_score", "reward_uncertainty_score", "reward_repetition_penalty", "reward_overall_reward"]
-            for m in base_metrics:
-                self._ray_gauges[m] = Gauge(m, description=f"Curriculum Core: {m}")
 
     def init_workers(self):
         super().init_workers()

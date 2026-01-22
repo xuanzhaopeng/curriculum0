@@ -82,7 +82,7 @@ def _bleu_distance_matrix(sentences):
     smoother = SmoothingFunction().method1
     for i in tqdm(range(n), desc="  - Calculating BLEU distance matrix", leave=False):
         for j in range(i, n):
-            if i == j:
+            if i == j or sentences[i] == sentences[j]:
                 score = 1.0
             else:
                 ref = [sentences[j].split()]
@@ -141,10 +141,12 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     # 2. Get Self-Consistency scores (Uncertainty) and Repetition score
     questions_list = [r["question"] for r in results_parsing]
     sc_results = reward_self_consistency_scores(questions_list, max_threads=5)
-    print(f"🎯🎯🎯 Computed {len(sc_results)} results")
+    print(f"🎯🎯🎯 Computed {len(sc_results)} SC results")
 
-    novelty_proportions = penalty_cluster_share_per_problem([q for q in questions_list if q])
-    print(f"🎯🎯🎯 Computed {len(novelty_proportions)} results")
+    # Use the full questions_list to maintain index alignment for novelty_proportions
+    # Empty strings will be clustered together or handled by the BLEU distance matrix
+    novelty_proportions = penalty_cluster_share_per_problem(questions_list)
+    print(f"🎯🎯🎯 Computed {len(novelty_proportions)} Repetition results")
 
     import json
     with open(f'results_sc_{int(time.time())}.json', 'w') as f:
