@@ -246,7 +246,7 @@ global_profiler:
 trainer:
   device: cuda
   balance_batch: False
-  total_epochs: 1
+  total_epochs: 2
   project_name: curriculum_agent
   experiment_name: curriculum_agent
   logger: ['console']
@@ -265,4 +265,4 @@ trainer:
   remove_previous_ckpt_in_save: False
   del_local_ckpt_after_load: False
   ray_wait_register_center_timeout: 300
-  total_training_steps: 1 # customfiled, overwrite the total_epochs
+  total_training_steps: 2 # customfiled, overwrite the total_epochs
