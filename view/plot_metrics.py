@@ -8,11 +8,12 @@ from collections import defaultdict
 def plot_metrics():
     # 1. Gather all metrics files
     # Assuming the script is run from the project root or the view folder
-    # We look in the current directory and one level up
-    files = glob.glob("metrics_step_*.json") + glob.glob("../metrics_step_*.json")
+    # We only look inside the dedicated 'metric' folder
+    files = (glob.glob("metric/metrics_step_*.json") + 
+             glob.glob("../metric/metrics_step_*.json"))
     
     if not files:
-        print("No metrics files found. Searching for 'metrics_step_*.json' in . and ..")
+        print("No metrics files found. Searching for 'metrics_step_*.json' exclusively in metric/ or ../metric/")
         return
 
     # 2. Extract step numbers and sort files

@@ -1,6 +1,7 @@
 from pprint import pprint
 from typing import Dict
 import json
+import os
 import time
 import uuid
 import numpy as np
@@ -432,7 +433,8 @@ class CCRayGRPOTrainer(RayPPOTrainer):
                         except (TypeError, OverflowError):
                             metrics_serializable[k] = str(v)
 
-                with open(f"metrics_step_{self.global_steps}.json", "w") as f:
+                os.makedirs("metric", exist_ok=True)
+                with open(f"metric/metrics_step_{self.global_steps}.json", "w") as f:
                     json.dump(metrics_serializable, f, indent=2)
                 
 
