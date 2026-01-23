@@ -233,7 +233,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         
         # Compute SC only for novel questions
         novel_questions = [questions_list[i] for i in novel_indices]
-        novel_sc_results = reward_self_consistency_scores(novel_questions, max_threads=1) if novel_questions else []
+        novel_sc_results = reward_self_consistency_scores(novel_questions, max_threads=3) if novel_questions else []
         
         # Build full sc_results list
         sc_results = []
@@ -258,7 +258,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
                 novel_idx += 1
     else:
         # No historical questions, compute SC for all
-        sc_results = reward_self_consistency_scores(questions_list, max_threads=1)
+        sc_results = reward_self_consistency_scores(questions_list, max_threads=3)
         for r in sc_results:
             r["reused_from_history"] = False
     
