@@ -6,7 +6,7 @@ CONFIG_PATH="$PROJECT_DIR/configs"
 echo "Start training curriculum"
 echo "Loading configs $CONFIG_PATH"
 
-CUDA_VISIBLE_DEVICES=0,1 python -m curriculum.start_test \
+CUDA_VISIBLE_DEVICES=0,1 python -u -m curriculum.start_test \
     --config-path="$CONFIG_PATH" \
     --config-name='curriculum_config' \
     hydra.job.chdir=False
