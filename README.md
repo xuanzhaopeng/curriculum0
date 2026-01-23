@@ -49,5 +49,10 @@ bash scripts/start_ray_master.sh
 rm -rf questions
 rm -rf metrics
 rm -rf checkpoints/curriculum_agent
-bash scripts/train.sh
+
+# Start training in background with logging
+nohup bash scripts/train.sh > train.log 2>&1 &
+
+# Monitor training progress
+tail -f train.log
 ```
