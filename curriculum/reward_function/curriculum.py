@@ -23,7 +23,7 @@ class DispatcherResponse(TypedDict):
     raw_responses: List[Dict[str, Any]]
     tool_calls: List[int]
 
-def call_self_consistency_dispatcher(question: str) -> DispatcherResponse:
+def _call_self_consistency_dispatcher(question: str) -> DispatcherResponse:
     """Calls the self-consistency dispatcher for a single question."""
     payload = {
         "question": question,
@@ -64,7 +64,7 @@ def reward_self_consistency_scores(questions: List[str], max_threads: int = 5) -
     
     with ThreadPoolExecutor(max_workers=max_threads) as executor:
         # Map indices to questions to maintain order
-        future_to_idx = {executor.submit(call_self_consistency_dispatcher, q): i for i, q in enumerate(questions)}
+        future_to_idx = {executor.submit(_call_self_consistency_dispatcher, q): i for i, q in enumerate(questions)}
         
         for future in tqdm(as_completed(future_to_idx), total=len(questions), desc=" - Requesting self-consistency"):
             idx = future_to_idx[future]
@@ -131,6 +131,29 @@ def penalty_cluster_share_per_problem(
     proportions = [cluster_ratio[lab] for lab in labels]
     return proportions
 
+def load_historical_questions(directory="questions"):
+    historical_questions = []
+    if not os.path.exists(directory):
+        return []
+    
+    files = [f for f in os.listdir(directory) if f.startswith("results_sc_") and f.endswith(".json")]
+    
+    for f in files:
+        path = os.path.join(directory, f)
+        try:
+            with open(path, "r") as fd:
+                data = json.load(fd)
+                for item in data:
+                    sc = item.get("self_consistency_score", 0.0)
+                    # only keep questions with sc >= 0.8 or sc <= 0.2
+                    if sc >= 0.8 or sc <= 0.2:
+                        q = item.get("question", "")
+                        if q and isinstance(q, str):
+                            historical_questions.append(q)
+        except Exception:
+            pass
+            
+    return historical_questions
 
 """
     Input: predicts is a list of questions
@@ -154,13 +177,64 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         else:
             results_parsing.append({"question": "", "raw_response": predicts[i]})
 
-    # 2. Get Self-Consistency scores (Uncertainty) and Repetition score
     questions_list = [r["question"] for r in results_parsing]
-    sc_results = reward_self_consistency_scores(questions_list, max_threads=5)
-    print(f"🎯🎯🎯 Computed {len(sc_results)} SC results")
+    
+    # 2. Calculate Novelty/Repetition Penalty (BEFORE SC scores)
+    # Load historical questions (solved or failed hard)
+    historical_questions = load_historical_questions()
+    print(f"🎯🎯🎯 Loaded {len(historical_questions)} historical questions (SC>=0.8 or SC<=0.2)")
+    
+    # Identify which questions are too similar to historical ones
+    # Use high threshold (0.8) to only filter very similar questions
+    if historical_questions:
+        combined = questions_list + historical_questions
+        all_proportions = penalty_cluster_share_per_problem(combined, distance_threshold=0.8)
+        
+        # Slice to get proportions for current questions
+        historical_penalties = all_proportions[:len(questions_list)]
+        
+        # Filter: if a question has high penalty (>0.5), it's likely a duplicate
+        # We'll skip SC calculation for these
+        novel_indices = []
+        filtered_indices = []
+        
+        for i, penalty in enumerate(historical_penalties):
+            if penalty > 0.5:  # High penalty = likely duplicate
+                filtered_indices.append(i)
+            else:
+                novel_indices.append(i)
+        
+        print(f"🎯🎯🎯 Filtered {len(filtered_indices)} similar questions(sc <= 0.1 or sc >= 0.9), computing SC only for {len(novel_indices)} novel ones")
+        
+        # Only compute SC for novel questions
+        novel_questions = [questions_list[i] for i in novel_indices]
+        novel_sc_results = reward_self_consistency_scores(novel_questions, max_threads=5) if novel_questions else []
+        
+        # Build full sc_results list with placeholders for filtered questions
+        sc_results = []
+        novel_idx = 0
+        for i in range(len(questions_list)):
+            if i in filtered_indices:
+                # Filtered question: assign dummy low SC result
+                sc_results.append({
+                    "question": questions_list[i],
+                    "majority_answer": None,
+                    "self_consistency_score": 0.0,
+                    "total_samples": 0,
+                    "all_answers": [],
+                    "tool_calls": []
+                })
+            else:
+                sc_results.append(novel_sc_results[novel_idx])
+                novel_idx += 1
+    else:
+        # No historical questions, compute SC for all
+        historical_penalties = [0.0] * len(questions_list)
+        sc_results = reward_self_consistency_scores(questions_list, max_threads=5)
+    
+    print(f"🎯🎯🎯 Computed {len([r for r in sc_results if r.get('total_samples', 0) > 0])} SC results")
 
-    # Use the full questions_list to maintain index alignment for novelty_proportions
-    # Empty strings will be clustered together or handled by the BLEU distance matrix
+    # Calculate repetition penalty within current batch
     novelty_proportions = penalty_cluster_share_per_problem(questions_list)
     print(f"🎯🎯🎯 Computed {len(novelty_proportions)} Repetition results")
 
@@ -172,7 +246,8 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         "self_consistency_score": res.get("self_consistency_score", 0.0),
         "total_samples": res.get("total_samples", 0),
         "all_answers": res.get("all_answers", []),
-        "tool_calls": res.get("tool_calls", [])
+        "tool_calls": res.get("tool_calls", []),
+        "pre_filtered": res.get("total_samples", 0) <= 0 and historical_questions
     } for res in sc_results]
 
     os.makedirs("questions", exist_ok=True)
@@ -187,30 +262,49 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         # A. Format Reward (0 or 1)
         fmt_reward = reward_format(predicts[i])
         
-        # B. Uncertainty Reward (Tent Function)
-        # f(p) = 1 - |2p - 1| 
-        # Peaks at p=0.5 (reward=1.0), drops to 0 at p=0 and p=1.
+        # Check if this question was filtered (skipped SC calculation)
         sc_res = sc_results[i]
-        p_x = sc_res.get("self_consistency_score", 0.0)
-        # it has been normalized between 0.0 and 1.0
-        uncertainty_reward = 1.0 - 2 * abs(p_x - 0.5) # uncertity is 0.5
-        repetition_penalty = novelty_proportions[i]
+        was_filtered = sc_res.get("total_samples", 0) == 0 and historical_questions
         
-        # Calculate tool calls mean
-        tool_counts = sc_res.get("tool_calls", [])
-        avg_tool_calls = min(np.mean(tool_counts) if tool_counts else 0.0, 4)
-        
-        # Combine
-        # R = Rformat(xi) · max(0,λuncRunc + λtoolRtool − Rrep(xi))
-        overall_reward = max(0, lambda_uncertain * uncertainty_reward + lambda_tool * avg_tool_calls - lambda_repetition * repetition_penalty) if fmt_reward else 0
+        if was_filtered:
+            # Filtered question: use simplified reward based on historical penalty
+            # overall = max(0, 1 - historical_penalty)
+            historical_penalty = historical_penalties[i] if historical_questions else 0.0
+            overall_reward = max(0, 1 - historical_penalty) * lambda_repetition if fmt_reward else 0
+            
+            final_scores.append({
+                "overall": float(overall_reward),
+                "format_score": 1 if fmt_reward is True else 0,
+                "uncertainty_score": 0.0,
+                "repetition_penalty": float(historical_penalty),
+                "sc_score": 0.0,
+                "avg_tool_calls": 0.0
+            })
+        else:
+            # Novel question: use full reward calculation
+            # B. Uncertainty Reward (Tent Function)
+            # f(p) = 1 - |2p - 1| 
+            # Peaks at p=0.5 (reward=1.0), drops to 0 at p=0 and p=1.
+            p_x = sc_res.get("self_consistency_score", 0.0)
+            # it has been normalized between 0.0 and 1.0
+            uncertainty_reward = 1.0 - 2 * abs(p_x - 0.5) # uncertity is 0.5
+            repetition_penalty = novelty_proportions[i]
+            
+            # Calculate tool calls mean
+            tool_counts = sc_res.get("tool_calls", [])
+            avg_tool_calls = min(np.mean(tool_counts) if tool_counts else 0.0, 4)
+            
+            # Combine
+            # R = Rformat(xi) · max(0,λuncRunc + λtoolRtool − Rrep(xi))
+            overall_reward = max(0, lambda_uncertain * uncertainty_reward + lambda_tool * avg_tool_calls - lambda_repetition * repetition_penalty) if fmt_reward else 0
 
-        final_scores.append({
-            "overall": float(overall_reward),
-            "format_score": 1 if fmt_reward is True else 0,
-            "uncertainty_score":  lambda_uncertain * float(uncertainty_reward),
-            "repetition_penalty": lambda_repetition * float(repetition_penalty),
-            "sc_score": float(p_x),
-            "avg_tool_calls": float(avg_tool_calls)
-        })
+            final_scores.append({
+                "overall": float(overall_reward),
+                "format_score": 1 if fmt_reward is True else 0,
+                "uncertainty_score":  lambda_uncertain * float(uncertainty_reward),
+                "repetition_penalty": lambda_repetition * float(repetition_penalty),
+                "sc_score": float(p_x),
+                "avg_tool_calls": float(avg_tool_calls)
+            })
 
     return final_scores
