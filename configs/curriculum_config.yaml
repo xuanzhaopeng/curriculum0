@@ -138,13 +138,13 @@ actor_rollout_ref:
    response_length: ${data.max_response_length}
    # for vllm rollout
    dtype: bfloat16 # should align with FSDP
-   gpu_memory_utilization: 0.35
+   gpu_memory_utilization: 0.5
    ignore_eos: False
    enforce_eager: False # use cuda graph
    free_cache_engine: True
    data_parallel_size: 1
    load_format: safetensors
-   tensor_model_parallel_size: 1
+   tensor_model_parallel_size: 2 # 2 GPU parallel
    max_model_len: 8192 # ensure has enough KV value
    pipeline_model_parallel_size: 1
    max_num_batched_tokens: 8192
