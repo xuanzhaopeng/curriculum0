@@ -173,149 +173,172 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     lambda_uncertain = 2
     lambda_repetition = 1
     lambda_tool = 0.05
-    # 1. Parse predictions to extract questions
+    # 1. Parse predictions and pre-filter by format
     for i in tqdm(range(len(predicts)), desc=" - Parsing predictions"):
         questions = re.findall(r"<question>(.*?)</question>", predicts[i], re.DOTALL)
         if questions:
-            results_parsing.append({"question": questions[-1].strip(), "raw_response": predicts[i]})
+            results_parsing.append({
+                "question": questions[-1].strip(), 
+                "raw_response": predicts[i],
+                "format_valid": reward_format(predicts[i])
+            })
         else:
-            results_parsing.append({"question": "", "raw_response": predicts[i]})
+            results_parsing.append({
+                "question": "", 
+                "raw_response": predicts[i],
+                "format_valid": False
+            })
 
-    questions_list = [r["question"] for r in results_parsing]
+    # Separate valid and invalid predictions
+    valid_indices = [i for i, r in enumerate(results_parsing) if r["format_valid"]]
+    invalid_indices = [i for i, r in enumerate(results_parsing) if not r["format_valid"]]
     
-    # 2. Load historical questions and determine which new questions can reuse historical SC scores
-    historical_data = load_historical_questions()
-    print(f"🎯🎯🎯 Loaded {len(historical_data)} historical questions (SC>=0.7 or SC<=0.3)")
+    print(f"🎯🎯🎯 Format check: {len(valid_indices)} valid, {len(invalid_indices)} invalid (skipping calculations for invalid)")
     
-    if historical_data:
-        # Extract just the question text for clustering
-        historical_questions = [h["question"] for h in historical_data]
-        combined = questions_list + historical_questions
+    # Only process valid predictions
+    if valid_indices:
+        questions_list = [results_parsing[i]["question"] for i in valid_indices]
         
-        # Cluster with high threshold to group similar questions
-        dist_mat = _bleu_distance_matrix(combined)
-        clustering = AgglomerativeClustering(
-            n_clusters=None,
-            distance_threshold=0.5, ## distance threshold is 0.5
-            metric="precomputed",
-            linkage="average"
-        )
-        labels = clustering.fit_predict(dist_mat)
+        # 2. Load historical questions and determine which new questions can reuse historical SC scores
+        historical_data = load_historical_questions()
+        print(f"🎯🎯🎯 Loaded {len(historical_data)} historical questions (SC>=0.7 or SC<=0.3)")
         
-        # Map: cluster_id -> list of historical SC scores in that cluster
-        cluster_to_historical_scores = {}
-        for i in range(len(questions_list), len(combined)):
-            cluster_id = labels[i]
-            hist_idx = i - len(questions_list)
-            sc_score = historical_data[hist_idx]["sc_score"]
+        if historical_data:
+            # Extract just the question text for clustering
+            historical_questions = [h["question"] for h in historical_data]
+            combined = questions_list + historical_questions
             
-            if cluster_id not in cluster_to_historical_scores:
-                cluster_to_historical_scores[cluster_id] = []
-            cluster_to_historical_scores[cluster_id].append(sc_score)
+            # Cluster with high threshold to group similar questions
+            dist_mat = _bleu_distance_matrix(combined)
+            clustering = AgglomerativeClustering(
+                n_clusters=None,
+                distance_threshold=0.5, ## distance threshold is 0.5
+                metric="precomputed",
+                linkage="average"
+            )
+            labels = clustering.fit_predict(dist_mat)
+            
+            # Map: cluster_id -> list of historical SC scores in that cluster
+            cluster_to_historical_scores = {}
+            for i in range(len(questions_list), len(combined)):
+                cluster_id = labels[i]
+                hist_idx = i - len(questions_list)
+                sc_score = historical_data[hist_idx]["sc_score"]
+                
+                if cluster_id not in cluster_to_historical_scores:
+                    cluster_to_historical_scores[cluster_id] = []
+                cluster_to_historical_scores[cluster_id].append(sc_score)
+            
+            # Determine which new questions need SC computation
+            novel_indices_relative = []
+            reused_sc_mapping = {}  # index -> sc_score to reuse
+            
+            for i in range(len(questions_list)):
+                cluster_id = labels[i]
+                if cluster_id in cluster_to_historical_scores:
+                    # This new question is grouped with historical questions
+                    # Assign max SC score from that cluster
+                    max_sc = max(cluster_to_historical_scores[cluster_id])
+                    reused_sc_mapping[i] = max_sc
+                else:
+                    # Novel question, needs SC computation
+                    novel_indices_relative.append(i)
+            
+            print(f"🎯🎯🎯 Reusing SC scores for {len(reused_sc_mapping)} questions grouped with historical data")
+            print(f"🎯🎯🎯 Computing SC for {len(novel_indices_relative)} novel questions")
+            
+            # Compute SC only for novel questions
+            novel_questions = [questions_list[i] for i in novel_indices_relative]
+            novel_sc_results = reward_self_consistency_scores(novel_questions, max_threads=4) if novel_questions else []
+            
+            # Build sc_results list for valid predictions only
+            sc_results_valid = []
+            novel_idx = 0
+            for i in range(len(questions_list)):
+                if i in reused_sc_mapping:
+                    # Reuse historical SC score
+                    sc_results_valid.append({
+                        "question": questions_list[i],
+                        "majority_answer": None,
+                        "self_consistency_score": reused_sc_mapping[i],
+                        "total_samples": 0,  # Indicates it was reused
+                        "all_answers": [],
+                        "tool_calls": [],
+                        "reused_from_history": True
+                    })
+                else:
+                    # Use computed SC result
+                    result = novel_sc_results[novel_idx]
+                    result["reused_from_history"] = False
+                    sc_results_valid.append(result)
+                    novel_idx += 1
+        else:
+            # No historical questions, compute SC for all valid predictions
+            sc_results_valid = reward_self_consistency_scores(questions_list, max_threads=4)
+            for r in sc_results_valid:
+                r["reused_from_history"] = False
         
-        # Determine which new questions need SC computation
-        novel_indices = []
-        reused_sc_mapping = {}  # index -> sc_score to reuse
-        
-        for i in range(len(questions_list)):
-            cluster_id = labels[i]
-            if cluster_id in cluster_to_historical_scores:
-                # This new question is grouped with historical questions
-                # Assign max SC score from that cluster
-                max_sc = max(cluster_to_historical_scores[cluster_id])
-                reused_sc_mapping[i] = max_sc
-            else:
-                # Novel question, needs SC computation
-                novel_indices.append(i)
-        
-        print(f"🎯🎯🎯 Reusing SC scores for {len(reused_sc_mapping)} questions grouped with historical data")
-        print(f"🎯🎯🎯 Computing SC for {len(novel_indices)} novel questions")
-        
-        # Compute SC only for novel questions
-        novel_questions = [questions_list[i] for i in novel_indices]
-        novel_sc_results = reward_self_consistency_scores(novel_questions, max_threads=4) if novel_questions else []
-        
-        # Build full sc_results list
-        sc_results = []
-        novel_idx = 0
-        for i in range(len(questions_list)):
-            if i in reused_sc_mapping:
-                # Reuse historical SC score
-                sc_results.append({
-                    "question": questions_list[i],
-                    "majority_answer": None,
-                    "self_consistency_score": reused_sc_mapping[i],
-                    "total_samples": 0,  # Indicates it was reused
-                    "all_answers": [],
-                    "tool_calls": [],
-                    "reused_from_history": True
-                })
-            else:
-                # Use computed SC result
-                result = novel_sc_results[novel_idx]
-                result["reused_from_history"] = False
-                sc_results.append(result)
-                novel_idx += 1
+        print(f"🎯🎯🎯 Total SC results: {len(sc_results_valid)} ({len([r for r in sc_results_valid if not r.get('reused_from_history', False)])} computed, {len([r for r in sc_results_valid if r.get('reused_from_history', False)])} reused)")
+
+        # Calculate repetition penalty within current batch (only for valid)
+        novelty_proportions_valid = penalty_cluster_share_per_problem(questions_list)
+        print(f"🎯🎯🎯 Computed {len(novelty_proportions_valid)} Repetition results")
     else:
-        # No historical questions, compute SC for all
-        sc_results = reward_self_consistency_scores(questions_list, max_threads=4)
-        for r in sc_results:
-            r["reused_from_history"] = False
-    
-    print(f"🎯🎯🎯 Total SC results: {len(sc_results)} ({len([r for r in sc_results if not r.get('reused_from_history', False)])} computed, {len([r for r in sc_results if r.get('reused_from_history', False)])} reused)")
+        sc_results_valid = []
+        novelty_proportions_valid = []
 
-    # Calculate repetition penalty within current batch
-    novelty_proportions = penalty_cluster_share_per_problem(questions_list)
-    print(f"🎯🎯🎯 Computed {len(novelty_proportions)} Repetition results")
-
+    # Save SC logs (only for valid predictions)
     import json
-    # Filter results for JSON logging - exclude large raw_responses
-    sc_logs = [{
-        "question": res.get("question", ""),
-        "majority_answer": res.get("majority_answer"),
-        "self_consistency_score": res.get("self_consistency_score", 0.0),
-        "total_samples": res.get("total_samples", 0),
-        "all_answers": res.get("all_answers", []),
-        "tool_calls": res.get("tool_calls", []),
-        "reused_from_history": res.get("reused_from_history", False)
-    } for res in sc_results]
+    if sc_results_valid:
+        sc_logs = [{
+            "question": res.get("question", ""),
+            "majority_answer": res.get("majority_answer"),
+            "self_consistency_score": res.get("self_consistency_score", 0.0),
+            "total_samples": res.get("total_samples", 0),
+            "all_answers": res.get("all_answers", []),
+            "tool_calls": res.get("tool_calls", []),
+            "reused_from_history": res.get("reused_from_history", False)
+        } for res in sc_results_valid]
 
-    os.makedirs("questions", exist_ok=True)
-    with open(f'questions/results_sc_{int(time.time())}.json', 'w') as f:
-        json.dump(sc_logs, f, indent=2)
+        os.makedirs("questions", exist_ok=True)
+        with open(f'questions/results_sc_{int(time.time())}.json', 'w') as f:
+            json.dump(sc_logs, f, indent=2)
 
-    # 3. Get Novelty Penalty (Clustering)
-    # We only cluster valid (non-empty) questions to avoid penalization for empty strings
-
+    # 3. Build final scores for ALL predictions (valid and invalid)
     final_scores = []
+    valid_idx_counter = 0
+    
     for i in range(len(predicts)):
-        # A. Format Reward (0 or 1)
-        fmt_reward = reward_format(predicts[i])
-        
-        # B. Uncertainty Reward (Tent Function)
-        # f(p) = 1 - |2p - 1| 
-        # Peaks at p=0.5 (reward=1.0), drops to 0 at p=0 and p=1.
-        sc_res = sc_results[i]
-        p_x = sc_res.get("self_consistency_score", 0.0)
-        # it has been normalized between 0.0 and 1.0
-        uncertainty_reward = 1.0 - 2 * abs(p_x - 0.5) # uncertity is 0.5
-        repetition_penalty = novelty_proportions[i]
-        
-        # Calculate tool calls mean
-        tool_counts = sc_res.get("tool_calls", [])
-        avg_tool_calls = min(np.mean(tool_counts) if tool_counts else 0.0, 4)
-        
-        # Combine
-        # R = Rformat(xi) · max(0,λuncRunc + λtoolRtool − Rrep(xi))
-        overall_reward = max(0, lambda_uncertain * uncertainty_reward + lambda_tool * avg_tool_calls - lambda_repetition * repetition_penalty) if fmt_reward else 0
+        if i in invalid_indices:
+            # Invalid format: return all zeros immediately
+            final_scores.append({
+                "overall": 0.0,
+                "format_score": 0,
+                "uncertainty_score": 0.0,
+                "repetition_penalty": 0.0,
+                "sc_score": 0.0,
+                "avg_tool_calls": 0.0
+            })
+        else:
+            # Valid format: compute full reward
+            sc_res = sc_results_valid[valid_idx_counter]
+            p_x = sc_res.get("self_consistency_score", 0.0)
+            uncertainty_reward = 1.0 - 2 * abs(p_x - 0.5)
+            repetition_penalty = novelty_proportions_valid[valid_idx_counter]
+            
+            tool_counts = sc_res.get("tool_calls", [])
+            avg_tool_calls = min(np.mean(tool_counts) if tool_counts else 0.0, 4)
+            
+            overall_reward = max(0, lambda_uncertain * uncertainty_reward + lambda_tool * avg_tool_calls - lambda_repetition * repetition_penalty)
 
-        final_scores.append({
-            "overall": float(overall_reward),
-            "format_score": 1 if fmt_reward is True else 0,
-            "uncertainty_score":  lambda_uncertain * float(uncertainty_reward),
-            "repetition_penalty": lambda_repetition * float(repetition_penalty),
-            "sc_score": float(p_x),
-            "avg_tool_calls": float(avg_tool_calls)
-        })
+            final_scores.append({
+                "overall": float(overall_reward),
+                "format_score": 1,
+                "uncertainty_score": lambda_uncertain * float(uncertainty_reward),
+                "repetition_penalty": lambda_repetition * float(repetition_penalty),
+                "sc_score": float(p_x),
+                "avg_tool_calls": float(avg_tool_calls)
+            })
+            valid_idx_counter += 1
 
     return final_scores
