@@ -261,7 +261,8 @@ trainer:
   default_local_dir: /workspace/Agent0-curriculum/checkpoints/${trainer.project_name}/${trainer.experiment_name} # local checkpoint path
   resume_mode: auto # or disable or resume_path if resume_from_path is set
   resume_from_path: null
-  remove_previous_ckpt_in_save: False
-  del_local_ckpt_after_load: False
+  max_actor_ckpt_to_keep: 1
+  max_critic_ckpt_to_keep: 1
+  del_local_ckpt_after_load: True
   ray_wait_register_center_timeout: 300
   total_training_steps: 12 # customfiled, overwrite the total_epochs
