@@ -95,10 +95,10 @@ async def call_math_agent(question: str, max_turns: int, model: str) -> Dict[str
                         pass # Ignore errors during close
 
         # Set strict timeout of 180 seconds for the entire interaction
-        return await asyncio.wait_for(_tcp_interaction(), timeout=180.0)
+        return await asyncio.wait_for(_tcp_interaction(), timeout=360.0)
         
     except asyncio.TimeoutError:
-        logger.error(f"Timeout (180s) calling Math Agent via TCP at {host}:{port}")
+        logger.error(f"Timeout (360s) calling Math Agent via TCP at {host}:{port}")
         return {"error": "timeout", "final_answer": None, "raw_reasoning": "Timeout waiting for Math Agent"}
     except Exception as e:
         logger.error(f"Error calling Math Agent via TCP: {e}")
