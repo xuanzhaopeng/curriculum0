@@ -157,8 +157,8 @@ actor_rollout_ref:
    do_sample: True
    engine_kwargs: # inference engine parameters, please refer vllm/sglang official doc for detail
      vllm: {
-      max_num_seqs: ${actor_rollout_ref.rollout.max_num_seqs},
-      max_model_len: ${actor_rollout_ref.rollout.max_model_len} # need to overwrite here to pass VLLM config
+      max_num_seqs: 1024,
+      max_model_len: 8192 # need to overwrite here to pass VLLM config
      }
      sglang: {}
    calculate_log_probs: True # set to True for computing log probs via rollouts
