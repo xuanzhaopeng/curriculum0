@@ -181,6 +181,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         else:
             results_parsing.append({"question": "", "raw_response": predicts[i]})
 
+    questions_list = [r["question"] for r in results_parsing]
     
     # 2. Load historical questions and determine which new questions can reuse historical SC scores
     historical_data = load_historical_questions()
@@ -232,7 +233,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         
         # Compute SC only for novel questions
         novel_questions = [questions_list[i] for i in novel_indices]
-        novel_sc_results = reward_self_consistency_scores(novel_questions, max_threads=5) if novel_questions else []
+        novel_sc_results = reward_self_consistency_scores(novel_questions, max_threads=1) if novel_questions else []
         
         # Build full sc_results list
         sc_results = []
@@ -257,7 +258,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
                 novel_idx += 1
     else:
         # No historical questions, compute SC for all
-        sc_results = reward_self_consistency_scores(questions_list, max_threads=5)
+        sc_results = reward_self_consistency_scores(questions_list, max_threads=1)
         for r in sc_results:
             r["reused_from_history"] = False
     
