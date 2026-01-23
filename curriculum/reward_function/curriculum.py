@@ -132,7 +132,8 @@ def penalty_cluster_share_per_problem(
     return proportions
 
 def load_historical_questions(directory="questions"):
-    historical_questions = []
+    """Load historical questions with their SC scores."""
+    historical_data = []  # List of {"question": str, "sc_score": float}
     if not os.path.exists(directory):
         return []
     
@@ -145,15 +146,18 @@ def load_historical_questions(directory="questions"):
                 data = json.load(fd)
                 for item in data:
                     sc = item.get("self_consistency_score", 0.0)
-                    # only keep questions with sc >= 0.8 or sc <= 0.2
-                    if sc >= 0.8 or sc <= 0.2:
+                    # only keep questions with sc >= 0.7 or sc <= 0.3
+                    if sc >= 0.7 or sc <= 0.3:
                         q = item.get("question", "")
                         if q and isinstance(q, str):
-                            historical_questions.append(q)
+                            historical_data.append({
+                                "question": q,
+                                "sc_score": sc
+                            })
         except Exception:
             pass
             
-    return historical_questions
+    return historical_data
 
 """
     Input: predicts is a list of questions
@@ -177,62 +181,87 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         else:
             results_parsing.append({"question": "", "raw_response": predicts[i]})
 
-    questions_list = [r["question"] for r in results_parsing]
     
-    # 2. Calculate Novelty/Repetition Penalty (BEFORE SC scores)
-    # Load historical questions (solved or failed hard)
-    historical_questions = load_historical_questions()
-    print(f"🎯🎯🎯 Loaded {len(historical_questions)} historical questions (SC>=0.8 or SC<=0.2)")
+    # 2. Load historical questions and determine which new questions can reuse historical SC scores
+    historical_data = load_historical_questions()
+    print(f"🎯🎯🎯 Loaded {len(historical_data)} historical questions (SC>=0.7 or SC<=0.3)")
     
-    # Identify which questions are too similar to historical ones
-    # Use high threshold (0.8) to only filter very similar questions
-    if historical_questions:
+    if historical_data:
+        # Extract just the question text for clustering
+        historical_questions = [h["question"] for h in historical_data]
         combined = questions_list + historical_questions
-        all_proportions = penalty_cluster_share_per_problem(combined, distance_threshold=0.8)
         
-        # Slice to get proportions for current questions
-        historical_penalties = all_proportions[:len(questions_list)]
+        # Cluster with high threshold to group similar questions
+        dist_mat = _bleu_distance_matrix(combined)
+        clustering = AgglomerativeClustering(
+            n_clusters=None,
+            distance_threshold=0.5, ## distance threshold is 0.5
+            metric="precomputed",
+            linkage="average"
+        )
+        labels = clustering.fit_predict(dist_mat)
         
-        # Filter: if a question has high penalty (>0.5), it's likely a duplicate
-        # We'll skip SC calculation for these
+        # Map: cluster_id -> list of historical SC scores in that cluster
+        cluster_to_historical_scores = {}
+        for i in range(len(questions_list), len(combined)):
+            cluster_id = labels[i]
+            hist_idx = i - len(questions_list)
+            sc_score = historical_data[hist_idx]["sc_score"]
+            
+            if cluster_id not in cluster_to_historical_scores:
+                cluster_to_historical_scores[cluster_id] = []
+            cluster_to_historical_scores[cluster_id].append(sc_score)
+        
+        # Determine which new questions need SC computation
         novel_indices = []
-        filtered_indices = []
+        reused_sc_mapping = {}  # index -> sc_score to reuse
         
-        for i, penalty in enumerate(historical_penalties):
-            if penalty > 0.5:  # High penalty = likely duplicate
-                filtered_indices.append(i)
+        for i in range(len(questions_list)):
+            cluster_id = labels[i]
+            if cluster_id in cluster_to_historical_scores:
+                # This new question is grouped with historical questions
+                # Assign max SC score from that cluster
+                max_sc = max(cluster_to_historical_scores[cluster_id])
+                reused_sc_mapping[i] = max_sc
             else:
+                # Novel question, needs SC computation
                 novel_indices.append(i)
         
-        print(f"🎯🎯🎯 Filtered {len(filtered_indices)} similar questions(sc <= 0.1 or sc >= 0.9), computing SC only for {len(novel_indices)} novel ones")
+        print(f"🎯🎯🎯 Reusing SC scores for {len(reused_sc_mapping)} questions grouped with historical data")
+        print(f"🎯🎯🎯 Computing SC for {len(novel_indices)} novel questions")
         
-        # Only compute SC for novel questions
+        # Compute SC only for novel questions
         novel_questions = [questions_list[i] for i in novel_indices]
         novel_sc_results = reward_self_consistency_scores(novel_questions, max_threads=5) if novel_questions else []
         
-        # Build full sc_results list with placeholders for filtered questions
+        # Build full sc_results list
         sc_results = []
         novel_idx = 0
         for i in range(len(questions_list)):
-            if i in filtered_indices:
-                # Filtered question: assign dummy low SC result
+            if i in reused_sc_mapping:
+                # Reuse historical SC score
                 sc_results.append({
                     "question": questions_list[i],
                     "majority_answer": None,
-                    "self_consistency_score": 0.0,
-                    "total_samples": 0,
+                    "self_consistency_score": reused_sc_mapping[i],
+                    "total_samples": 0,  # Indicates it was reused
                     "all_answers": [],
-                    "tool_calls": []
+                    "tool_calls": [],
+                    "reused_from_history": True
                 })
             else:
-                sc_results.append(novel_sc_results[novel_idx])
+                # Use computed SC result
+                result = novel_sc_results[novel_idx]
+                result["reused_from_history"] = False
+                sc_results.append(result)
                 novel_idx += 1
     else:
         # No historical questions, compute SC for all
-        historical_penalties = [0.0] * len(questions_list)
         sc_results = reward_self_consistency_scores(questions_list, max_threads=5)
+        for r in sc_results:
+            r["reused_from_history"] = False
     
-    print(f"🎯🎯🎯 Computed {len([r for r in sc_results if r.get('total_samples', 0) > 0])} SC results")
+    print(f"🎯🎯🎯 Total SC results: {len(sc_results)} ({len([r for r in sc_results if not r.get('reused_from_history', False)])} computed, {len([r for r in sc_results if r.get('reused_from_history', False)])} reused)")
 
     # Calculate repetition penalty within current batch
     novelty_proportions = penalty_cluster_share_per_problem(questions_list)
@@ -247,7 +276,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         "total_samples": res.get("total_samples", 0),
         "all_answers": res.get("all_answers", []),
         "tool_calls": res.get("tool_calls", []),
-        "pre_filtered": res.get("total_samples", 0) <= 0 and historical_questions
+        "reused_from_history": res.get("reused_from_history", False)
     } for res in sc_results]
 
     os.makedirs("questions", exist_ok=True)
@@ -262,49 +291,30 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         # A. Format Reward (0 or 1)
         fmt_reward = reward_format(predicts[i])
         
-        # Check if this question was filtered (skipped SC calculation)
+        # B. Uncertainty Reward (Tent Function)
+        # f(p) = 1 - |2p - 1| 
+        # Peaks at p=0.5 (reward=1.0), drops to 0 at p=0 and p=1.
         sc_res = sc_results[i]
-        was_filtered = sc_res.get("total_samples", 0) == 0 and historical_questions
+        p_x = sc_res.get("self_consistency_score", 0.0)
+        # it has been normalized between 0.0 and 1.0
+        uncertainty_reward = 1.0 - 2 * abs(p_x - 0.5) # uncertity is 0.5
+        repetition_penalty = novelty_proportions[i]
         
-        if was_filtered:
-            # Filtered question: use simplified reward based on historical penalty
-            # overall = max(0, 1 - historical_penalty)
-            historical_penalty = historical_penalties[i] if historical_questions else 0.0
-            overall_reward = max(0, 1 - historical_penalty) * lambda_repetition if fmt_reward else 0
-            
-            final_scores.append({
-                "overall": float(overall_reward),
-                "format_score": 1 if fmt_reward is True else 0,
-                "uncertainty_score": 0.0,
-                "repetition_penalty": float(historical_penalty),
-                "sc_score": 0.0,
-                "avg_tool_calls": 0.0
-            })
-        else:
-            # Novel question: use full reward calculation
-            # B. Uncertainty Reward (Tent Function)
-            # f(p) = 1 - |2p - 1| 
-            # Peaks at p=0.5 (reward=1.0), drops to 0 at p=0 and p=1.
-            p_x = sc_res.get("self_consistency_score", 0.0)
-            # it has been normalized between 0.0 and 1.0
-            uncertainty_reward = 1.0 - 2 * abs(p_x - 0.5) # uncertity is 0.5
-            repetition_penalty = novelty_proportions[i]
-            
-            # Calculate tool calls mean
-            tool_counts = sc_res.get("tool_calls", [])
-            avg_tool_calls = min(np.mean(tool_counts) if tool_counts else 0.0, 4)
-            
-            # Combine
-            # R = Rformat(xi) · max(0,λuncRunc + λtoolRtool − Rrep(xi))
-            overall_reward = max(0, lambda_uncertain * uncertainty_reward + lambda_tool * avg_tool_calls - lambda_repetition * repetition_penalty) if fmt_reward else 0
+        # Calculate tool calls mean
+        tool_counts = sc_res.get("tool_calls", [])
+        avg_tool_calls = min(np.mean(tool_counts) if tool_counts else 0.0, 4)
+        
+        # Combine
+        # R = Rformat(xi) · max(0,λuncRunc + λtoolRtool − Rrep(xi))
+        overall_reward = max(0, lambda_uncertain * uncertainty_reward + lambda_tool * avg_tool_calls - lambda_repetition * repetition_penalty) if fmt_reward else 0
 
-            final_scores.append({
-                "overall": float(overall_reward),
-                "format_score": 1 if fmt_reward is True else 0,
-                "uncertainty_score":  lambda_uncertain * float(uncertainty_reward),
-                "repetition_penalty": lambda_repetition * float(repetition_penalty),
-                "sc_score": float(p_x),
-                "avg_tool_calls": float(avg_tool_calls)
-            })
+        final_scores.append({
+            "overall": float(overall_reward),
+            "format_score": 1 if fmt_reward is True else 0,
+            "uncertainty_score":  lambda_uncertain * float(uncertainty_reward),
+            "repetition_penalty": lambda_repetition * float(repetition_penalty),
+            "sc_score": float(p_x),
+            "avg_tool_calls": float(avg_tool_calls)
+        })
 
     return final_scores
