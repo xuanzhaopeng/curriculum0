@@ -8,6 +8,7 @@ cd /workspace/Agent0-curriculum
 git pull
 pip install -r math_agent/requirements.txt
 bash scripts/start_math_agent.sh
+python math_agent/test_service.py
 ```
 
 ## Machine#2 (1xA40)
