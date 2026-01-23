@@ -103,7 +103,7 @@ actor_rollout_ref:
      param_offload: True # true: more CPU memory; false: more GPU memory
      optimizer_offload: True  # true: more CPU memory; false: more GPU memory
      fsdp_size: -1
-     model_dtype: float16 # read the model into bfloat16 to supprot FlashAttention2
+     model_dtype: bfloat16 # read the model into bfloat16 to supprot FlashAttention2
    checkpoint:
      _target_: verl.trainer.config.CheckpointConfig
      # What to include in saved checkpoints
@@ -116,6 +116,7 @@ actor_rollout_ref:
    fsdp_config:
      _target_: verl.workers.config.FSDPEngineConfig
      param_offload: False
+     model_dtype: bfloat16
      wrap_policy:
        # transformer_layer_cls_to_wrap: None
        min_num_params: 0
