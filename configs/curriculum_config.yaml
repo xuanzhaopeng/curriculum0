@@ -156,7 +156,10 @@ actor_rollout_ref:
    # for hf rollout
    do_sample: True
    engine_kwargs: # inference engine parameters, please refer vllm/sglang official doc for detail
-     vllm: {}
+     vllm: {
+      max_num_seqs: 1024,
+      max_model_len: 8192
+     }
      sglang: {}
    calculate_log_probs: True # set to True for computing log probs via rollouts
    disable_log_stats: False # required by Prometheus
