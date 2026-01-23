@@ -9,6 +9,7 @@ git pull
 pip install -r math_agent/requirements.txt
 bash scripts/start_math_agent.sh
 python math_agent/test_service.py
+python math_agent/test_service_parallel.py
 ```
 
 ## Machine#2 (1xA40)

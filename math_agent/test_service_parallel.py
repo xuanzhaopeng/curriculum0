@@ -59,18 +59,18 @@ def test_parallel_math_agent():
         host = "localhost"
         port = 8000
 
-    # 10 complex math problems that should require tool usage
+    # 10 very complex math problems that REQUIRE Python tool usage
     problems = [
-        "Find the sum of all prime numbers between 100 and 500.",
-        "Calculate the 50th Fibonacci number modulo 1000000007.",
-        "What is the largest prime factor of 600851475143?",
-        "How many ways can you arrange the letters in 'MATHEMATICS'?",
-        "Find the sum of all divisors of 28800.",
-        "Calculate the binomial coefficient C(100, 50).",
-        "What is the 100th prime number?",
-        "Find the least common multiple of all integers from 1 to 20.",
-        "Calculate the sum of squares of all integers from 1 to 1000.",
-        "How many perfect squares are there between 1 and 10000?"
+        "Find the sum of all prime numbers less than 10000.",
+        "Calculate the 1000th Fibonacci number modulo 1000000007.",
+        "What is the sum of all proper divisors of 1000000? (A proper divisor is a divisor less than the number itself)",
+        "How many prime numbers are there between 1 and 100000?",
+        "Calculate the determinant of a 5x5 matrix where entry (i,j) = i*j + i + j.",
+        "Find the smallest positive integer n such that n! ends with exactly 100 zeros.",
+        "Calculate the sum of the first 1000 terms of the series: 1/1^2 + 1/2^2 + 1/3^2 + ... (approximation of π²/6)",
+        "What is the 10000th digit after the decimal point in the value of π?",
+        "Find the number of integer solutions to x² + y² + z² = 1000 where x, y, z are non-negative.",
+        "Calculate the expected value of the maximum when rolling 10 fair six-sided dice (simulate with 100000 trials)."
     ]
     
     print(f"Testing Math Agent at {host}:{port} with {len(problems)} questions in parallel...")
