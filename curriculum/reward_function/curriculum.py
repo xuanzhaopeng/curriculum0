@@ -312,7 +312,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         if i in invalid_indices:
             # Invalid format: return all zeros immediately
             final_scores.append({
-                "overall": 0.0,
+                "overall": -1.0, # rank it very low
                 "format_score": 0,
                 "uncertainty_score": 0.0,
                 "repetition_penalty": 0.0,
