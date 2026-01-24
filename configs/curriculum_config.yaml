@@ -50,7 +50,7 @@ data:
 actor_rollout_ref:
  hybrid_engine: True
  model:
-   path: Qwen/Qwen3-0.6B #Qwen/Qwen3-0.6B, Qwen/Qwen3-4B-Instruct-2507
+   path: Qwen/Qwen3-0.6B #Qwen/Qwen3-0.6B, Qwen/Qwen3-4B-Base
    external_lib: null
    override_config:
      attn_implementation: flash_attention_2
@@ -116,7 +116,7 @@ actor_rollout_ref:
    fsdp_config:
      _target_: verl.workers.config.FSDPEngineConfig
      param_offload: False
-     model_dtype: bfloat16
+     model_dtype: ${actor_rollout_ref.actor.fsdp_config.model_dtype}
      wrap_policy:
        # transformer_layer_cls_to_wrap: None
        min_num_params: 0
