@@ -16,6 +16,6 @@ CUDA_VISIBLE_DEVICES=0 python -m curriculum.start_test \
     actor_rollout_ref.rollout.gpu_memory_utilization=0.5 \
     actor_rollout_ref.rollout.max_num_seqs=512 \
     actor_rollout_ref.rollout.max_model_len=4096 \
-    actor_rollout_ref.ref.engine_kwargs.vllm={"max_model_len":4096, "max_num_seqs":512}
+    actor_rollout_ref.ref.engine_kwargs.vllm="{max_num_seqs: 512, max_model_len: 4096}"
 
 echo "curriculum agent training finished"
