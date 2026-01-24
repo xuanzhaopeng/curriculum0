@@ -34,6 +34,7 @@ CUDA_VISIBLE_DEVICES=0,1 python -m curriculum.start_test \
     actor_rollout_ref.rollout.gpu_memory_utilization=0.5 \
     actor_rollout_ref.rollout.max_num_seqs=1024 \
     actor_rollout_ref.rollout.max_model_len=8192 \
+    actor_rollout_ref.model.override_config.attn_implementation=eager \
     actor_rollout_ref.rollout.engine_kwargs.vllm="{max_num_seqs: 1024, max_model_len: 8192}" \
     actor_rollout_ref.rollout.enforce_eager=True
 
