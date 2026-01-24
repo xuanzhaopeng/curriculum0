@@ -2,20 +2,18 @@
 PROJECT_DIR="$(pwd)"
 CONFIG_PATH="$PROJECT_DIR/configs"
 
-export USE_FLASH_ATTENTION=0
-export USE_FUSED_KERNELS=0
-export VLLM_ATTENTION_BACKEND=XFORMERS  # 或者 FLASH_ATTN，但如果挂了就换 XFORMERS
-
-# 1. 禁用 P2P，强制走 PCIe 总线（稍微慢一点点，但绝对稳，能解决卡死）
+# === 2. 核心修复 (这就是刚才测试通过的原因) ===
+# 强制让 VeRL 使用和刚才测试脚本一样的通信配置
 export NCCL_P2P_DISABLE=1
-
-# 2. 禁用 IB，强制走 Ethernet（防止找不到 InfiniBand 卡死）
 export NCCL_IB_DISABLE=1
+export NCCL_SOCKET_IFNAME=eth0
+export GLOO_SOCKET_IFNAME=eth0
+export NCCL_DEBUG=INFO  # 保持日志开启，万一有问题能看到
 
-# 3. 打印详细日志（如果还卡，我们能看到卡在哪一步）
-export NCCL_DEBUG=INFO
-
-export VLLM_WORKER_MULTIPROC_METHOD=spawn
+# === 3. 强制兼容模式 (防止 FlashAttn 导致的 Kernel 死锁) ===
+# 虽然机器没坏，但为了稳过，我们先禁用 FlashAttn，跑通再说
+export USE_FLASH_ATTENTION=0
+export VLLM_ATTENTION_BACKEND=XFORMERS
 
 echo "Start training curriculum"
 echo "Loading configs $CONFIG_PATH"
