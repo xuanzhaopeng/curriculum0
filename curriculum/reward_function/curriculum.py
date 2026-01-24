@@ -212,7 +212,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
             dist_mat = _bleu_distance_matrix(combined)
             clustering = AgglomerativeClustering(
                 n_clusters=None,
-                distance_threshold=0.5, ## distance threshold is 0.5
+                distance_threshold=0.3, ## distance threshold is 0.3
                 metric="precomputed",
                 linkage="average"
             )
