@@ -1,40 +1,27 @@
 import os
 import torch
 import torch.distributed as dist
+import multiprocessing as mp
 
-def run():
-    print("1. Starting NCCL Test...")
-    # Force settings to prevent hang
-    os.environ["NCCL_DEBUG"] = "INFO"
-    os.environ["NCCL_P2P_DISABLE"] = "1"
-    os.environ["NCCL_IB_DISABLE"] = "1"
+def run_check(rank, world_size):
+    # 强制禁用 P2P 和 IB，只测最基础的 TCP 通信
+    os.environ['NCCL_P2P_DISABLE'] = '1'
+    os.environ['NCCL_IB_DISABLE'] = '1'
+    os.environ['MASTER_ADDR'] = '127.0.0.1'
+    os.environ['MASTER_PORT'] = '29500'
     
-    # Initialize Process Group
-    print("2. Initializing Process Group (If it hangs here, it's a Network/Driver issue)...")
-    dist.init_process_group(backend="nccl", init_method="tcp://127.0.0.1:23456", world_size=2, rank=0)
-    
-    print("3. Doing a dummy tensor computation...")
-    # Put something on GPU 0 and GPU 1
-    t1 = torch.ones(1).to(0)
-    t2 = torch.ones(1).to(1)
-    
-    print("4. Attempting All-Reduce...")
-    # This triggers the actual GPU-to-GPU communication
-    dist.all_reduce(t1)
-    dist.all_reduce(t2)
-    
-    print("5. SUCCESS! NCCL is working.")
-    dist.destroy_process_group()
+    print(f"Rank {rank}: Initializing...")
+    try:
+        # 设定 10 秒超时，避免无限死等
+        dist.init_process_group("nccl", rank=rank, world_size=world_size, 
+                                init_method="env://", timeout=torch.distributed.DEFAULT_PG_TIMEOUT)
+        print(f"Rank {rank}: Success!")
+    except Exception as e:
+        print(f"Rank {rank}: Failed - {e}")
 
 if __name__ == "__main__":
-    # Simulate 2 processes on 1 machine
-    os.environ["MASTER_ADDR"] = "127.0.0.1"
-    os.environ["MASTER_PORT"] = "29500"
-    
-    # We spawn a subprocess for rank 1, but for a quick test, 
-    # we just try to init rank 0 to see if it binds the driver.
-    # A full test requires mp.spawn, but let's see if init hangs first.
-    try:
-        run()
-    except Exception as e:
-        print(f"FAILED: {e}")
+    if torch.cuda.device_count() < 2:
+        print("Error: Need at least 2 GPUs to test NCCL.")
+    else:
+        print("Starting 2-GPU NCCL Check...")
+        mp.spawn(run_check, args=(2,), nprocs=2, join=True)
