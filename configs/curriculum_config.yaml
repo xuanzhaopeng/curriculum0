@@ -50,7 +50,7 @@ data:
 actor_rollout_ref:
  hybrid_engine: True
  model:
-   path: Qwen/Qwen3-4B-Instruct-2507 #Qwen/Qwen3-0.6B
+   path: Qwen/Qwen3-0.6B #Qwen/Qwen3-0.6B, Qwen/Qwen3-4B-Instruct-2507
    external_lib: null
    override_config:
      attn_implementation: flash_attention_2
@@ -247,7 +247,7 @@ trainer:
   balance_batch: False
   total_epochs: 12
   project_name: curriculum_agent
-  experiment_name: 4B_instruct
+  experiment_name: 0_6B
   logger: ['console']
   log_val_generations: 0
   nnodes: 1
