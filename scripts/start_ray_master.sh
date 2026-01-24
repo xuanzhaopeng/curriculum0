@@ -17,7 +17,7 @@ ray start --head --port=${RAY_HEAD_PORT} --dashboard-host=0.0.0.0 --dashboard-po
 INSTALL_DIR="/workspace/tools"
 
 echo "Waiting for Ray to initialize metrics directory..."
-sleep 20 # Give Ray a moment to create the session directory
+sleep 5 # Give Ray a moment to create the session directory
 
 # Overwrite default Grafana config with custom one
 if [ -f "./grafana/grafana.ini" ]; then
