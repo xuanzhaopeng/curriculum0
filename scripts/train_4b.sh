@@ -2,6 +2,9 @@
 PROJECT_DIR="$(pwd)"
 CONFIG_PATH="$PROJECT_DIR/configs"
 
+export USE_FLASH_ATTENTION=0
+export USE_FUSED_KERNELS=0
+export VLLM_ATTENTION_BACKEND=XFORMERS  # 或者 FLASH_ATTN，但如果挂了就换 XFORMERS
 
 # 1. 禁用 P2P，强制走 PCIe 总线（稍微慢一点点，但绝对稳，能解决卡死）
 export NCCL_P2P_DISABLE=1
@@ -31,6 +34,7 @@ CUDA_VISIBLE_DEVICES=0,1 python -m curriculum.start_test \
     actor_rollout_ref.rollout.gpu_memory_utilization=0.5 \
     actor_rollout_ref.rollout.max_num_seqs=1024 \
     actor_rollout_ref.rollout.max_model_len=8192 \
-    actor_rollout_ref.rollout.engine_kwargs.vllm="{max_num_seqs: 1024, max_model_len: 8192}"
+    actor_rollout_ref.rollout.engine_kwargs.vllm="{max_num_seqs: 1024, max_model_len: 8192}" \
+    actor_rollout_ref.rollout.enforce_eager=True
 
 echo "curriculum agent training finished"
