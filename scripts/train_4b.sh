@@ -3,6 +3,15 @@ PROJECT_DIR="$(pwd)"
 CONFIG_PATH="$PROJECT_DIR/configs"
 
 
+# 1. 禁用 P2P，强制走 PCIe 总线（稍微慢一点点，但绝对稳，能解决卡死）
+export NCCL_P2P_DISABLE=1
+
+# 2. 禁用 IB，强制走 Ethernet（防止找不到 InfiniBand 卡死）
+export NCCL_IB_DISABLE=1
+
+# 3. 打印详细日志（如果还卡，我们能看到卡在哪一步）
+export NCCL_DEBUG=INFO
+
 echo "Start training curriculum"
 echo "Loading configs $CONFIG_PATH"
 
