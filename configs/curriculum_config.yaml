@@ -144,7 +144,7 @@ actor_rollout_ref:
    free_cache_engine: True
    data_parallel_size: 1
    load_format: safetensors
-   tensor_model_parallel_size: 2 # 2 GPU parallel
+   tensor_model_parallel_size: 1 # 2 GPU parallel, the amount of GPU
    max_model_len: 8192 # ensure has enough KV value
    pipeline_model_parallel_size: 1
    max_num_batched_tokens: 8192
@@ -251,7 +251,7 @@ trainer:
   logger: ['console']
   log_val_generations: 0
   nnodes: 1
-  n_gpus_per_node: 2
+  n_gpus_per_node: 1 # the amount of GPU
   save_freq: 1 # how frequently save it
   val_freq: -1 # -1 to disable 
   val_before_train: False
