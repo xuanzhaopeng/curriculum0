@@ -12,6 +12,8 @@ export NCCL_IB_DISABLE=1
 # 3. 打印详细日志（如果还卡，我们能看到卡在哪一步）
 export NCCL_DEBUG=INFO
 
+export VLLM_WORKER_MULTIPROC_METHOD=spawn
+
 echo "Start training curriculum"
 echo "Loading configs $CONFIG_PATH"
 
