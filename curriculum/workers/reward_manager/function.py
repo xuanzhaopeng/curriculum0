@@ -104,7 +104,7 @@ class BatchFunctionRewardManager(FunctionRewardManager):
             )
 
         # 这里传入的是生成的问题["question1", "question2"] 
-        print(f"🚩🚩 Ask for reward: {response_str}")
+        print(f"🚩🚩 Ask for rewards of {len(response_str)} questions")
         scores = self.reward_fn(response_str)
         reward_tensor = torch.zeros_like(data.batch["responses"], dtype=torch.float32)
         reward_metrics = defaultdict(list)
