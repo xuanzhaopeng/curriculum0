@@ -217,10 +217,10 @@ algorithm:
   use_kl_in_reward: True
   kl_penalty: low_var_kl  # how to estimate kl divergence
   kl_ctrl:
-    type: adaptive
+    type: fixed
     kl_coef: 1.0e-2
-    horizon: 10000
-    target_kl: 0.1
+    horizon: 20 # used in adaptive approach, think about how many steps
+    target_kl: 0.1 # used in adaptive approch
   # Rollout Correction
   rollout_correction:
     bypass_mode: False # True use bypass mode, otherwise Decoupled mode
