@@ -18,6 +18,13 @@ export MASTER_PORT=29500
 # 4. 开启日志以便万一出错时查看
 export NCCL_DEBUG=INFO
 
+export VLLM_ENFORCE_EAGER=1
+export RAY_ADDRESS='127.0.0.1'
+export VLLM_CONFIGURE_LOGGING=1
+export VLLM_USE_MODELSCOPE=False
+# 强制不使用编译后的某些 kernel
+export VLLM_ATTENTION_BACKEND=XFORMERS
+
 
 echo "Start training curriculum"
 echo "Loading configs $CONFIG_PATH"
