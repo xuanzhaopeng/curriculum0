@@ -104,10 +104,15 @@ def main(config):
         runtime_env = {
             "env_vars": {
                 "TOKENIZERS_PARALLELISM": "true",
-                "NCCL_DEBUG": "WARN",
+                "NCCL_DEBUG": "INFO",
                 "VLLM_LOGGING_LEVEL": "WARN",
                 "VLLM_ALLOW_RUNTIME_LORA_UPDATING": "true",
                 "VLLM_USE_V1": "1",
+                "NCCL_P2P_DISABLE": "1",
+                "TORCH_NCCL_AVOID_RECORD_STREAMS": "1",
+                "NCCL_IB_DISABLE": "1",
+                "NCCL_SOCKET_IFNAME": "eth0",
+                "GLOO_SOCKET_IFNAME": "eth0",
             }
         }
         # https://docs.ray.io/en/latest/ray-core/api/doc/ray.init.html

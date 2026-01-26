@@ -5,21 +5,10 @@ CONFIG_PATH="$PROJECT_DIR/configs"
 # === 支持双卡通信 ===
 export NCCL_P2P_DISABLE=1
 export NCCL_IB_DISABLE=1
-
-# 2. 强制指定网卡和通信协议
 export NCCL_SOCKET_IFNAME=eth0
 export GLOO_SOCKET_IFNAME=eth0
-export NCCL_SOCKET_FAMILY=AF_INET
-
-# 4. 开启日志以便万一出错时查看
-export NCCL_DEBUG=INFO
-
-export VLLM_ENFORCE_EAGER=1
-export VLLM_CONFIGURE_LOGGING=1
-export VLLM_USE_MODELSCOPE=False
-# 强制不使用编译后的某些 kernel
-export VLLM_ATTENTION_BACKEND=XFORMERS
-export NCCL_TIMEOUT=30
+export NCCL_DEBUG=INFO 
+export TORCH_NCCL_AVOID_RECORD_STREAMS=1
 
 echo "Start training curriculum"
 echo "Loading configs $CONFIG_PATH"
