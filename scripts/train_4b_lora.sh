@@ -33,9 +33,11 @@ CUDA_VISIBLE_DEVICES=0,1 python -m curriculum.start_test \
     actor_rollout_ref.rollout.max_num_seqs=256 \
     actor_rollout_ref.rollout.max_model_len=4096 \
     actor_rollout_ref.rollout.engine_kwargs.vllm="{max_num_seqs: 256, max_model_len: 4096}" \
-    actor_rollout_ref.rollout.temperature=1.0 \
-    actor_rollout_ref.model.lora_rank=64 \
-    actor_rollout_ref.model.lora_alpha=32 \
-    actor_rollout_ref.model.target_modules=all-linear
+    +actor_rollout_ref.rollout.layered_summon=True \
+    +actor_rollout_ref.rollout.min_p=0.3 \
+    actor_rollout_ref.rollout.temperature=1.1 \
+    +actor_rollout_ref.model.lora_rank=64 \
+    +actor_rollout_ref.model.lora_alpha=32 \
+    +actor_rollout_ref.model.target_modules=all-linear
 
 echo "curriculum agent training finished"§
