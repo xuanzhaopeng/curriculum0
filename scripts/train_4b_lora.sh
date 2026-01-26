@@ -19,7 +19,7 @@ export VLLM_CONFIGURE_LOGGING=1
 export VLLM_USE_MODELSCOPE=False
 # 强制不使用编译后的某些 kernel
 export VLLM_ATTENTION_BACKEND=XFORMERS
-
+export NCCL_TIMEOUT=30
 
 echo "Start training curriculum"
 echo "Loading configs $CONFIG_PATH"
