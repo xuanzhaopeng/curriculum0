@@ -3,11 +3,20 @@ PROJECT_DIR="$(pwd)"
 CONFIG_PATH="$PROJECT_DIR/configs"
 
 # === 支持双卡通信 ===
-export NCCL_P2P_DISABLE=0
+export NCCL_P2P_DISABLE=1
 export NCCL_IB_DISABLE=1
+
+# 2. 强制指定网卡和通信协议
 export NCCL_SOCKET_IFNAME=eth0
 export GLOO_SOCKET_IFNAME=eth0
-export NCCL_DEBUG=INFO 
+export NCCL_SOCKET_FAMILY=AF_INET
+
+# 3. 设置分布式训练必要的地址（如果是单机双卡）
+export MASTER_ADDR=127.0.0.1
+export MASTER_PORT=29500
+
+# 4. 开启日志以便万一出错时查看
+export NCCL_DEBUG=INFO
 
 
 echo "Start training curriculum"
