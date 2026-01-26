@@ -3,7 +3,7 @@ PROJECT_DIR="$(pwd)"
 CONFIG_PATH="$PROJECT_DIR/configs"
 
 # === 支持双卡通信 ===
-export NCCL_P2P_DISABLE=1
+export NCCL_P2P_DISABLE=0
 export NCCL_IB_DISABLE=1
 export NCCL_SOCKET_IFNAME=eth0
 export GLOO_SOCKET_IFNAME=eth0
