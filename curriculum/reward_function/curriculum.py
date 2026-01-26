@@ -75,21 +75,21 @@ def reward_self_consistency_scores(questions: List[str], max_threads: int = 5) -
                 results[idx] = {"question": questions[idx], "self_consistency_score": 0.0, "majority_answer": None}
     return results
 
-def reward_format(predict: str):
+def reward_format(predict: str) -> str | None:
     # Check for basic <question> and \boxed{ existence first
     pattern_basic = re.compile(r".*<question>.*</question>.*\\boxed\{.*", re.DOTALL)
     if not re.fullmatch(pattern_basic, predict):
-        return False
+        return None
     
     # Robust check for balanced \boxed{...} or use mathruler
     try:
         boxed_content = extract_boxed_content(predict)
         if boxed_content is not None and boxed_content != "None" and boxed_content.strip() != "":
-            return True
+            return boxed_content
         else:
-            return False
+            return None
     except Exception:
-        return False
+        return None
 
 def _bleu_distance_matrix(sentences):
     n = len(sentences)
@@ -132,14 +132,17 @@ def penalty_cluster_share_per_problem(
     return proportions
 
 def load_historical_questions(directory="questions"):
-    """Load historical questions with their SC scores."""
+    """Load latest 100 historical questions with their SC scores."""
     historical_data = []  # List of {"question": str, "sc_score": float}
     if not os.path.exists(directory):
         return []
     
     files = [f for f in os.listdir(directory) if f.startswith("results_sc_") and f.endswith(".json")]
     
+    files.sort(key=lambda x: os.path.getmtime(os.path.join(directory, x)), reverse=True)
     for f in files:
+        if len(historical_data) >= 100:
+            break
         path = os.path.join(directory, f)
         try:
             with open(path, "r") as fd:
@@ -157,7 +160,7 @@ def load_historical_questions(directory="questions"):
         except Exception:
             pass
             
-    return historical_data
+    return historical_data[:100]
 
 """
     Input: predicts is a list of questions
@@ -177,16 +180,19 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     for i in tqdm(range(len(predicts)), desc=" - Parsing predictions"):
         questions = re.findall(r"<question>(.*?)</question>", predicts[i], re.DOTALL)
         if questions:
+            predict_answer = reward_format(predicts[i])
             results_parsing.append({
                 "question": questions[-1].strip(), 
                 "raw_response": predicts[i],
-                "format_valid": reward_format(predicts[i])
+                "format_valid": predict_answer is not None,
+                "predict_answer": predict_answer
             })
         else:
             results_parsing.append({
                 "question": "", 
                 "raw_response": predicts[i],
-                "format_valid": False
+                "format_valid": False,
+                "predict_answer": None
             })
 
     # Separate valid and invalid predictions
@@ -198,6 +204,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     # Only process valid predictions
     if valid_indices:
         questions_list = [results_parsing[i]["question"] for i in valid_indices]
+        predict_answers_list = [results_parsing[i]["predict_answer"] for i in valid_indices]
         
         # 2. Load historical questions and determine which new questions can reuse historical SC scores
         historical_data = load_historical_questions()
@@ -259,6 +266,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
                     # Reuse historical SC score
                     sc_results_valid.append({
                         "question": questions_list[i],
+                        "predict_answer": None,
                         "majority_answer": None,
                         "self_consistency_score": reused_sc_mapping[i],
                         "total_samples": 0,  # Indicates it was reused
@@ -269,13 +277,15 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
                 else:
                     # Use computed SC result
                     result = novel_sc_results[novel_idx]
+                    result["predict_answer"] = predict_answers_list[i]
                     result["reused_from_history"] = False
                     sc_results_valid.append(result)
                     novel_idx += 1
         else:
             # No historical questions, compute SC for all valid predictions
             sc_results_valid = reward_self_consistency_scores(questions_list, max_threads=4)
-            for r in sc_results_valid:
+            for i, r in enumerate(sc_results_valid):
+                r["predict_answer"] = predict_answers_list[i]
                 r["reused_from_history"] = False
         
         print(f"🎯🎯🎯 Total SC results: {len(sc_results_valid)} ({len([r for r in sc_results_valid if not r.get('reused_from_history', False)])} computed, {len([r for r in sc_results_valid if r.get('reused_from_history', False)])} reused)")
@@ -292,6 +302,7 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     if sc_results_valid:
         sc_logs = [{
             "question": res.get("question", ""),
+            "predict_answer": res.get("predict_answer", ""),
             "majority_answer": res.get("majority_answer"),
             "self_consistency_score": res.get("self_consistency_score", 0.0),
             "total_samples": res.get("total_samples", 0),
