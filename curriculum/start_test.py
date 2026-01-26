@@ -17,6 +17,7 @@ import faulthandler
 import signal
 import time
 
+# kill -USR1 <PID> to see the traceback
 faulthandler.enable()
 faulthandler.register(signal.SIGUSR1)
 
