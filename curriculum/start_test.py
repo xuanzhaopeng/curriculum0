@@ -13,6 +13,15 @@ from verl.single_controller.ray.base import RayWorkerGroup
 from verl.trainer.ppo.ray_trainer import Role, ResourcePoolManager
 from verl.workers.fsdp_workers import AsyncActorRolloutRefWorker
 
+import faulthandler
+import signal
+import time
+
+faulthandler.enable()
+faulthandler.register(signal.SIGUSR1)
+
+print(f"DEBUG: 进程已启动，PID 为: {os.getpid()}", flush=True)
+
 
 @ray.remote(num_cpus=1)
 class Runner:
