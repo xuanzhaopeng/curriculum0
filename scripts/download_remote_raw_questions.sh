@@ -2,10 +2,10 @@
 
 # Usage: ./download_remote_raw_questions.sh [remote_user@host] [remote_path] [local_path] [port]
 
-REMOTE_TARGET=${1:-"root@194.68.245.208"}
+REMOTE_TARGET=${1:-"root@194.68.245.20"}
 REMOTE_PATH=${2:-"/workspace/Agent0-curriculum/raw_questions"}
 LOCAL_PATH=${3:-"./"}
-PORT=${4:-"22139"}
+PORT=${4:-"22034"}
 
 echo "🚀 Starting download from ${REMOTE_TARGET}:${REMOTE_PATH} to ${LOCAL_PATH}..."
 

@@ -36,7 +36,7 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True CUDA_VISIBLE_DEVICES=0,1 python
     actor_rollout_ref.rollout.max_model_len=1536 \
     actor_rollout_ref.rollout.engine_kwargs.vllm="{max_num_seqs: 64, max_model_len: 1536}" \
     +actor_rollout_ref.rollout.layered_summon=True \
-    actor_rollout_ref.rollout.temperature=1.1 \
+    actor_rollout_ref.rollout.temperature=1.0 \
     actor_rollout_ref.model.enable_gradient_checkpointing=True \
     actor_rollout_ref.model.enable_activation_offload=True \
     +actor_rollout_ref.model.lora_rank=64 \
@@ -44,4 +44,4 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True CUDA_VISIBLE_DEVICES=0,1 python
     +actor_rollout_ref.model.target_modules=all-linear \
     +actor_rollout_ref.model.exclude_modules=null
 
-echo "curriculum agent training finished"§
+echo "curriculum agent training finished"
