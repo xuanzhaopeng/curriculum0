@@ -12,12 +12,12 @@ echo "🚀 Starting download from ${REMOTE_TARGET}:${REMOTE_PATH} to ${LOCAL_PAT
 # Create local directory if it doesn't exist
 mkdir -p "$LOCAL_PATH"
 
-# Use scp for transfer (more compatible with minimized systems)
-# -P: port
-# -i: identity file
+# Use scp for transfer (rsync is missing on remote)
 # -r: recursive
 # -C: compress
-scp -P $PORT -i ~/.ssh/id_ed25519 -r -C "$REMOTE_TARGET":"$REMOTE_PATH" "$LOCAL_PATH"
+# -P: port
+# Note: scp will NOT delete existing local files; it only adds or overwrites.
+scp -P $PORT -i ~/.ssh/id_ed25519 -r -C "$REMOTE_TARGET":"$REMOTE_PATH" "./"
 
 if [ $? -eq 0 ]; then
     echo "✅ Download complete!"

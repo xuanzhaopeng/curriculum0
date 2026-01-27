@@ -11,6 +11,7 @@ This folder contains utilities to visualize training metrics collected in JSON f
    rm -rf plots
    bash scripts/download_remote_metrics.sh
    bash scripts/download_remote_questions.sh
+   bash scripts/download_remote_raw_questions.sh
    ```
 3. Run the visualization scripts to see metrics and diversity:
    ```bash
