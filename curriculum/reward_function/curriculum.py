@@ -171,6 +171,10 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
     Computes the final reward for curriculum tasks.
     Formula: R = R_format * R_uncertainty * (1 - novelty_penalty)
     """
+    os.makedirs("raw_questions", exist_ok=True)
+    with open(f'raw_questions/raw_{int(time.time())}.json', 'w') as f:
+        json.dump(predicts, f, indent=4)
+
     print(f"🎯🎯🎯 compute scores for {len(predicts)} predictions")
     results_parsing = []
     lambda_uncertain = 2
