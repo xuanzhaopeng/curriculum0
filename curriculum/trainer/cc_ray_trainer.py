@@ -161,7 +161,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
 
         return gen_batch
 
-    def apply_kl_penalty(data: DataProto, kl_ctrl: core_algos.FixedKLController, kl_penalty="kl"):
+    def apply_kl_penalty(self, data: DataProto, kl_ctrl: core_algos.FixedKLController, kl_penalty="kl"):
         token_level_scores = data.batch["token_level_scores"]
         batch_size = data.batch.batch_size[0]
         response_mask = data.batch["response_mask"]
