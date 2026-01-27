@@ -353,8 +353,8 @@ class CCRayGRPOTrainer(RayPPOTrainer):
 
                         # compute rewards. apply_kl_penalty if available
                         if self.config.algorithm.use_kl_in_reward:
-                            # assert isinstance(self.kl_ctrl_in_reward, core_algos.AdaptiveKLController), f"Expected AdaptiveKLController, got {type(self.kl_ctrl_in_reward)}"
-                            batch, kl_metrics = self.apply_kl_penalty(
+                            assert isinstance(self.kl_ctrl_in_reward, core_algos.AdaptiveKLController), f"Expected AdaptiveKLController, got {type(self.kl_ctrl_in_reward)}"
+                            batch, kl_metrics = apply_kl_penalty(
                                 batch, kl_ctrl=self.kl_ctrl_in_reward, kl_penalty=self.config.algorithm.kl_penalty
                             )
                             metrics.update(kl_metrics)
