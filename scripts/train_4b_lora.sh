@@ -10,10 +10,12 @@ export GLOO_SOCKET_IFNAME=eth0
 export NCCL_DEBUG=INFO 
 export TORCH_NCCL_AVOID_RECORD_STREAMS=1
 
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
 echo "Start training curriculum"
 echo "Loading configs $CONFIG_PATH"
 
-CUDA_VISIBLE_DEVICES=0,1 python -m curriculum.start_test \
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True CUDA_VISIBLE_DEVICES=0,1 python -m curriculum.start_test \
     --config-path="$CONFIG_PATH" \
     --config-name='curriculum_config' \
     hydra.job.chdir=False \
@@ -28,7 +30,7 @@ CUDA_VISIBLE_DEVICES=0,1 python -m curriculum.start_test \
     actor_rollout_ref.rollout.n=4 \
     actor_rollout_ref.actor.ppo_max_token_len_per_gpu=4096 \
     actor_rollout_ref.actor.fsdp_config.fsdp_size=2 \
-    actor_rollout_ref.rollout.tensor_model_parallel_size=2 \
+    actor_rollout_ref.rollout.tensor_model_parallel_size=1 \
     actor_rollout_ref.rollout.gpu_memory_utilization=0.3 \
     actor_rollout_ref.rollout.max_num_seqs=64 \
     actor_rollout_ref.rollout.max_model_len=3072 \

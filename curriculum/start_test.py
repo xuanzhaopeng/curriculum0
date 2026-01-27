@@ -114,6 +114,7 @@ def main(config):
                 "NCCL_IB_DISABLE": "1",
                 "NCCL_SOCKET_IFNAME": "eth0",
                 "GLOO_SOCKET_IFNAME": "eth0",
+                "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
             }
         }
         # https://docs.ray.io/en/latest/ray-core/api/doc/ray.init.html
