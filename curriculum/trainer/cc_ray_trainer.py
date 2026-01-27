@@ -167,7 +167,7 @@ class CCRayGRPOTrainer(RayPPOTrainer):
         response_mask = data.batch["response_mask"]
 
         # compute kl between ref_policy and current policy
-        kld = core_algos.kl_penalty(data.batch["old_log_probs"], data.batch["ref_log_probs"], kl_penalty=kl_penalty)
+        kld = core_algos.kl_penalty(data.batch["old_log_probs"], data.batch["ref_log_prob"], kl_penalty=kl_penalty)
         kld = kld * response_mask  # (batch_size, response_length)
 
         data.batch["token_level_rewards"] = token_level_scores - kl_ctrl.kl_coef * kld
