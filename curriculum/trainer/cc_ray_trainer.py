@@ -20,6 +20,7 @@ from verl.trainer.ppo import core_algos
 from verl.trainer.ppo.utils import need_reference_policy
 from verl.trainer.ppo.metric_utils import compute_data_metrics, compute_timing_metrics, compute_throughout_metrics
 from verl.utils.profiler.performance import marked_timer
+from verl.utils.torch_functional import masked_mean
 
 from curriculum.workers.reward_manager.function import FunctionRewardManager
 from tqdm import tqdm
@@ -159,7 +160,27 @@ class CCRayGRPOTrainer(RayPPOTrainer):
             gen_batch.non_tensor_batch.update(batch.non_tensor_batch)
 
         return gen_batch
-    
+
+    def apply_kl_penalty(data: DataProto, kl_ctrl: core_algos.FixedKLController, kl_penalty="kl"):
+        token_level_scores = data.batch["token_level_scores"]
+        batch_size = data.batch.batch_size[0]
+        response_mask = data.batch["response_mask"]
+
+        # compute kl between ref_policy and current policy
+        kld = core_algos.kl_penalty(data.batch["old_log_probs"], data.batch["ref_log_probs"], kl_penalty=kl_penalty)
+        kld = kld * response_mask  # (batch_size, response_length)
+
+        data.batch["token_level_rewards"] = token_level_scores - kl_ctrl.kl_coef * kld
+
+        current_kl = masked_mean(kld, mask=response_mask, dim=-1)  # average over sequence
+        current_kl = torch.mean(current_kl, dim=0).item()
+
+        metrics = {"actor/reward_kl_penalty": current_kl, "actor/reward_kl_penalty_coeff": kl_ctrl.kl_coef}
+
+        # According to https://github.com/huggingface/trl/blob/v0.11.0/trl/trainer/ppo_trainer.py#L880
+        kl_ctrl.update(current_kl=current_kl, n_steps=batch_size)
+        return data, metrics
+
     def fit(self):
         from omegaconf import OmegaConf
         from curriculum.utils.tracking import Tracking
@@ -332,8 +353,8 @@ class CCRayGRPOTrainer(RayPPOTrainer):
 
                         # compute rewards. apply_kl_penalty if available
                         if self.config.algorithm.use_kl_in_reward:
-                            assert isinstance(self.kl_ctrl_in_reward, core_algos.AdaptiveKLController), f"Expected AdaptiveKLController, got {type(self.kl_ctrl_in_reward)}"
-                            batch, kl_metrics = apply_kl_penalty(
+                            # assert isinstance(self.kl_ctrl_in_reward, core_algos.AdaptiveKLController), f"Expected AdaptiveKLController, got {type(self.kl_ctrl_in_reward)}"
+                            batch, kl_metrics = self.apply_kl_penalty(
                                 batch, kl_ctrl=self.kl_ctrl_in_reward, kl_penalty=self.config.algorithm.kl_penalty
                             )
                             metrics.update(kl_metrics)
