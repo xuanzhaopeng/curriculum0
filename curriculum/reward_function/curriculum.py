@@ -302,7 +302,6 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
         novelty_proportions_valid = []
 
     # Save SC logs (only for valid predictions)
-    import json
     if sc_results_valid:
         sc_logs = [{
             "question": res.get("question", ""),

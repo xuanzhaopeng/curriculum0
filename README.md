@@ -34,7 +34,7 @@ bash scripts/install_metrics.sh
 ### Start Distripution Service
 ```bash
 # replace to the CPU machine's TPC 8000 part mapping
-export MATH_AGENT_URL=tcp://213.173.111.109:24947
+export MATH_AGENT_URL=tcp://213.173.105.83:22377
 bash scripts/start_disptacher.sh
 ```
 
@@ -51,8 +51,5 @@ rm -rf metrics
 rm -rf checkpoints/curriculum_agent
 
 # Start training in background with logging
-nohup bash scripts/train.sh > train.log 2>&1 &
-
-# Monitor training progress
-tail -f train.log
+bash scripts/train.sh
 ```
