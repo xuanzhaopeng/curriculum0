@@ -42,6 +42,7 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True CUDA_VISIBLE_DEVICES=0,1 python
     +actor_rollout_ref.model.lora_rank=64 \
     +actor_rollout_ref.model.lora_alpha=32 \
     +actor_rollout_ref.model.target_modules=all-linear \
-    +actor_rollout_ref.model.exclude_modules=null
+    +actor_rollout_ref.model.exclude_modules=null \
+    algorithm.use_kl_in_reward=False 
 
 echo "curriculum agent training finished"§
