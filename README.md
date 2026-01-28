@@ -48,11 +48,11 @@ bash scripts/start_ray_master.sh
 
 ### Start Testing
 ```bash
-# clean up previous data
+# clean up previous data in case you want to start from begining
 rm -rf questions
 rm -rf metrics
 rm -rf checkpoints/curriculum_agent
 
 # Start training in background with logging
-bash scripts/train.sh
+bash scripts/train_4b_lora.sh
 ```
