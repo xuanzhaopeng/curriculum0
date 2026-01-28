@@ -18,7 +18,7 @@ python math_agent/test_service.py
 python math_agent/test_service_parallel.py
 ```
 
-## Machine#2 (1xA40)
+## Machine#2 (2xA40)
 
 ### Runpod configuration
 ```bash
