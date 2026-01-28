@@ -1,5 +1,8 @@
 # Agent0 Curriculum Agent
 
+This project is build on top of [VeRL 0.7.0](https://github.com/verl-project/verl)
+
+
 ## Machine#1 (2xCPU with SandboxFusion)
 
 ### Install depency and start service
