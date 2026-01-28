@@ -1,0 +1,53 @@
+[
+  {
+    "question": "Two circles are tangent externally at point \\( P \\). The first circle has a radius of \\( 4 \\) and the second circle has a radius of \\( 16 \\). A common external tangent is drawn that intersects the first circle at point \\( A \\) and the second circle at point \\( B \\). If segment \\( AP \\) has length \\( k \\), what is the value of \\( \\frac{AP}{AB} \\)?",
+    "self_consistency_score": 0.5,
+    "majority_answer": "\\frac{1}{5}",
+    "all_answers": [
+      "\\frac{1}{5}",
+      "\\frac{1}{2}",
+      "\\frac{1}{3}",
+      "\\frac{\\sqrt{5}}{5}",
+      "\\frac{1}{5}",
+      "\\frac{\\sqrt{17}}{17}",
+      "1/5",
+      "\\frac{1}{5}",
+      "\\frac{1}{5}",
+      "2/5"
+    ]
+  },
+  {
+    "question": "A circle is inscribed in a regular hexagon of side length \\(2\\). Find the radius of the circle and the area \\(K\\) to which it is tangent. Express the radius as \\(\\frac{a+\\sqrt{b}}{c}\\) and the area \\(K\\) as \\(\\frac{d\\sqrt{e}}{f}\\). Compute \\(a+b+c+d+e+f\\) and provide a brief justification for each.",
+    "self_consistency_score": 0.6,
+    "majority_answer": "14",
+    "all_answers": [
+      "14",
+      "14",
+      "14",
+      "18",
+      "14",
+      "18",
+      "18",
+      "14",
+      "14",
+      "18"
+    ]
+  },
+  {
+    "question": "A circle is tangent to the side of a square at its midpoint and also tangent to the extensions of two of its adjacent sides. The area of the triangle formed by the tangency points and the center of the circle is 49 square units. What is the side length of the square?",
+    "self_consistency_score": 0.5,
+    "majority_answer": "14\\sqrt{2}",
+    "all_answers": [
+      "14",
+      "14\\sqrt{2}",
+      "14\\sqrt{2}",
+      "14",
+      "14\\sqrt{2}",
+      "14\\sqrt{2}",
+      "14\\sqrt{2}",
+      "\\frac{14\\sqrt{5}}{5}",
+      "14",
+      "7\\sqrt{2}"
+    ]
+  }
+]

@@ -1,0 +1,556 @@
+[
+  {
+    "question": "Let \\( ABC \\) be an isosceles triangle with \\( AB = AC \\) and \\( \\angle BAC = 20^\\circ \\). Point \\( D \\) is on \\( AC \\) such that \\( \\angle ABD = 60^\\circ \\). Point \\( E \\) is on \\( AB \\) such that \\( \\angle BCE = 70^\\circ \\). Find the measure of \\( \\angle BDE \\).",
+    "majority_answer": "30",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "30",
+      "30",
+      "30",
+      "30",
+      "30",
+      "30",
+      "30",
+      "30",
+      "30",
+      "30"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "{The full problem statement on one or more lines}",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "{The full problem statement on one or more lines}",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let \\( ABC \\) be a triangle with circumcircle \\( \\Omega \\) and cevian \\( AD \\) intersecting the circumcircle of \\( \\triangle BCD \\) again at \\( E \\). Let \\( P \\) be the midpoint of the side \\( BC \\), and let \\( M \\) be the midpoint of the segment \\( PD \\). The line through \\( P \\) perpendicular to \\( AM \\) intersects \\( BE \\) at \\( X \\) and \\( CE \\) at \\( Y \\). Show that \\( BY = CX \\).\n\n**Hint**: Consider the properties of midpoints and perpendicular lines, and explore how they can help you conclude that \\( \\triangle BYC \\) and \\( \\triangle CXB \\) are congruent.",
+    "majority_answer": "I cannot solve the problem",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "I cannot solve the problem",
+      "BY = CX",
+      "Unable to solve",
+      "",
+      "BY = CX",
+      "I am unable to prove the statement.",
+      "No solution",
+      "BY = CX",
+      "I am unable to find a solution.",
+      "I cannot solve this problem."
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "There are 10 points on a plane, no three of which are collinear. Each point is connected to every other point with a straight line. How many distinct triangles can be formed using these points? Justify your answer with clear reasoning.",
+    "majority_answer": "120",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\ubb3c\uccb4\uac00 \uc218\ud3c9\uba74\uc5d0\uc11c \uba40\ub9ac \ub5a8\uc5b4\uc9c4 \uacf3\uc5d0 \uc788\uc73c\uba70, \ubb3c\uccb4\uac00 \uc9c0\uad6c\uc758 \uc790\uae30\uc801\ub3d9\ub7c9 \ubcc0\ud654\ub97c \uace0\ub824\ud560 \ub54c, \uadf8\uac83\ub4e4\uc774 \uc0c1\ub300\uc801 \uc704\uce58\ub97c \uc720\uc9c0\ud558\ub294 \ubc95\uce59\uc740 \ubb34\uc5c7\uc778\uac00\uc694?",
+    "majority_answer": "The objects' relative positions are maintained, and their orientation changes equally with the change in magnetic declination.",
+    "self_consistency_score": 0.1,
+    "total_samples": 10,
+    "all_answers": [
+      "The objects' relative positions are maintained, and their orientation changes equally with the change in magnetic declination.",
+      "relative positioning based on geometric relationships",
+      "Maintaining constant compass bearings",
+      "Surveying and navigation principles that account for magnetic declination and establish positions relative to a fixed reference frame (e.g., true north or a global coordinate system).",
+      "\\text{Newton's First Law of Motion (Law of Inertia)}",
+      "\\text{Accurate surveying and navigation practices, including accounting for magnetic declination}",
+      "\u0394(True Bearing) = \u0394(Magnetic Declination)",
+      "Their relative positions with respect to magnetic north remain constant.",
+      "They maintain their relative bearing with respect to true north.",
+      "Newton's First Law of Motion"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let $ABCDE$ be a regular pentagon with side length $1$. Define a sequence of points $P_0, P_1, P_2, \\ldots$ as follows: $P_0$ is the center of the pentagon, and for $n \\geq 1$, $P_n$ is the midpoint of the segment $\\overline{P_{n-1}E}$. What is the length of the line segment $\\overline{P_{1000}E}$? Express your answer in simplest radical form.",
+    "majority_answer": "\\frac{1}{2^{999}\\sqrt{10-2\\sqrt{5}}}",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{1}{2^{999}\\sqrt{10-2\\sqrt{5}}}",
+      "\\frac{\\sqrt{10+2\\sqrt{5}}}{2^{1001}\\sqrt{5}}",
+      "\\frac{\\sqrt{5}+1}{2^{1001}}",
+      "\\frac{1}{2^{999}\\sqrt{10-2\\sqrt{5}}}",
+      "\\frac{1}{2^{1001}\\sin(\\pi/5)}",
+      "\\frac{\\sqrt{\\frac{5+\\sqrt{5}}{10}}}{2^{1000}}",
+      "\\frac{\\sqrt{10}+\\sqrt{2}}{2^{1002}}",
+      "\\frac{1}{2^{999}\\sqrt{10-2\\sqrt{5}}}",
+      "\\frac{\\sqrt{5+2\\sqrt{5}}}{5 \\cdot 2^{1000}}",
+      "\\frac{\\sqrt{\\frac{5+\\sqrt{5}}{10}}}{2^{1000}}"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\(S\\) be a set consisting of five numbers taken from \\(\\{1,2,3,4,5,6,7,8,9\\}\\) with the property that no two of the numbers in \\(S\\) have a difference equal to 2 or 5.\n\nFind the number of possible sets \\(S\\) that satisfy these criteria.",
+    "majority_answer": "21",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "Incomplete",
+      "21",
+      "21",
+      "21",
+      "1",
+      "1",
+      "11",
+      "21",
+      "26"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Consider a sequence of positive integers \\(a_1, a_2, a_3, \\ldots, a_n\\) such that for every \\(i = 1, 2, \\ldots, n-1\\), the difference \\(a_{i+1} - a_i\\) is either 1 or 2. Given that the first term \\(a_1 = 1\\) and the last term \\(a_n = 2023\\), determine the minimum number of terms \\(n\\) required for such a sequence.",
+    "majority_answer": "1012",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1012",
+      "1012",
+      "1012",
+      "1012",
+      "1012",
+      "1012",
+      "1012",
+      "1012",
+      "1012",
+      "1012"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Find the number of positive integers \\( n \\) less than 1000 for which the equation \\( \\frac{1}{x} + \\frac{1}{y} = \\frac{1}{n} \\) has exactly three distinct positive integer solutions for \\( (x, y) \\) with \\( x, y \\leq 1000 \\).",
+    "majority_answer": "11",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "11",
+      "8",
+      "11",
+      "8",
+      "11",
+      "11",
+      "11",
+      "11",
+      "14",
+      "11"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "In the complex plane, let \\( A \\) and \\( B \\) be points with affixes \\( 1 + i \\) and \\( 3 + 2i \\), respectively. A line passing through the origin and point \\( O \\) that equidistantly divides segments \\( \\overline{OA} \\) and \\( \\overline{OB} \\) intersects the line segment \\( \\overline{AB} \\) at some point \\( C \\). Find the affix \\( z_C \\) of point \\( C \\) in simplest form.",
+    "majority_answer": "\\frac{7 + 2\\sqrt{26}}{11} + \\frac{9 + \\sqrt{26}}{11} i",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{35 + 14\\sqrt{26}}{79} + i\\frac{57 + 7\\sqrt{26}}{79}",
+      "\\frac{7 + 2\\sqrt{26}}{11} + \\frac{9 + \\sqrt{26}}{11} i",
+      "\\frac{3}{5} + \\frac{4}{5}i",
+      "\\frac{4+3i}{2}",
+      "\\frac{7 + 2\\sqrt{19}}{9} + \\frac{8 + \\sqrt{19}}{9} i",
+      "\\frac{7 + 2\\sqrt{26}}{11} + \\frac{9 + \\sqrt{26}}{11} i",
+      "\\frac{4+3i}{2}",
+      "\\frac{7 + 2\\sqrt{26}}{11} + \\frac{9 + \\sqrt{26}}{11}i",
+      "2 + \\frac{3}{2}i",
+      "\\frac{4+3i}{2}"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\(a\\), \\(b\\), and \\(c\\) be positive integers such that \\(a + b + c = 100\\). Find the maximum possible value of \\(abc\\).",
+    "majority_answer": "37026",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "37026",
+      "37026",
+      "37088",
+      "37026",
+      "37026",
+      "37026",
+      "37026",
+      "37026",
+      "37026",
+      "37026"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\u5728\u6b63\u4e8c\u5341\u8fb9\u5f62\u768420\u4e2a\u9876\u70b9\u4e2d\u9009\u53d65\u4e2a\u70b9\uff0c\u4f7f\u5f97\u8fd95\u4e2a\u70b9\u5f62\u6210\u76845\u8fb9\u5f62\uff08\u53735\u89d2\u661f\uff09\u7684\u8fb9\u957f\u4e92\u4e0d\u76f8\u7b49\u3002\u8bf7\u95ee\u8fd9\u6837\u76845\u89d2\u661f\u6709\u51e0\u4e2a\uff1f",
+    "majority_answer": "140",
+    "self_consistency_score": 0.2,
+    "total_samples": 10,
+    "all_answers": [
+      "140",
+      "96",
+      "144",
+      "3360",
+      "432",
+      "1680",
+      "840",
+      "120",
+      "140",
+      "168"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\u4e00\u4e2a\u6b63\u6574\u6570\u5e8f\u5217\\(\\{a_n\\}\\)\u901a\u8fc7\u4ee5\u4e0b\u65b9\u5f0f\u6784\u5efa\uff1a\n\\[\na_1 = 1, \\quad a_2 = 2, \n\\]\n\u5bf9\u4e8e\u6240\u6709\\(n \\geq 3\\)\uff0c\\(a_n\\)\u662f\u7531\\(a_{n-1}\\)\u4e0e\\(a_{n-2}\\)\u4e4b\u4e00\u4e58\u4ee5\u4e24\u6216\u4e24\u8005\u76f8\u52a0\u7ec4\u6210\u7684\u6700\u5c0f\u6574\u6570\uff0c\u5373\\(a_n = 2a_{n-1}\\)\u6216\\(2a_{n-1} + a_{n-2}\\)\uff0c\u4e14\\(a_n\\)\u662f\u8fd9\u4e9b\u503c\u4e2d\u7684\u6700\u5c0f\u672a\u51fa\u73b0\u8fc7\u7684\u6b63\u6574\u6570\u3002\n\n\u6c42\\(a_{10}\\)\u7684\u503c\uff0c\u5e76\u8bc1\u660e\u4f60\u8ba1\u7b97\u51fa\u6765\u7684\u7b54\u6848\u662f\u6b63\u786e\u7684\u3002",
+    "majority_answer": "10",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "512",
+      "512",
+      "10",
+      "512",
+      "512",
+      "10",
+      "10",
+      "10",
+      "10",
+      "10"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\(ABC\\) be an acute triangle with \\(\\angle BAC = 60^\\circ\\). Let \\(D\\) be the foot of the altitude from \\(B\\) to \\(AC\\), and let \\(E\\) be the foot of the altitude from \\(C\\) to \\(AB\\). The segments \\(AD\\) and \\(BE\\) intersect at \\(H\\), the orthocenter of \\(\\triangle ABC\\). Suppose that \\(AD \\cdot BE = 100\\sqrt{3}\\) and that \\(AC - AB = 20\\). Find the area of \\(\\triangle ABC\\).",
+    "majority_answer": "100\\sqrt{3}",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "100\\sqrt{3}",
+      "100\\sqrt{3}",
+      "200\\sqrt{3}",
+      "200\\sqrt{3}",
+      "100\\sqrt{3}",
+      "100\\sqrt{3}",
+      "400\\sqrt{3}",
+      "400\\sqrt{3}",
+      "100\\sqrt{3}",
+      "100\\sqrt{3}"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Find the smallest positive integer \\( n \\) such that the sum of its digits is equal to its square root when considered as a decimal number.",
+    "majority_answer": "1",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Find all positive integers \\( n \\) such that \\( n \\) divides \\( 2^n + 1 \\).",
+    "majority_answer": "3^k",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "3^k",
+      "3^k",
+      "3^k",
+      "3^k",
+      "3^k",
+      "3^k",
+      "3^k",
+      "3^k",
+      "3^k",
+      "3^k"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\( P(x) \\) be a polynomial of degree 4 such that \\( P(1) = 1, P(2) = 2, P(3) = 3, P(4) = 4, \\) and \\( P(5) = 125. \\) Find \\( P(6). \\)",
+    "majority_answer": "606",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "606",
+      "606",
+      "606",
+      "606",
+      "606",
+      "606",
+      "606",
+      "606",
+      "606",
+      "606"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\( P \\) be the set of all prime numbers, and let \\( S \\) be the set of all positive integers. Define a function \\( f: S \\to P \\) such that for any positive integer \\( n \\), \\( f(n) \\) is the smallest prime factor of \\( n \\). For a given positive integer \\( m \\), find the number of positive integers \\( n \\leq 1000 \\) such that \\( f(f(n)) = 3 \\).",
+    "majority_answer": "167",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "167",
+      "167",
+      "167",
+      "167",
+      "167",
+      "167",
+      "167",
+      "167",
+      "167",
+      "167"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "{The full problem statement on one or more lines}",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  }
+]

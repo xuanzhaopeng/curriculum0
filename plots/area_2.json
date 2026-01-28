@@ -1,0 +1,87 @@
+[
+  {
+    "question": "Let \\( ABC \\) be an equilateral triangle with side length \\( 12 \\). Define a sequence of points \\( P_n \\) by \\( P_0 = B \\), \\( P_1 = C \\), and for \\( n \\geq 2 \\), \\( P_n \\) is the reflection of \\( P_{n-2} \\) over \\( P_{n-1} \\). Return the length of the ordered sequence of cevians of segments \\( \\overline{AP_1}, \\overline{AP_2}, - - \\overline{AP_{40 \\text{ INDICATOR END}}} \\).",
+    "self_consistency_score": 0.4,
+    "majority_answer": "40",
+    "all_answers": [
+      "40",
+      "324 + 156\\sqrt{3}",
+      "492 + 84\\sqrt{3} + 84\\sqrt{13} + 72\\sqrt{21}",
+      "9622.125",
+      "40",
+      "9834.32",
+      "10096.24",
+      "Unable to determine",
+      "40",
+      "40"
+    ]
+  },
+  {
+    "question": "Let \\( ABC \\) be a triangle with circumcenter \\( O \\) and orthocenter \\( H \\). The circle centered at \\( H \\) with radius \\( OH \\) intersects the circumcircle of \\( \\triangle ABC \\) at points \\( P \\) and \\( Q \\). Prove that the midpoint of \\( PQ \\) lies on the line segment joining the circumcenter \\( O \\) and the midpoint of \\( BC \\).",
+    "self_consistency_score": 0.6,
+    "majority_answer": "The midpoint of \\( PQ \\) lies on the line segment joining the circumcenter \\( O \\) and the midpoint of \\( BC \\).",
+    "all_answers": [
+      "The midpoint of \\( PQ \\) lies on the line segment joining the circumcenter \\( O \\) and the midpoint of \\( BC \\).",
+      "The midpoint of PQ lies on the line segment joining the circumcenter O and the midpoint of BC.",
+      "",
+      "I am unable to provide a solution.",
+      "The midpoint of \\( PQ \\) lies on the line segment joining the circumcenter \\( O \\) and the midpoint of \\( BC \\).",
+      "The midpoint of \\( PQ \\) lies on the line segment joining the circumcenter \\( O \\) and the midpoint of \\( BC \\).",
+      "The midpoint of \\( PQ \\) lies on the line segment joining the circumcenter \\( O \\) and the midpoint of \\( BC \\).",
+      "Unable to solve",
+      "The midpoint of \\( PQ \\) lies on the line segment joining the circumcenter \\( O \\) and the midpoint of \\( BC \\).",
+      "Unable to prove"
+    ]
+  },
+  {
+    "question": "In an arbitrary triangle \\( \\triangle ABC \\), let \\( D \\) and \\( D' \\) (where \\( D' \\neq D \\)) be points on side \\( BC \\) such that \\( A \\) lies on the circle with diameter \\( DD' \\) or its extension, forming triangles \\( \\triangle ADC \\) and \\( \\triangle AD'C \\).\n\nLet \\( P \\) be the intersection of the angle bisectors of \\( \\triangle ADC \\) and \\( \\triangle AD'C \\), and let \\( N = DD' \\cap AP \\). It is given that \\( \\triangle ADP \\sim \\triangle AD'P' \\).\n\n(a) Prove that triangles \\( \\triangle ABC \\) and \\( \\triangle AQP' \\) are similar.  \n(b) Let \\( I \\) be the center of the circle circumscribing \\( \\triangle BCQ' \\), and let \\( H \\) and \\( K \\) be points \\( P \\) and \\( N \\) reflected across \\( A \\) and \\( I \\), respectively. Show that line segment \\( GH \\) is parallel to \\( QH \\).",
+    "self_consistency_score": 0.6,
+    "majority_answer": "No solution",
+    "all_answers": [
+      "No solution",
+      "Cannot be determined.",
+      "Cannot solve",
+      "Cannot be determined",
+      "Incomplete",
+      "Incomplete",
+      "Insufficient information",
+      "Proof incomplete",
+      "\\text{Cannot be determined without a diagram.}",
+      "Not Solved"
+    ]
+  },
+  {
+    "question": "Let \\(ABC\\) be an isosceles triangle with \\(AB = AC\\). Point \\(D\\) lies on the extension of \\(AC\\) beyond \\(C\\), such that \\(\\angle ABD = \\angle CBD\\). The incircle of \\(\\triangle ABC\\) touches \\(AB\\) at \\(E\\) and \\(AC\\) at \\(F\\). Given that \\(BD = AD\\), prove that the circumcircle of \\(\\triangle EDF\\) is tangent to the incircle of \\(\\triangle ABC\\).",
+    "self_consistency_score": 0.4,
+    "majority_answer": "No solution",
+    "all_answers": [
+      "\\text{The circumcircle of \\(\\triangle EDF\\) is tangent to the incircle of \\(\\triangle ABC\\).}",
+      "No solution",
+      "",
+      "Unable to determine",
+      "Unable to solve",
+      "Incomplete Solution",
+      "No solution found",
+      "No solution",
+      "Incomplete",
+      "No solution"
+    ]
+  },
+  {
+    "question": "In a circle with radius \\( r \\), a regular pentagon \\( P_1P_2P_3P_4P_5 \\) is inscribed. A regular pentagon \\( Q_1Q_2Q_3Q_4Q_5 \\) is circumscribed around the same circle. A line segment \\( P_iQ_j \\) is drawn for each pair \\( (i, j) \\) where \\( 1 \\leq i, j \\leq 5 \\). Find the total length of all such line segments.",
+    "self_consistency_score": 0.5,
+    "majority_answer": "25r",
+    "all_answers": [
+      "25r",
+      "36.589r",
+      "36.589r",
+      "25r",
+      "25r",
+      "36.59r",
+      "25r",
+      "25r",
+      "36.589r",
+      "5(\\sqrt{5}+1)r"
+    ]
+  }
+]

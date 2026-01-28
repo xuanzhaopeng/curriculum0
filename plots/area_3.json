@@ -1,0 +1,70 @@
+[
+  {
+    "question": "In an enchanted forest, there are three types of magical trees: Oak, Maple, and Pine. Each type of tree grows in a distinct pattern. Today, the number of Oak trees in the forest is triple the number of Maple trees, while the number of Pine trees is twice the number of Oak trees. If there are 20 Pine trees, how many total trees are in the enchanted forest?",
+    "self_consistency_score": 0.6,
+    "majority_answer": "100/3",
+    "all_answers": [
+      "35",
+      "100/3",
+      "100/3",
+      "100/3",
+      "33",
+      "100/3",
+      "60",
+      "100/3",
+      "60",
+      "100/3"
+    ]
+  },
+  {
+    "question": "In a certain enchanted forest, there are 10 trees, each labeled with a distinct integer from 1 to 10. A mischievous fairy decides to play a game with the trees. She starts at tree number 1 and with each move, she can either move to any tree whose label is a multiple of her current position or a factor of her current position. For example, from tree 3, she can move to tree 1 or tree 6.\n\nWhat is the number of distinct sequences of tree visits the fairy could take if she must visit all the trees exactly once, starting from tree number 1?",
+    "self_consistency_score": 0.4,
+    "majority_answer": "12",
+    "all_answers": [
+      "12",
+      "8",
+      "8",
+      "8",
+      "36",
+      "12",
+      "12",
+      "0",
+      "12",
+      "8"
+    ]
+  },
+  {
+    "question": "In a small town, there are three types of trees: oak, maple, and pine. Each type of tree grows differently over time. The height of an oak tree increases by 1 meter every year, the height of a maple tree increases by 1.5 meters every two years, and the height of a pine tree increases by 2 meters every three years. If all trees started at a height of 1 meter, after how many years will the heights of all three trees be equal?",
+    "self_consistency_score": 0.6,
+    "majority_answer": "There is no solution.",
+    "all_answers": [
+      "There is no solution.",
+      "No solution",
+      "No solution",
+      "never",
+      "There is no solution.",
+      "Never",
+      "0",
+      "Never",
+      "There is no solution",
+      "No solution"
+    ]
+  },
+  {
+    "question": "In a magical forest, there are 10 trees each having a different number of apples. Alex wants to pick an even number of apples from each tree combined, but he also wants to maximize the fairness among the trees he picks from. For instance, if he picks 2 apples from each tree, then for 10 trees it would be 20 apples total. However, he needs to find a way to pick apples such that the difference in the number of apples he picks from any pair of trees is never greater than 2.\nHow many different ways can Alex pick these apples so that he satisfies the fairness condition and picks an even number of apples from each tree?",
+    "self_consistency_score": 0.5,
+    "majority_answer": "1024",
+    "all_answers": [
+      "1024",
+      "1023",
+      "66",
+      "66",
+      "1024",
+      "1024",
+      "11",
+      "1024",
+      "1024",
+      "66"
+    ]
+  }
+]

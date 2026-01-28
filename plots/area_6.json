@@ -1,0 +1,53 @@
+[
+  {
+    "question": "Find all integers \\( n \\) for which the polynomial \\( P(x) = x^3 - nx^2 + (n+1)x - n \\) can be factored into three linear factors with integer coefficients. For each such \\( n \\), express \\( P(x) \\) as the product of these factors and verify that the resulting polynomial is indeed \\( x^3 - nx^2 + (n+1)x - n \\).",
+    "self_consistency_score": 0.4,
+    "majority_answer": "None",
+    "all_answers": [
+      "6",
+      "None",
+      "6",
+      "None",
+      "no such n",
+      "None",
+      "6",
+      "no such n",
+      "no solution",
+      "None"
+    ]
+  },
+  {
+    "question": "Let \\( f(x) \\) be a polynomial with real coefficients such that \\( f(0) = 0 \\), \\( f(1) = 1 \\), and for all integers \\( n \\geq 2 \\), the polynomial \\( f(n) \\) is a positive integer. Find the maximum possible degree of \\( f(x) \\) such that \\( f(x) \\) satisfies these conditions.",
+    "self_consistency_score": 0.6,
+    "majority_answer": "2",
+    "all_answers": [
+      "3",
+      "2",
+      "3",
+      "2",
+      "2",
+      "3",
+      "2",
+      "2",
+      "2",
+      "3"
+    ]
+  },
+  {
+    "question": "Find all integers \\( n \\) such that the polynomial \\( P(x) = x^n + (n-1)x - n \\) has at least one integer root.",
+    "self_consistency_score": 0.4,
+    "majority_answer": "2",
+    "all_answers": [
+      "\\mathbb{Z}",
+      "2",
+      "2",
+      "\\text{all integers}",
+      "n \\in \\mathbb{Z}",
+      "2",
+      "all integers",
+      "2",
+      "1, 2",
+      "\\text{all integers}"
+    ]
+  }
+]

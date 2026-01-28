@@ -1,0 +1,53 @@
+[
+  {
+    "question": "Let $ABCDEF$ be a convex hexagon with $AB = 4$, $BC = DA = 2$, $CD = AE = 7$, and $DF = BE = 5$. If $\\angle FAB = \\angle ABC = \\angle CDE = 90^\\circ$, what is the area of $ABCDEF$?",
+    "self_consistency_score": 0.6,
+    "majority_answer": "36",
+    "all_answers": [
+      "27",
+      "36",
+      "36",
+      "29",
+      "29",
+      "36",
+      "36",
+      "36",
+      "Cannot be determined",
+      "36"
+    ]
+  },
+  {
+    "question": "In a convex quadrilateral $ABCD$, $\\angle A = 90^\\circ$, $\\angle B = 100^\\circ$, and $\\angle C = 140^\\circ$. Diagonals $AC$ and $BD$ intersect at point $P$. If the area of triangle $APB$ is 12 square units and the area of triangle $CPD$ is 20 square units, find the area of quadrilateral $ABCD$.",
+    "self_consistency_score": 0.4,
+    "majority_answer": "32+8\\sqrt{15}",
+    "all_answers": [
+      "64",
+      "32+8\\sqrt{15}",
+      "64",
+      "44 + 4\\sqrt{15}",
+      "52",
+      "64",
+      "32+8\\sqrt{15}",
+      "32 + 8\\sqrt{15}",
+      "63",
+      "32+8\\sqrt{15}"
+    ]
+  },
+  {
+    "question": "Let \\( ABCD \\) be a cyclic quadrilateral with \\( AB = 4 \\), \\( BC = 5 \\), \\( CD = 6 \\), and \\( DA = 7 \\). The diagonal \\( AC \\) increases by a factor of \\( k \\). What is the value of \\( k \\) such that the area of quadrilateral \\( ABCD \\) becomes twice its original area?",
+    "self_consistency_score": 0.4,
+    "majority_answer": "2",
+    "all_answers": [
+      "2",
+      "2",
+      "\\text{The problem is flawed}",
+      "\\text{No solution}",
+      "The problem is flawed",
+      "1",
+      "2",
+      "2",
+      "\\text{The problem is flawed.}",
+      "\\sqrt{2}"
+    ]
+  }
+]

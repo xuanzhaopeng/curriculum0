@@ -1,0 +1,70 @@
+[
+  {
+    "question": "部分。\n\n<question>\nLet \\( n \\) be a positive integer. Define a sequence \\( a_k \\) by \\( a_1 = n \\) and \\( a_{k+1} = a_k^2 - 2 \\) for \\( k \\geq 1 \\). If \\( p \\) is the smallest prime divisor of \\( a_{1000} - 2 \\), find the largest possible value of \\( p \\).",
+    "self_consistency_score": 0.5,
+    "majority_answer": "5",
+    "all_answers": [
+      "2^{1000}-1",
+      "5",
+      "3",
+      "5",
+      "5",
+      "47",
+      "3",
+      "47",
+      "5",
+      "5"
+    ]
+  },
+  {
+    "question": "Define a sequence \\(a_n\\) as follows: \\(a_1 = 1\\), \\(a_2 = 2\\), and for \\(n \\geq 3\\), \\(a_n\\) is the smallest positive integer greater than \\(a_{n-1}\\) that is relatively prime to \\(a_{n-2}\\). Find \\(a_{2023}\\).",
+    "self_consistency_score": 0.5,
+    "majority_answer": "2023",
+    "all_answers": [
+      "2025",
+      "2023",
+      "2023",
+      "2697",
+      "2025",
+      "2023",
+      "2023",
+      "2697",
+      "2427",
+      "2023"
+    ]
+  },
+  {
+    "question": "A sequence of numbers \\(a_1, a_2, a_3, \\ldots\\) is defined recursively by \\(a_1 = 1\\), \\(a_2 = 2\\), and for \\(n \\geq 3\\), \\(a_n = 2a_{n-1} - a_{n-2} + 2^{n-2}\\). Find the sum of the first 25 terms of the sequence modulo 1000.",
+    "self_consistency_score": 0.4,
+    "majority_answer": "537",
+    "all_answers": [
+      "995",
+      "537",
+      "537",
+      "537",
+      "537",
+      "706",
+      "125",
+      "838",
+      "979",
+      "731"
+    ]
+  },
+  {
+    "question": "A sequence of positive integers \\( a_1, a_2, a_3, \\ldots \\) satisfies \\( a_1 = 1 \\) and for \\( n \\geq 2 \\), \\( a_n \\) is the least positive integer such that \\( a_n = a_k + 1 \\) for all \\( k < n \\) where \\( n \\) is prime, and \\( a_n = a_k + 5 \\) for all \\( k < n \\) where \\( n \\) is composite. What is the 100th term of this sequence?",
+    "self_consistency_score": 0.4,
+    "majority_answer": "395",
+    "all_answers": [
+      "395",
+      "226",
+      "396",
+      "395",
+      "395",
+      "396",
+      "395",
+      "366",
+      "396",
+      "370"
+    ]
+  }
+]

@@ -1,0 +1,1154 @@
+[
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than or equal to 2024.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the value $ \\gcd(a, b) $ divides $ a - b $. Prove that there exists a positive integer $ d $ such that every element of $ S $ is divisible by $ d $, and determine the largest possible value of $ d $ given that $ S $ contains at least one element not divisible by any prime less than 100.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2023n + 1} $ is a rational number. Find the number of elements in $ S $.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is a rational number. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 + 2023} $ is a rational number. What is the sum of all elements in $ S $ that are less than 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a $ and $ b $ in $ S $, the number $ a + b $ is divisible by 3. What is the maximum possible number of elements in a subset $ T \\subseteq S $ such that no element in $ T $ is divisible by 3?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 24 and $ n $ is not divisible by 2 or 3. What is the sum of the first 10 elements of $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 + 2023} $ is a rational number. What is the sum of all such $ n $ that are less than 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 12 and $ n $ is not divisible by 3. What is the sum of the first 10 elements of $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 + 2024n + 1} $ is a rational number. How many elements does $ S $ contain?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\frac{n}{\\gcd(n, 100)} $ is a perfect square. Find the sum of all distinct values of $ \\frac{n}{\\gcd(n, 100)} $ for $ n \\leq 1000 $.",
+    "majority_answer": null,
+    "self_consistency_score": 0.7,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 24 and $ n $ is not divisible by 2 or 3. What is the sum of all such $ n $ less than 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the number $ \\gcd(a, b) $ is either 1 or a prime number. Furthermore, the product of all elements in $ S $ is divisible by exactly 100 different primes. What is the maximum possible number of elements in $ S $ that are divisible by a prime greater than 20?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2n + 4} $ is a rational number. Determine the number of elements in $ S $ that are less than or equal to 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the number $ a + b $ is either a perfect square or a perfect cube. What is the maximum possible number of elements in $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2n + 4} $ is a rational number. What is the sum of all elements in $ S $ that are less than 100?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2023} $ is a rational number. Find the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 positive integers such that for any two distinct elements $ a, b \\in S $, the sum $ a + b $ is not divisible by 7. What is the maximum possible number of elements in a subset $ T \\subseteq S $ such that for every pair of distinct elements $ x, y \\in T $, the sum $ x + y $ is also not divisible by 7?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Prove that $ S $ is empty, and determine the number of integers $ m $ between 1 and 1000 for which $ \\sqrt{m} + \\sqrt{m+1} $ is irrational.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than or equal to 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\frac{n^2 + 1}{2n} $ is an integer. Find the sum of all elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the number $ a + b $ is divisible by 17. What is the maximum number of elements in $ S $ that can be congruent to 1 modulo 17?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the number $ a^2 + b^2 $ is divisible by 100. What is the maximum possible number of elements in $ S $ that are congruent to 1 modulo 4?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\left\\lfloor \\frac{n}{2} \\right\\rfloor + \\left\\lfloor \\frac{n}{3} \\right\\rfloor + \\left\\lfloor \\frac{n}{4} \\right\\rfloor = n $. Find the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 20n + 100} $ is a rational number. How many elements does $ S $ have in the range $ 1 \\leq n \\leq 100 $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the number $ \\gcd(a, b) $ is either 1 or a prime number less than 10. What is the maximum possible number of elements in a subset $ T \\subseteq S $ such that for any two distinct elements $ x, y \\in T $, $ \\gcd(x, y) = 1 $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is a rational number. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 12 and $ n $ is not divisible by 3. How many elements of $ S $ are less than or equal to 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 12 and $ n^3 - n $ is divisible by 48. What is the sum of all possible values of $ n $ less than 100 that satisfy both conditions?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 + 2023} $ is a rational number. How many elements does $ S $ contain?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\frac{n^2 + 1}{n + 1} $ is an integer. Find the sum of all such $ n $ less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 + 19n + 99 $ is a perfect square. Find the sum of all elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 24 and $ n $ is not divisible by 2 or 3. What is the sum of the first five elements of $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2023n + 1} $ is a positive integer. Find the number of elements in $ S $.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a, b \\in S $, the number $ a + b $ is never divisible by 17. What is the maximum possible number of elements in a subset $ T \\subseteq S $ such that for any two distinct elements $ x, y \\in T $, the sum $ x + y $ is also not divisible by 17?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is an integer. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\frac{n^2 + 1}{n + 1} $ is an integer. How many such integers $ n $ are there less than 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 + 1 $ is divisible by $ 3 $, and $ n $ is not divisible by $ 3 $. What is the sum of the first 10 elements of $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 12 and $ n $ is not divisible by 3. Find the sum of the first 10 elements of $ S $.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a $ and $ b $ in $ S $, the number $ a + b $ is divisible by 5. What is the maximum possible number of elements in $ S $ that are congruent to 1 modulo 5?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a $ and $ b $ in $ S $, the number $ a + b $ is divisible by 3. Prove that there exists at least one element in $ S $ that is divisible by 3.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the value $ \\gcd(a, b) $ is either 1 or a prime number less than 10. Furthermore, the product of all elements in $ S $ is a perfect square. What is the maximum possible number of elements in $ S $ that are divisible by 2?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. How many such integers $ n $ are there less than 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 20n + 100} $ is a rational number. Find the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Prove that $ S $ is empty, and determine the smallest positive integer $ k $ such that $ \\left\\lfloor \\sqrt{k} + \\sqrt{k+1} \\right\\rfloor = 10 $.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 24 and $ n $ is not divisible by 2 or 3. What is the sum of all such $ n $ less than 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a $ and $ b $ in $ S $, the number $ a^2 + b^2 $ is divisible by 100. What is the maximum possible number of elements in $ S $ that are congruent to 1 modulo 4?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a $ and $ b $ in $ S $, the sum $ a + b $ is either a perfect square or a power of 2. What is the maximum possible number of elements in $ S $ that are congruent to 1 modulo 4?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a, b \\in S $, the sum $ a + b $ is either a perfect square or a perfect cube. What is the minimum possible number of elements in $ S $ that are congruent to 1 modulo 4?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\frac{n^2 + 1}{n + 1} $ is an integer. Determine the sum of all such $ n $ less than 1000 that are divisible by 5.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is a rational number. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than or equal to 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Prove that $ S $ is empty, and determine the smallest positive integer $ k $ such that $ \\sqrt{k} + \\sqrt{k+1} $ is not rational, but $ \\sqrt{k} $ and $ \\sqrt{k+1} $ are both irrational.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the sum $ a + b $ is not divisible by 7. What is the maximum possible number of elements in $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 + 2023} $ is a rational number. How many elements does $ S $ contain?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^3 - 3n^2 + 2n $ is divisible by 24. What is the sum of all possible values of $ n $ modulo 1000 for $ 1 \\leq n \\leq 1000 $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\left\\lfloor \\sqrt{n} \\right\\rfloor $ divides $ n $. Determine the sum of the first 100 elements of $ S $.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2n + 4} $ is a rational number. Find the number of elements in $ S $ that are less than or equal to 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the number $ a^2 + b^2 $ is divisible by 100. What is the maximum possible number of elements in $ S $ such that all elements are congruent modulo 10?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 10 distinct positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the sum $ a + b $ is never divisible by 7. What is the maximum possible number of elements in $ S $ that are congruent to 1 modulo 7?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than or equal to 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 + 19n + 99 $ is divisible by $ n + 1 $. How many elements does $ S $ have?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by $ 12 $ and $ n $ is not divisible by $ 3 $. How many elements of $ S $ are less than or equal to $ 100 $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 + 19n + 99 $ is a perfect square. Find the sum of all elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\frac{n}{\\gcd(n, 100)} $ is a perfect square. Among all such $ n $, what is the sum of the digits of the smallest element of $ S $ that is greater than 100?",
+    "majority_answer": null,
+    "self_consistency_score": 0.7,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a, b \\in S $, the quantity $ \\gcd(a, b) $ divides $ a - b $. Prove that there exists at least one element $ x \\in S $ such that $ x $ is divisible by the square of some prime number.",
+    "majority_answer": null,
+    "self_consistency_score": 0.3,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the number $ \\gcd(a, b) $ is either 1 or a perfect square. Prove that there exists a positive integer $ d $ such that all elements of $ S $ are divisible by $ d $, or that the number of elements in $ S $ that are divisible by some prime $ p $ is at most $ \\left\\lfloor \\frac{2024}{2} \\right\\rfloor $.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 + 1 $ is divisible by $ 3 $. How many elements of $ S $ are less than or equal to 1000 and satisfy the additional condition that $ n $ is congruent to 1 modulo 4?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the quantity $ a^2 + b^2 $ is divisible by $ ab + 1 $. If $ S $ contains exactly four elements, and the smallest element of $ S $ is 1, what is the sum of all possible values of the largest element in $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Prove that $ S $ is empty, and determine the smallest positive integer $ m $ such that $ \\sqrt{m} + \\sqrt{m+1} $ is irrational but its square is rational.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a $ and $ b $ in $ S $, the sum $ a + b $ is divisible by 7. What is the maximum possible number of elements in $ S $ that are congruent to 1 modulo 7?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n $ has exactly 12 positive divisors and the sum of these divisors is divisible by 13. Find the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 0.3,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all integers $ n $ such that $ 1 \\leq n \\leq 1000 $ and $ n $ has exactly three distinct positive divisors. How many integers in $ S $ are also perfect squares?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a, b \\in S $, the number $ a^2 + b^2 $ is divisible by $ ab + 1 $. What is the maximum possible value of $ \\gcd(a, b) $ over all pairs $ a, b \\in S $ with $ a \\neq b $?",
+    "majority_answer": null,
+    "self_consistency_score": 0.8,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 10 distinct positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the number $ a^2 + b^2 $ is divisible by 7. What is the maximum possible number of elements in $ S $ that are congruent to 1 modulo 7?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the value $ \\gcd(a, b) $ is either 1 or a prime number less than 10. What is the maximum possible number of elements in a subset $ T \\subseteq S $ such that no two elements in $ T $ share a common prime factor greater than 1?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the number $ a + b $ is divisible by $ \\gcd(a, b) $. What is the minimum possible value of $ \\max(S) $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 24 and $ n $ is not divisible by 2 or 3. What is the sum of the first five elements of $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the number $ a^2 + b^2 $ is divisible by 7. If $ S $ contains at least three elements, what is the maximum possible number of elements in $ S $ modulo 7?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2n + 4} $ is a rational number. Find the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 + 1 $ is divisible by $ n + 1 $. Determine the sum of all elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2n + 4} $ is a rational number. Determine the number of elements in $ S $ that are less than or equal to 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a finite set of positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the sum $ a + b $ is divisible by 7. If $ |S| = 10 $, what is the maximum possible value of the sum of all elements in $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a $ and $ b $ in $ S $, the number $ a + b $ is either a perfect square or a perfect cube. What is the maximum possible number of elements in a subset $ T \\subseteq S $ such that no two elements in $ T $ sum to a perfect square?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 + 2n} $ is a rational number. Find the number of elements in $ S $ that are less than or equal to 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2n + 4} $ is a rational number. Determine the number of elements in $ S $ that are less than or equal to 100.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the sum $ a + b $ is divisible by 7. What is the maximum possible number of elements in a subset $ T \\subseteq S $ such that no element in $ T $ is a multiple of 7?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 positive integers such that for any two distinct elements $ a $ and $ b $ in $ S $, the product $ ab $ is not divisible by $ 100 $. What is the maximum possible number of elements in $ S $ such that all elements are less than 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 10 distinct positive integers such that for any two elements $ a $ and $ b $ in $ S $, the sum $ a + b $ is never a perfect square. What is the maximum possible value of the largest element in $ S $ if all elements of $ S $ are less than 100?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 10 distinct positive integers such that for any two elements $ a, b \\in S $, the number $ a + b $ is divisible by 7. What is the maximum possible number of elements in $ S $ that are congruent to 1 modulo 7?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two distinct elements $ a, b \\in S $, the value $ \\gcd(a, b) $ is either 1 or a prime number less than 10. What is the minimum possible number of elements in $ S $ that are divisible by 2?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a $ and $ b $ in $ S $, the number $ a + b $ is divisible by 7. What is the maximum possible number of elements in $ S $ that are congruent to 1 modulo 7?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} $ is irrational and the decimal expansion of $ \\sqrt{n} $ begins with the digit 3. What is the smallest integer $ k $ such that there are at least $ k $ elements in $ S $ that are less than 1000 and congruent to 2 modulo 3?",
+    "majority_answer": null,
+    "self_consistency_score": 0.9,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 12 and $ n $ is not divisible by 3. How many elements of $ S $ are less than or equal to 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Prove that $ S $ is empty, and determine the smallest positive integer $ m $ such that $ \\sqrt{m} + \\sqrt{m+1} $ is irrational.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^3 - 3n^2 + 2n $ is divisible by 105. What is the sum of all distinct residues modulo 105 that appear as values of $ n $ in $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 12 and $ n^3 - n $ is divisible by 60. What is the sum of all such $ n $ less than 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2023n + 1} $ is a rational number. Determine the number of elements in $ S $.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by $ 24 $ and $ n $ is not divisible by $ 2 $ or $ 3 $. What is the sum of all such $ n $ less than $ 100 $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n} + \\sqrt{n+1} $ is rational. Determine the number of elements in $ S $ that are less than 1000.",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a $ and $ b $ in $ S $, the number $ a + b $ is either prime or a perfect square. What is the maximum possible number of elements in $ S $ that are odd?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a, b \\in S $, the sum $ a + b $ is never a perfect square. What is the maximum possible number of elements in a subset $ T \\subseteq S $ such that for every pair $ x, y \\in T $, $ x + y $ is also not a perfect square?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 24 and $ n $ is not divisible by 2 or 3. What is the sum of the first five elements of $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a, b \\in S $, the sum $ a + b $ is not divisible by 7. What is the maximum possible number of elements in $ S $ that are congruent to 1 modulo 7?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be a set of 2024 distinct positive integers such that for any two elements $ a, b \\in S $ with $ a \\neq b $, the product $ ab $ is not divisible by 2024. What is the maximum possible number of elements in $ S $?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ \\sqrt{n^2 - 2n + 4} $ is a rational number. How many elements of $ S $ are less than or equal to 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Let $ S $ be the set of all positive integers $ n $ such that $ n^2 - 1 $ is divisible by 24 and $ n $ is not divisible by 2 or 3. How many elements does $ S $ have below 1000?",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  }
+]

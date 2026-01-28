@@ -5,7 +5,7 @@
 REMOTE_TARGET=${1:-"root@194.68.245.20"}
 REMOTE_PATH=${2:-"/workspace/Agent0-curriculum/questions"}
 LOCAL_PATH=${3:-"./"}
-PORT=${4:-"22034"}
+PORT=${4:-"22074"}
 
 echo "🚀 Starting download from ${REMOTE_TARGET}:${REMOTE_PATH} to ${LOCAL_PATH}..."
 

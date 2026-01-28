@@ -1,0 +1,290 @@
+[
+  {
+    "question": "A sequence $\\{a_n\\}$ is defined as follows: $a_1=1$, $a_{n+1}=a_n+(-1)^{n+1}\\cdot n$. Find the value of $a_{100}$.",
+    "predict_answer": "51",
+    "majority_answer": "51",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "-48",
+      "51",
+      "51",
+      "51",
+      "51",
+      "-48",
+      "51",
+      "51",
+      "-48",
+      "51"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\u5728\u25b3ABC\u4e2d\uff0c\u5df2\u77e5\u2220ABC = \u2220ACB\uff0c\u4e14BA = BC\u3002\u5982\u679cAC = Asinx, BC = A (1-2sin^2(x/2)) + A,\u4e14\u5df2\u77e5\u2220A\u662f120\u00b0\uff0c\u6c42BD\u7684p\u500d\u6781\u957f\u7ebf\uff08BD+DA)^2<1+ \\frac{10\\sqrt{10}}{9}",
+    "predict_answer": "4+\\frac{BD}{DA}<4 \\cdot AD^2 \\& ?. x=\\dfrac{1}{4} AD)^2",
+    "majority_answer": "Cannot be determined",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "\u03c0/3",
+      "1",
+      "60",
+      "Cannot be determined",
+      "Cannot be determined",
+      "\\sqrt{3}",
+      "The problem is incomplete and cannot be solved.",
+      "\u03c0/3, \u03c0",
+      "2.124",
+      "Cannot determine the answer due to an ill-defined problem."
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\u8bbe $a, b, c$ \u4e3a\u975e\u8d1f\u5b9e\u6570\u6ee1\u8db3 $a + b + c = 1$\u3002\u6c42 $(1 - a)(1 - b)(1 - c)$ \u7684\u6700\u5927\u503c\u3002",
+    "predict_answer": "\\frac{1}{8}",
+    "majority_answer": "\\frac{8}{27}",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{8}{27}",
+      "\\frac{8}{27}",
+      "\\frac{8}{27}",
+      "\\frac{8}{27}",
+      "\\frac{8}{27}",
+      "\\frac{8}{27}",
+      "\\frac{8}{27}",
+      "\\frac{8}{27}",
+      "\\frac{8}{27}",
+      "\\frac{8}{27}"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "In a circle with radius \\( r \\), a regular pentagon \\( P_1P_2P_3P_4P_5 \\) is inscribed. A regular pentagon \\( Q_1Q_2Q_3Q_4Q_5 \\) is circumscribed around the same circle. A line segment \\( P_iQ_j \\) is drawn for each pair \\( (i, j) \\) where \\( 1 \\leq i, j \\leq 5 \\). Find the total length of all such line segments.",
+    "predict_answer": "\\text{The total length of all line segments is } 25\\sqrt{5}",
+    "majority_answer": "25r",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "25r",
+      "36.589r",
+      "36.589r",
+      "25r",
+      "25r",
+      "36.59r",
+      "25r",
+      "25r",
+      "36.589r",
+      "5(\\sqrt{5}+1)r"
+    ],
+    "tool_calls": [
+      2,
+      3,
+      3,
+      0,
+      5,
+      4,
+      1,
+      1,
+      3,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\u5f7c\u5f97\u62e5\u6709\u4e00\u5f20\u65e0\u9650\u5927\u7684\u7eb8\u5f20\uff0c\u4ed6\u5728\u7eb8\u4e0a\u4f7f\u7528\u9ed1\u8272\u548c\u767d\u8272\u4e24\u79cd\u989c\u8272\u8fdb\u884c\u6d82\u8272\u3002\u6bcf\u8f6e\u4ed6\u53ef\u4ee5\u9009\u62e9\u4e24\u4e2a\u76f8\u90bb\u7684\u65b9\u683c\uff08\u4e0a\u4e0b\u5de6\u53f3\u65b9\u5411\uff09\uff0c\u6d82\u6210\u76f8\u540c\u989c\u8272\u3002\u521d\u59cb\u65f6\uff0c\u6574\u4e2a\u7eb8\u5f20\u90fd\u662f\u767d\u8272\u7684\u3002\u4ed6\u8fdb\u884ck\u8f6e\u64cd\u4f5c\u540e\uff0c\u8bb0\u4e0b\u7ed3\u679c\u3002\u8bf7\u95ee\u6709\u591a\u5c11\u79cd\u4e0d\u540c\u7684\u989c\u8272\u6a21\u5f0f\uff08\u5bf9\u4e8e\u7ed9\u5b9a\u7684k\uff09\u53ef\u4ee5\u5b9e\u73b0\uff1f\n\n\u5047\u8bbek\u4e3a\u7ed9\u5b9a\u7684\u6b63\u6574\u6570\uff0c\u4e14\u6ca1\u6709\u989d\u5916\u7684\u7ea6\u675f\u6761\u4ef6\u3002",
+    "predict_answer": "\\text{The number of distinct color patterns is } 2^{k+1}.",
+    "majority_answer": "No general closed-form solution can be determined.",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "I don't know",
+      "No general closed-form solution can be determined.",
+      "Cannot be determined",
+      "Unable to solve",
+      "",
+      "\\text{Depends on k}",
+      "f(k)",
+      "(k+1)^2",
+      "A general solution cannot be determined.",
+      "No closed-form solution exists."
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\u5728\u4e00\u4e2a\u4e0d\u900f\u660e\u7684\u76d2\u5b50\u4e2d\uff0c\u6709n\uff08n\u22652\uff09\u4e2a\u989c\u8272\u4e92\u4e0d\u76f8\u540c\u7684\u7403\uff0c\u7f16\u4e3a1\uff0c2\uff0c3\uff0c...\uff0cn\uff0c\u73b0\u4ece\u4e2d\u4efb\u62ffk={A}\uff08k\u2264n\uff09\u4e2a\u7403\u3002\u82e5\u6709\u4e00\u7403\u7684\u7f16\u53f7\u4e3ak\uff08\u5373\u4eae\u7403\uff09\u800c\u4e14\u8fd9\u4e00\u7403\u7684\u7f16\u53f7\u6c38\u8fdc\u6bd4\u4ece\u201c1\u201d\u5230\u201ck-1\u201d\u4e2d\u4efb\u4e00\u53f7\u7801\u51fa\u73b0\u5148\u540e\u6240\u7f16\u7684\u53f7\u7801\u90fd\u5927\uff0c\u5219\u79f0\u8fd9\u4e00\u53d6\u6cd5\u4e3a\u6700\u4f73\u53d6\u6cd5\u3002\u6c42\u8bc1\uff0c\u5728n\u4e2a\u7403\u4e2d\u4efb\u53d6k=1\uff0c2\uff0c3\uff0c...\uff0cn\u7684\u6240\u6709\u53d6\u6cd5\u4e2d\uff0c\u6070\u6709(n-k)k\u4e2a\u662f\u6700\u4f73\u53d6\u6cd5\u3002\u5177\u4f53\u5730\u8bf4, \u6700\u4f73\u53d6\u6cd5\u7684\u6570\u91cf=\u4e2d${A(}_{n}^{1}=(n-1)\u00b71)$\uff0c${A(}_{n}^{2}=(n-2)\u00b72)$\uff0c${A(}_{n}^{3}=(n-3)\u00b73)$\uff0c... ${A(}_{n}^{n-1}=1\u00b7(n-1))$\u4e2a\u3002${A(}_{n}^{k})={(n-k)}\u00b7k)$\n::<math>\n\tk.userightarrow 11{}n)\n</math>\n>:::.collector>\"\u6fb3\u5927\u5229\u4e9a\u7684\u6bd4\u5f7b\u59c6-\u897f\uff08Becheretteff\uff09\u7ade\u8d5b\uff09\u63d0\u51fa\u8fc7\u4e00\u4e2a\u5f88\u50cf\u7684\u95ee\u9898, \u8fd9\u4e2a\u95ee\u9898\u9664\u4e86\u516c\u5f00\u6587\u732e\u8f6c\u8f7d\u8fc7, \u8fd8\u901a\u8fc7\u7f51\u7edc\u4f20\u64ad\u3002",
+    "predict_answer": "\\forall k \\in \\{1, 2, ..., n\\}, \\\\$\n    $A(n, k) = (n - k) \\cdot k",
+    "majority_answer": "(n-k)k",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "(n-k)k",
+      "C(n-k, k-1)",
+      "C(n-k, k-1)",
+      "C(n-k, k-1)",
+      "\\binom{n-k}{k-1}",
+      "The problem statement is incorrect.",
+      "The problem statement is incorrect.",
+      "(n-k)k",
+      "\\binom{n-k}{k-1}",
+      "(n-k)k"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "{A clearly-written mathematical expression of the question statement, as a common format of contest-math problems, on one or more lines}",
+    "predict_answer": "final_answer",
+    "majority_answer": "",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\u8bbe\u6709\u4e00\u4e2a\u4e09\u4f4d\u6570 $abcd$\uff08\u5176\u4e2d $a$, $b$, $c$, $d$ \u4ee3\u8868\u56db\u4f4d\u4e0d\u540c\u7684\u975e\u96f6\u6570\u5b57\uff09\uff0c\u6ee1\u8db3\uff1a\n- $abcd + eabc = efabc$\uff0c\u5176\u4e2d $e$, $f$ \u4e5f\u662f\u975e\u96f6\u6570\u5b57\uff1b\n- $fabc - dca = gbc$\uff0c\u5176\u4e2d $g$, $c$ \u4e5f\u662f\u975e\u96f6\u6570\u5b57\uff1b\n- $gbc / dc = aa$\uff0c\u4e14 $da > 9$\uff1b\n\u73b0\u5c06\u4e0a\u8ff0\u65b9\u7a0b\u7ec4\u7684\u89e3\u6570 $n$ \u6c42\u51fa\u3002",
+    "predict_answer": "n = 8",
+    "majority_answer": "0",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\u8003\u8651\u4e00\u4e2a\u7531\u6b63\u6574\u6570\u7ec4\u6210\u7684\u6709\u9650\u6570\u5217 \\( a_1, a_2, \\ldots, a_n \\)\uff0c\u5176\u4e2d\u6bcf\u4e2a\u6570 \\( a_i > 1 \\)\u3002\u5b9a\u4e49\u6570\u5217\u7684\u201c\u6742\u4ea4\u503c\u201d \\( h(a_1, a_2, \\ldots, a_n) \\) \u4e3a\uff1a\n\\[ h(a_1, a_2, \\ldots, a_n) = \\frac{\\sum_{i=1}^{n} \\sqrt{a_i}}{\\sqrt[6]{\\prod_{i=1}^{n} a_i}}. \\]\n\u8bc1\u660e\u5b58\u5728\u5e38\u6570 \\( C \\) \u4f7f\u5f97\u5bf9\u4e8e\u4efb\u4f55\u8fd9\u6837\u7684\u6570\u5217\uff0c\u5747\u6709\n\\[ h(a_1, a_2, \\ldots, a_n) \\leq C. \\]",
+    "predict_answer": "C = \\sqrt[6]{2^{n-1}}",
+    "majority_answer": "C",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "C",
+      "There is no such constant C",
+      "no such C exists",
+      "\\text{False}",
+      "\\text{The problem statement is incorrect. There is no such constant C.}",
+      "C",
+      "4.5",
+      "C",
+      "5",
+      "5"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  }
+]

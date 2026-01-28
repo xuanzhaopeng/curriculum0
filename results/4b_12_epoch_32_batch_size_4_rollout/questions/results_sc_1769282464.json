@@ -1,0 +1,760 @@
+[
+  {
+    "question": "A sequence \\( a_1, a_2, a_3, \\ldots \\) is defined by \\( a_1 = 1 \\), \\( a_2 = 2 \\), and for \\( n \\geq 3 \\),\n\\[ a_n = a_{n-1} + a_{n-2} + (-1)^{n} \\cdot n. \\]\nFind the remainder when \\( a_{2023} \\) is divided by 10.",
+    "majority_answer": "5",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "5",
+      "0",
+      "5",
+      "5",
+      "5",
+      "1",
+      "3",
+      "3",
+      "5",
+      "5"
+    ],
+    "tool_calls": [
+      1,
+      0,
+      1,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\u041d\u0430 \u043f\u043b\u043e\u0441\u043a\u043e\u0441\u0442\u0438 \u0437\u0430\u0434\u0430\u043d \u043e\u0442\u0440\u0435\u0437\u043e\u043a [AB] \u0438 \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u043e \u0442\u043e\u0447\u0435\u043a S, \u043a\u043e\u0442\u043e\u0440\u043e\u0435 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043f\u043e\u0434\u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u043e\u043c \u0432\u0441\u0435\u0445 \u0442\u043e\u0447\u0435\u043a \u043f\u043b\u043e\u0441\u043a\u043e\u0441\u0442\u0438. \u0417\u0430\u0444\u0438\u043a\u0441\u0438\u0440\u0443\u0435\u043c \u0442\u043e\u0447\u043a\u0443 \\(C\\) \u0432\u043d\u0443\u0442\u0440\u0438 \u043e\u0442\u0440\u0435\u0437\u043a\u0430 [AB] \u0438 \u0440\u0430\u0441\u0441\u043c\u043e\u0442\u0440\u0438\u043c \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u043e \u0433\u0430\u0440\u043c\u043e\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0442\u043e\u0447\u0435\u043a, \u043d\u0430\u0445\u043e\u0434\u044f\u0449\u0438\u0445\u0441\u044f \u043d\u0430 \u043a\u0430\u0436\u0434\u043e\u043c \u0438\u0437 \u0440\u0430\u0434\u0438\u0443\u0441-\u0432\u0435\u043a\u0442\u043e\u0440\u043e\u0432 \u0442\u043e\u0447\u0435\u043a (\u0442\u043e\u0447\u043a\u0430 \\(C_i\\) \u0433\u0430\u0440\u043c\u043e\u043d\u0438\u0447\u0435\u0441\u043a\u0438 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0442\u043e\u0447\u043a\u0435 \\(C_i\\) \u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0442\u043e\u0447\u0435\u043a\\(A_i\\) \u0438 \\(B_i\\)). \u041d\u0430\u0439\u0434\u0438\u0442\u0435 \u0441\u0443\u043c\u043c\u0443 \\(S\\) \u043f\u0440\u043e\u0438\u0437\u0432\u0435\u0434\u0435\u043d\u0438\u0439 \u0433\u0430\u0440\u043c\u043e\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0442\u043e\u0447\u0435\u043a \u043e\u0431\u043b\u0430\u0441\u0442\u0438 \\(AB\\) \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0430\u0445\u043e\u0434\u044f\u0442\u0441\u044f \u043d\u0430 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044e\u0449\u0438\u0445 \u0440\u0430\u0434\u0438\u0443\u0441-\u0432\u0435\u043a\u0442\u043e\u0440\u0430\u0445 \\(C_i\\).",
+    "majority_answer": "0",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "Incomplete",
+      "((2ab - ac - bc) / (a+b-2c))^2 * \u03a3 x\\_i * y\\_i",
+      "0",
+      "Cannot be determined",
+      "N/A",
+      "Cannot be determined",
+      "Undefined",
+      "0",
+      "0",
+      "The problem is unsolvable with the given information."
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "{The full problem statement on one or more lines}",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "In the complex plane, let $A,$ $B,$ and $C$ be the points corresponding to the complex numbers $z,$ $2z,$ and $3z,$ respectively. Determine the number of feet per second at which a point $P$ will travel, if from every integer minute, $P$ travels a perimeter around $\\triangle ABC$. Given that $z = \\sqrt{2} + \\sqrt{3}i,$ find $\\lim_{t \\to \\infty} \\frac{d}{dt}\\left(\\text{distance traveled by } P\\right)t^{1/2}.$",
+    "majority_answer": "\\infty",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "\\infty",
+      "\\infty",
+      "\\infty",
+      "\\infty",
+      "\\infty",
+      "\\infty",
+      "\\infty",
+      "\\infty",
+      "0",
+      "\\infty"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\(ABC\\) be an acute triangle with circumradius \\(R\\) and orthocenter \\(H\\). Let \\(D\\), \\(E\\), and \\(F\\) be the feet of the altitudes from \\(A\\), \\(B\\), and \\(C\\) respectively. If \\(EF\\) is equal to \\(2R - AH\\), find the value of \\(\\angle BAC\\).\n\nAssume that the lengths \\(a\\), \\(b\\), and \\(c\\) of sides opposite to \\(A\\), \\(B\\), and \\(C\\) respectively, and the circumradius \\(R\\) are all positive real numbers.",
+    "majority_answer": "60",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "60",
+      "60^\\circ",
+      "60^\\circ",
+      "No solution found",
+      "60",
+      "60",
+      "60",
+      "60",
+      "60",
+      "60"
+    ],
+    "tool_calls": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "A right-angled triangle has a hypotenuse of length 10 units. The area of the triangle is 24 square units. What is the length of the shorter leg of the triangle?",
+    "majority_answer": "6",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "6",
+      "6",
+      "6",
+      "6",
+      "6",
+      "6",
+      "6",
+      "6",
+      "6",
+      "6"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\u5728\u5e73\u9762\u76f4\u89d2\u5750\u6807\u7cfb\u4e2d\uff0c\u8003\u8651\u5706 \\(C_1\\) \u4e0e\u76f4\u7ebf \\(L\\) \u7684\u4ea4\u70b9\u3002\u5982\u679c\u5c06 \\(C_1\\) \u6cbf\u6c34\u5e73\u65b9\u5411\u5411\u53f3\u79fb\u52a8\uff0c\u4f7f\u5f97 \\(C_1\\) \u4e0e \\(L\\) \u4ea4\u70b9\u7684 \\(y\\) \u5750\u6807\u4fdd\u6301\u4e0d\u53d8\uff0c\u800c \\(x\\) \u5750\u6807\u589e\u52a0\u4e86 \\(1\\) \u5355\u4f4d\uff0c\u90a3\u4e48\u65b0\u7684\u5706 \\(C'_1\\) \u4ecd\u901a\u8fc7\u539f\u70b9 \\((0,0)\\)\uff0c\u5e76\u4e0e \\(L\\) \u4ea4\u4e8e\u53e6\u4e00\u70b9 \\(P\\)\u3002\u8bbe \\(P\\) \u70b9\u7684 \\(x\\) \u5750\u6807\u4e3a \\(x_2\\), \u95ee \\(x_2\\) \u7684\u53d6\u503c\u8303\u56f4\u662f\u4ec0\u4e48\uff1f",
+    "majority_answer": "(-\\infty, 0) \\cup (0, \\infty)",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "(-\\infty, \\infty)",
+      "(-\\infty, 0) \\cup (0, \\infty)",
+      "(-\\infty, \\infty)",
+      "(-\\infty, 0) \\cup (0, \\infty)",
+      "(0, \\infty)",
+      "(-\\infty, 0) \\cup (0, \\infty)",
+      "(-\\infty, 0) \\cup (0, \\infty)",
+      "(-\\infty, \\infty)",
+      "Cannot determine a numerical range",
+      "(0, \\infty)"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "{The full problem statement on one or more lines}",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "\u5047\u8bbe\u6709\u4e00\u4e2a\u4e09\u89d2\u5f62\uff0c\u5176\u5e95\u8fb9\u957f\u4e3a \\(b = 7\\) cm\uff0c\u9ad8\uff08\u5782\u76f4\u4e8e\u5e95\u8fb9\u7684\u957f\u5ea6\uff09\u4e3a \\(h = 12\\) cm\u3002\u6c42\u8fd9\u4e2a\u4e09\u89d2\u5f62\u7684\u9762\u79ef\u3002\n\n\\(\\boxed{final\\_answer}\\)\n\n\u4f60\u80fd\u5e2e\u6211\u8ba1\u7b97\u4e00\u4e0b\u8fd9\u4e2a\u4e09\u89d2\u5f62\u7684\u9762\u79ef\u5417\uff1f",
+    "majority_answer": "42",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "42",
+      "42",
+      "42",
+      "42",
+      "42",
+      "42",
+      "42",
+      "42",
+      "42",
+      "42"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Find all integer solutions \\((x, y)\\) to the equation \\(x^3 + y^3 = 999\\). Prove that no other integer solutions exist.",
+    "majority_answer": "(12, -9), (-9, 12), (10, -1), (-1, 10)",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "(12, -9), (-9, 12), (10, -1), (-1, 10)",
+      "(12, -9), (-9, 12), (10, -1), (-1, 10)",
+      "(12, -9), (-9, 12), (10, -1), (-1, 10)",
+      "(12, -9), (-9, 12), (10, -1), (-1, 10)",
+      "(12, -9), (-9, 12), (10, -1), (-1, 10)",
+      "(12, -9), (-9, 12), (10, -1), (-1, 10)",
+      "(12, -9), (-9, 12), (10, -1), (-1, 10)",
+      "(12, -9), (-9, 12), (10, -1), (-1, 10)",
+      "(12, -9), (-9, 12), (10, -1), (-1, 10)",
+      "(10, -1), (-1, 10), (12, -9), (-9, 12)"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Five points \\( A, B, C, D, E \\) lie on a circle in that order. The lines \\( AC \\) and \\( BD \\) intersect at a point next to \\( B \\). One additional point \\( F \\) is chosen such that point \\( F \\) lies on the line segment \\( BD \\) and \\( BF = FD \\). If the measure of angle \\( \\angle BAC = 60^\\circ \\) and the measure of angle \\( \\angle ABP = 70^\\circ \\) where \\( P = AC \\cap BD \\), find the measure of angle \\( \\angle DCE \\).",
+    "majority_answer": "50",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "50",
+      "10",
+      "10",
+      "50",
+      "20",
+      "Cannot be determined",
+      "No solution",
+      "40",
+      "50",
+      "50"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\( f(x) = \\sqrt{x + \\sqrt{x + \\sqrt{x + \\cdots}}} \\). Given that \\( f(1) = \\sqrt{2} \\), find the value of \\( f(2) \\). Express your answer as a simple radical.",
+    "majority_answer": "2",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\( f(x) \\) be a polynomial with integer coefficients such that for any positive integer \\( n \\), the polynomial \\( f(n) \\) is a perfect square. Furthermore, \\( f(x) \\) satisfies the condition that for \\( x = 1, 2, 3, 4 \\), the values \\( f(1), f(2), f(3), f(4) \\) are the first four terms of an arithmetic sequence. Determine all possible polynomials \\( f(x) \\) of degree at most 2.",
+    "majority_answer": "f(x) = k^2",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "f(x) = k^2",
+      "f(x) = k^2",
+      "f(x) = k^2",
+      "f(x) = k^2",
+      "f(x) = k^2",
+      "f(x) = k^2",
+      "f(x) = k^2",
+      "f(x) = k^2",
+      "f(x) = k^2",
+      "f(x) = m^2"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\( f(x) \\) be a function defined on the interval \\( [0, 1] \\) such that \\( f(x) = \\int_0^x (t^2 - t) \\sin(\\pi t) \\, dt \\). Determine the number of points in the interval \\( [0, 1] \\) where the function \\( f(x) \\) has its maximum and minimum values.",
+    "majority_answer": "2",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "A rectangle is inscribed in an isosceles right triangle whose legs have length 10 such that one vertex of the rectangle coincides with the right-angle vertex of the triangle and the two sides containing the right angle of the triangle are divided into exactly 8 and 12 equal parts. Find the area of the rectangle.",
+    "majority_answer": "25",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "25",
+      "25",
+      "25",
+      "25",
+      "25",
+      "25",
+      "25",
+      "25",
+      "25",
+      "25"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "{The full problem statement on one or more lines}",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "{The full question on one or more lines}",
+    "majority_answer": "",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\( S \\) be the set of all positive integers \\( n \\) such that \\( n \\) divides the product \\( 1 \\cdot 2 \\cdot 3 \\cdots 100 \\) but does not divide \\( 1 \\cdot 2 \\cdot 3 \\cdots 99 \\). Find the sum of all elements in \\( S \\).",
+    "majority_answer": "100",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "495000",
+      "100",
+      "100",
+      "38372534226851169992393474718984043199999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+      "100",
+      "100",
+      "5451221330453737800",
+      "100",
+      "100",
+      "485100"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "{The full problem statement on one or more lines}",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "In the complex plane, the vertices of a triangle represent the solutions to the equation \\( z^2 + 2z + 5 = 0 \\). Find the area of the triangle formed by these points. Express your answer in terms of \\( \\pi \\).",
+    "majority_answer": "2",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "\\frac{2}{\\pi}\\pi",
+      "2",
+      "2",
+      "0",
+      "2",
+      "2",
+      "0",
+      "2",
+      "2"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\( n \\) be a positive integer. Compute the number of integer solutions \\((x, y)\\) to the inequality\n\\[ n^2 - x^2 - y^2 < 2ny + x. \\]\n\nProvide your answer in the form of a function of \\( n \\), denoted as \\( f(n) \\).",
+    "majority_answer": "2n^2 + 2n + 1",
+    "self_consistency_score": 0.8,
+    "total_samples": 10,
+    "all_answers": [
+      "\\text{The number of integer solutions is infinite.}",
+      "2n^2 + 2n + 1",
+      "2n^2 + 2n + 1",
+      "2n^2 + 2n + 1",
+      "2n^2 + 2n + 1",
+      "2n^2 + 2n + 1",
+      "2n^2 + 2n + 1",
+      "2n^2 + 2n + 1",
+      "2n^2 + 2n + 1",
+      "2n^2 + n + 1"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Find the smallest positive integer \\( n \\) such that \\( 2^n + n \\) is a perfect square, and prove that \\( n \\) cannot be expressed as the sum of two distinct perfect squares.",
+    "majority_answer": "There is no such n",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "There is no such n",
+      "\\text{No such n exists}",
+      "174",
+      "6",
+      "No solution found",
+      "6",
+      "I am unable to provide a solution",
+      "I am unable to provide an answer",
+      "No solution exists",
+      "6"
+    ],
+    "tool_calls": [
+      2,
+      0,
+      2,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Find the smallest positive integer \\( n \\) such that the polynomial \\( P(x) = x^n + 1 \\) has a root that is a root of unity aside from 1, and the multiplicity of this root in the polynomial \\( P(x) \\) is exactly 2.",
+    "majority_answer": "6",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "6",
+      "There is no such n",
+      "6",
+      "\\text{No solution}",
+      "\\text{No solution}",
+      "0",
+      "0",
+      "6",
+      "6",
+      "6"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Find all positive integers \\( n \\) such that the product of the digits of the number \\( n^2 \\) is equal to \\( n \\). Prove that there are only a finite number of such integers.",
+    "majority_answer": "1",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "In a game, there are four independent events with respective probabilities given by $\\frac{3}{4}, \\frac{4}{5}, \\frac{5}{6}$. Let $p$ and $q$ be coprime positive integers such that $\\frac{p}{q}$ is the probability that none of these events occurs. Provide $\\frac{p + q}{2}$.",
+    "majority_answer": "60.5",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "360.5",
+      "60.5",
+      "121/2",
+      "\\frac{841}{2}",
+      "180.5",
+      "360.5",
+      "121/2",
+      "\\frac{361}{2}",
+      "68",
+      "121/2"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "A function \\( f: \\mathbb{R} \\to \\mathbb{R} \\) satisfies the property that for all real numbers \\( x \\) and \\( y \\),\n\\[ f(x + y) = f(x)f(y) - f(xy) + x + y. \\]\nGiven that \\( f(2) = 5 \\), find \\( f(3) \\).",
+    "majority_answer": "3",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "7",
+      "3",
+      "9",
+      "3",
+      "3",
+      "3",
+      "7",
+      "3",
+      "3",
+      "3"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "{The full problem statement on one or more lines}",
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "A sequence of positive integers \\(a_1, a_2, a_3, \\ldots, a_{10}\\) is defined as follows: \\(a_1 = 1\\), and for \\(n \\geq 2\\), \\(a_n\\) is the smallest integer greater than \\(a_{n-1}\\) that is not relatively prime to \\(a_{n-1}\\). Find the value of \\(a_{10}\\).",
+    "majority_answer": "20",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "20",
+      "14",
+      "16",
+      "15",
+      "14",
+      "20",
+      "18",
+      "20",
+      "20",
+      "18"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  }
+]

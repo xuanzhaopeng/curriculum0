@@ -1,0 +1,2423 @@
+[
+  {
+    "question": "A number is given and three different rolls are made on a fair die. Each face of the die has an equal chance of being rolled. What is the probability of rolling a number with a digit greater than 5 and an even number in both rolls?",
+    "majority_answer": "1/216",
+    "self_consistency_score": 0.8,
+    "total_samples": 10,
+    "all_answers": [
+      "1/216",
+      "1/216",
+      "1/216",
+      "1/216",
+      "1/216",
+      "1/24",
+      "1/216",
+      "1/216",
+      "1/24",
+      "1/216"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Suppose there exists a positive real number $ a $ such that for all positive integers $ n $, the inequality $ a^n + a^n \\ge a^{2n+1} $ holds true. Determine the value of $ a $.",
+    "majority_answer": "1",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Given a square ABCD with side length $ s $, and two diagonals intersecting at point $ O $ such that $ \\angle AOB = \\theta $, and $ \\angle COD = \\theta $, calculate the ratio of the length of diagonal AC to the length of diagonal BD in terms of $ \\theta $.",
+    "majority_answer": "1",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a warehouse, there are exactly 100 boxes labeled with numbers from 1 to 100. Each box contains 12 apples. If each employee in the warehouse takes exactly 2 apples away from the boxes, how many apples are left in the warehouse?",
+    "majority_answer": "1000",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "1000",
+      "1000",
+      "1000",
+      "0",
+      "1000",
+      "0",
+      "0",
+      "1000",
+      "0",
+      "0"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A rectangle has a length $ l $ and a width $ w $. The diagonal is perpendicular to the length of the rectangle. Let $ x $ be the length of the diagonal. What is the relationship between the length and the width of the rectangle?",
+    "majority_answer": "l^2 + w^2 = x^2",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "There is no solution.",
+      "l^2 + w^2 = x^2",
+      "l^2 + w^2 = x^2",
+      "l^2 + w^2 = x^2",
+      "l^2 + w^2 = x^2",
+      "l=0",
+      "l^2 + w^2 = x^2",
+      "\\text{No valid relationship",
+      "Impossible",
+      "l^2 + w^2 = x^2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "The number of ways to choose a committee of 3 people from a group of 10 is equal to the number of ways that can be formed using the letters A, B, C, D, E, F, G, H, I, J. Each letter represents a person, and two letters are considered the same if they are identical. Compute the value of this total number.",
+    "majority_answer": "120",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a kennel, there are three pairs of animals: one pair with 5 males and 5 females, and two pairs with 3 males and 1 female and 1 male, respectively. If the probability of a male reaching the entrance gate is equal to the probability of a female reaching it, what is the number of animals that enter the entrance gate?",
+    "majority_answer": "18",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "18",
+      "18",
+      "18",
+      "18",
+      "18",
+      "18",
+      "18",
+      "18",
+      "18",
+      "18"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A number is written on a board as follows:  \n$ 23354621 $  \nAfter which, the digits at the first and second positions are removed and the remaining digits are concatenated, next to each other. What is the result?",
+    "majority_answer": "354621",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "354621",
+      "354621",
+      "354621",
+      "354621",
+      "354621",
+      "354621",
+      "354621",
+      "354621",
+      "354621",
+      "354621"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Suppose you are given the set of integers from 1 to $2N$, and you need to choose one integer from the set such that the product of all the integers in the set is divisible by $n$. How many such numbers are there for different values of $N$?",
+    "majority_answer": "Cannot provide a single numerical answer",
+    "self_consistency_score": 0.1,
+    "total_samples": 10,
+    "all_answers": [
+      "Cannot provide a single numerical answer",
+      "f(N, n)",
+      "",
+      "The problem is not well-defined.",
+      "number of x in {1, 2, ..., 2N",
+      "2N",
+      "\\text{number of divisors of",
+      "The number of integers depends on the value of n",
+      "The number of such numbers depends on the values of N and n. There is no general closed-form expression.",
+      "\\text{The number of"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A square is divided into four congruent right triangles by drawing two perpendicular diagonals. What is the ratio of the area of the square to the area of the triangles?",
+    "majority_answer": "4",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "4",
+      "4",
+      "1",
+      "2",
+      "4",
+      "4",
+      "4",
+      "4",
+      "4",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A bag contains 5 red balls, 4 blue balls, and 1 green ball. What is the probability that a randomly selected ball is green?",
+    "majority_answer": "1/10",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1/10",
+      "1/10",
+      "1/10",
+      "1/10",
+      "1/10",
+      "1/10",
+      "1/10",
+      "1/10",
+      "1/10",
+      "1/10"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A bag contains 12 red balls, 8 blue balls, and 3 green balls. What is the probability that a randomly selected ball is green, given that there are 90 balls in total?",
+    "majority_answer": "\\frac{1",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{1",
+      "\\frac{3",
+      "7/9",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{3",
+      "7/9",
+      "\\frac{3",
+      "\\frac{3"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Suppose there are $m$ people at a party where each person independently chooses to either stay or leave. Let $X$ denote the remaining number of people at the party after each person independently decides to stay or leave. What is the expected number of people remaining after 100 people have left, given that exactly $k$ people stayed at the party initially?",
+    "majority_answer": "\\max(0, k-100)",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "k-100",
+      "k/2",
+      "\\max(0, k-100)",
+      "\\max(0, k-100)",
+      "\\max(0, k - 100)",
+      "k/2",
+      "\\max(0, k-100)",
+      "\\max(0, k-100)",
+      "\\max(0, k-100)",
+      "\\max(0, k-100)"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A bakery sells milk tea and cookies. The profit of making one ounce of milk tea is $0.50 and the profit of making one ounce of cookies is $0.30. Write a system of equations to model the problem where the bakery's profit is $120, and the total production of milk tea and cookies is 150 ounces, and let $x$ be the number of ounces of milk tea and $y$ be the number of ounces of cookies. Solve the system of equations to find the number of ounces of milk tea and cookies sold.",
+    "majority_answer": "-225",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "-225",
+      "x = 375, y = -225",
+      "x = 375, y = -225",
+      "-225",
+      "-225",
+      "75",
+      "-225",
+      "-225",
+      "75",
+      "-225"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Consider a sequence where each term is defined as the sum of the previous two terms. Starting with 1 and 2, create a closed-form formula for the nth term of the sequence, and determine the value of the 10th term.",
+    "majority_answer": "89",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "89",
+      "89",
+      "89",
+      "89",
+      "89",
+      "89",
+      "89",
+      "89",
+      "89",
+      "89"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A cube has a volume of $ V = 6 $, and each face is painted either red or blue. The goal is to determine the minimum number of red faces that must be painted for the cube to have an even number of red faces, given any one face painting configuration is unpainted.",
+    "majority_answer": "0",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Consider a right triangle with integer side lengths, and the sum of its three integer sides is a perfect square number. Find the dimensions of such a triangle.",
+    "majority_answer": "16, 63, 65",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "16, 63, 65",
+      "16, 63, 65",
+      "16, 63, 65",
+      "(16, 63, 65)",
+      "(16, 63, 65)",
+      "(16, 63, 65)",
+      "16, 63, 65",
+      "9, 12, 15",
+      "(16, 63, 65)",
+      "16, 63, 65"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Let five students, each with a unique set of numbers, were given a population lock where each student tried a different password using the numbers they chose. The first student used `2, 2, 3, 4, 5` to unlock a lock; the second student used `1, 3, 4, 5, 6` to unlock the same lock; the third student tried `2, 3, 4, 5, 6` to unlock it; the fourth student tried `1, 2, 3, 4, 5`; and the fifth student tried `1, 2, 3, 4, 6`. How many students successfully unlocked the lock?",
+    "majority_answer": "1",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "0",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a school with 540 students, exactly half of the students confess that they are taller than all other students, and exactly half of the students did not confess that they are taller than all other students. \nWhat is the total number of students who looked taller than all other students?",
+    "majority_answer": "270",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "270",
+      "1",
+      "270",
+      "270",
+      "270",
+      "1",
+      "270",
+      "270",
+      "1",
+      "270"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Let $a$ and $b$ be positive integers such that $a^2 + b^2 = c$ and $c = a + b + 2$. Find the minimum value of $c$.",
+    "majority_answer": "5",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "5",
+      "5",
+      "5",
+      "5",
+      "5",
+      "5",
+      "5",
+      "5",
+      "5",
+      "5"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of students has 4.5 kilograms of an orange fruit, and they decide to share the fruit in such a way that no more than one student gets more than 40% of the fruit. What is the maximum amount of orange that can be shared by a student at most?",
+    "majority_answer": "4.5",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "4.5",
+      "4.5",
+      "4.5",
+      "4.5",
+      "4.5",
+      "1.8",
+      "1.8",
+      "1.8",
+      "1.8",
+      "4.5"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two circles with radii $r$ and $R$ intersect each other at right angles. Find the area of the quadrilateral formed by the intersection points of the circles and the center of the smaller circle.",
+    "majority_answer": "rR",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "rR",
+      "rR",
+      "\\frac{1",
+      "rR",
+      "\\frac{1",
+      "\\frac{1",
+      "rR",
+      "\\frac{1",
+      "rR",
+      "\\frac{1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a class of 60 students, each student flips a coin, and each coin has three sides: heads, tails, and a probability of 1/3 for each. If all coins are separately flipped and the results are counted, what is the probability that exactly 30 students end up with an odd number of tosses and exactly 20 students end up with an even number of tosses?",
+    "majority_answer": "0",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "\\frac{60!",
+      "0.00455574202",
+      "0",
+      "2.507725172975005e-04",
+      "\\frac{60!",
+      "\\frac{60!",
+      "0.0189",
+      "0.004510142755481117",
+      "0"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A tin contains $ 36 $ upcycled bottles and $ 12 $ custom-made bottles. With a set of matching flute percussion instruments, each bottle from a custom-made type can be used either as a wall clapper, table clapper, or as a serf clapper. Each percussion instrument is used for only one bottle type. If the number of clappers used exceeds the number of percussion instruments, the remaining clappers can be used as serfs. What is the minimum number of clappers needed to satisfy all the percussion instrument requirements?",
+    "majority_answer": "48",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "12",
+      "48",
+      "48",
+      "12",
+      "12",
+      "48",
+      "48",
+      "12",
+      "48",
+      "48"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Solve for $ x $ in the equation:  \n$$\n\\sqrt{5x + 3} + 2 = \\sqrt{12x + 9}\n$$",
+    "majority_answer": "\\frac{26 + 4\\sqrt{177",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{26 + 4\\sqrt{177",
+      "\\frac{26 + 4\\sqrt{177",
+      "\\frac{26 + 4\\sqrt{177",
+      "\\frac{26 + 4\\sqrt{177",
+      "\\frac{26 + 4\\sqrt{177",
+      "\\frac{26 + 4\\sqrt{177",
+      "\\frac{26 + 4\\sqrt{177",
+      "\\frac{26 + 4\\sqrt{177",
+      "\\frac{26 + 4\\sqrt{177",
+      "\\frac{26 + 4\\sqrt{177"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Five employees, A, B, C, D, and E, receive tasks. The total number of possible pairs of tasks they can work on is 3. Task 1 and Task 2 must be completed in parallel, and Task 3 and Task 4 must be completed in parallel. How many total pairs of workbooks can be worked on?",
+    "majority_answer": "3",
+    "self_consistency_score": 0.8,
+    "total_samples": 10,
+    "all_answers": [
+      "3",
+      "8",
+      "30",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A pyramid of stones is made with the following rules. The number of stones at each layer is twice the number of stones at the previous layer, starting from the top. If the total number of stones in the final layer is 4, how many stones were in the base layer?",
+    "majority_answer": "8",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "8",
+      "8",
+      "8",
+      "8",
+      "8",
+      "8",
+      "4",
+      "4",
+      "4",
+      "8"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A rectangle has sides of length 3 and 5 units. An equation could be presented in the following form:  \n$ x^2 + y^2 = c(x + y) $, where $ c $ is a constant and $ x $ and $ y $ are the sides of the rectangle. Find the value of $ c $.",
+    "majority_answer": "\\frac{17",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{17",
+      "\\frac{17",
+      "\\frac{17",
+      "\\frac{17",
+      "\\frac{17",
+      "\\frac{17",
+      "\\frac{17",
+      "\\frac{17",
+      "\\frac{17",
+      "\\frac{17"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a population of 300 individuals, a test for a disease has a positive predictive value of 85% and a false negative rate of 10%. What is the probability that a person with a positive test result actually has the disease?",
+    "majority_answer": "0.85",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "0.85",
+      "0.85",
+      "0.85",
+      "0.85",
+      "0.85",
+      "0.85",
+      "0.85",
+      "0.85",
+      "0.85",
+      "0.85"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Consider three boxes, each with a different number of jelly beans. The first box has $ x $ jelly beans, the second has $ 2y + 3 $, and the third has $ y $. Each box can only hold a maximum of $ 10 $ jelly beans. What is the minimum number of jelly beans that can be in the second box given the constraints?",
+    "majority_answer": "3",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Let $ a $ and $ b $ be real numbers such that $ 2a + 3b = 5 $, and $ a + b = 2 $. Solve for $ a $ and $ b $.",
+    "majority_answer": "1",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "a=1, b=1",
+      "1",
+      "a=1, b=1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "a=1, b=1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a group of 18 participants, each participant is asked to solve a puzzle. One puzzle involves calculating the sum of all integers from 1 to 18. However, each participant can only solve half of the puzzles, and each puzzle must be solved by one person only. How many participants must solve the puzzles to ensure that each participant solves the puzzle correctly and no one else?",
+    "majority_answer": "9",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "9",
+      "9",
+      "9",
+      "9",
+      "9",
+      "9",
+      "9",
+      "9",
+      "9",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Find the number of ways to choose 5 cards from a standard 52-card deck, such that the first and last cards are both spades.",
+    "majority_answer": "3057600",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "3057600",
+      "3057600",
+      "3057600",
+      "3057600",
+      "3057600",
+      "3057600",
+      "3057600",
+      "3057600",
+      "3057600",
+      "3057600"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two different employees are working in a plant to produce toxic poison in each cell of a single plant that is cannot be attributable to any cell in the other plant. Each plant is 200 square meters wide and has a width of 2 meters. The workman B has a 45-degree angle to his shoulder when securing new plant materials. How many different areas of the plant are affected by the coating on the workmen from his workshaft?",
+    "majority_answer": "200",
+    "self_consistency_score": 0.2,
+    "total_samples": 10,
+    "all_answers": [
+      "200",
+      "4",
+      "1.5708",
+      "400",
+      "Cannot be determined",
+      "200",
+      "12.566",
+      "1.57",
+      "800",
+      "1.57"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A number is chosen at random from the integers 1 through 499, inclusive. What is the probability that the number has at least six prime factors and the number is even?",
+    "majority_answer": "0",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{8",
+      "0",
+      "\\frac{23",
+      "0",
+      "\\frac{21",
+      "27/499",
+      "\\frac{16",
+      "6/499",
+      "6/499",
+      "0"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A concert tickets require that each ticket is priced at a rate that is 2 higher than the ticket price of the previous priced tickets. A group of 6 singers wants to buy tickets such that all their ticket prices are unique and no two tickets of the same price can be purchased together. What is the minimum price of the first ticket that can be purchased?",
+    "majority_answer": "1",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A set of integers has the following properties: all elements are positive integers, and for any three distinct elements, the sum of a pair of elements is smaller than the sum of the other two. Determine how many elements are in the set.",
+    "majority_answer": "3",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "3",
+      "3",
+      "3",
+      "4",
+      "4",
+      "4",
+      "4",
+      "4",
+      "3",
+      "3"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A school is trying to find the total number of ways to arrange 3 teams, each with 5 members, at a championship. The conflict is that since every team must have an even number of members from a previous year's championship, 2 of the members might be replaced. Find the original number of ways to replace them based on this conflict.",
+    "majority_answer": "1000",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1000",
+      "1000",
+      "1000",
+      "1000",
+      "1000",
+      "1000",
+      "1000",
+      "1000",
+      "1000",
+      "1000"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Suppose you have a set of numbers in the range $ [-1, 10] $, and you pick $ N $ numbers such that all the numbers picked are integers and at least one number is between $ 0 $ and $ 10 $. You are to determine the maximum number of numbers that can be picked in such a set, assuming you must ensure that there's at least once a number in the final set that is between $ 0 $ and $ 10 $.",
+    "majority_answer": "12",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "12",
+      "12",
+      "12",
+      "12",
+      "12",
+      "12",
+      "12",
+      "12",
+      "12",
+      "12"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Let $ x $ and $ y $ be numbers such that $ xy + x + y = 2016 $. Find the minimum value of $ x + y $.",
+    "majority_answer": "-2020",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "-2020",
+      "2\\sqrt{2017",
+      "-2020",
+      "-2020",
+      "-2020",
+      "-2020",
+      "-2020",
+      "2\\sqrt{2017",
+      "-2\\sqrt{2017",
+      "-2020"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Let $ N(x, y) $ be a function defined for integers $ x, y \\geq 1 $ such that $ N(x, y) = x + y + xy $. What is the value of $ N(2, 3) $?",
+    "majority_answer": "11",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "11",
+      "11",
+      "11",
+      "11",
+      "11",
+      "11",
+      "11",
+      "11",
+      "11",
+      "11"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "How many positive integers less than 1000 can be expressed as a sum of three distinct positive integers, each of which is prime and greater than 10?",
+    "majority_answer": "161",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "161",
+      "161",
+      "161",
+      "161",
+      "181",
+      "658",
+      "1285",
+      "327",
+      "1680",
+      "214"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A box contains triangles and squares. In the box, there are 10 triangles and 50 squares. The probability that a randomly selected triangle has an equal side length of 5 is \\boxed{ \\frac{1}{4} }.",
+    "majority_answer": "\\frac{1",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A line segment with length 30 units is drawn from the point $ (0, 4) $. The line segment is extended beyond the point $ (0, 4) $ in a parabola-like constructing manner, intersecting the x-axis at the point $ (15, 0) $. Calculate the length of the segment between the point $ (15, 0) $ and the point $ (0, 4) $.",
+    "majority_answer": "\\sqrt{241",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "\\sqrt{241",
+      "\\sqrt{241",
+      "\\sqrt{241",
+      "\\sqrt{241",
+      "\\sqrt{241",
+      "\\sqrt{241",
+      "\\sqrt{241",
+      "\\sqrt{241",
+      "\\sqrt{241",
+      "\\sqrt{241"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A rectangular region has a length of 6 units and a width of 4 units. A square is inscribed in the rectangle such that its sides are parallel to the rectangle's sides. The side length of the square is $ x $. If the area of the square must be equal to the area of the rectangle, find the possible side lengths of the square.",
+    "majority_answer": "2\\sqrt{6",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "2\\sqrt{6",
+      "2\\sqrt{6",
+      "2\\sqrt{6",
+      "2\\sqrt{6",
+      "2\\sqrt{6",
+      "2\\sqrt{6",
+      "2\\sqrt{6",
+      "2\\sqrt{6",
+      "2\\sqrt{6",
+      "2\\sqrt{6"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A sequence of numbers is generated such that each term is obtained by squaring the previous one and adding the product of its successor and ancestors. The sequence begins with $ a_1 = 2 $, $ a_2 = 3 $, and follows this rule: $ a_n = a_{n-1}^2 + a_{n-1}a_{n-2} \\cdot a_{n-3} $. $ a_1 = 2 $ and $ a_2 = 3 $ are given. Find the value of $ a_5 $.",
+    "majority_answer": "76950",
+    "self_consistency_score": 0.8,
+    "total_samples": 10,
+    "all_answers": [
+      "76950",
+      "76950",
+      "76950",
+      "113400",
+      "113400",
+      "76950",
+      "76950",
+      "76950",
+      "76950",
+      "76950"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A sequence of numbers is generated such that for any integer $ m \\geq 2 $, the $ m $-th term of the sequence is equal to the sum of the squares of the first $ m-1 $ terms. Let $ a_{m} $ denote the $ m $-th term of the sequence, and define $ a_{1} = 1 $. Find the value of $ a_{20} $.",
+    "majority_answer": "a_{19",
+    "self_consistency_score": 0.2,
+    "total_samples": 10,
+    "all_answers": [
+      "32332309555575777789484228949345574650430587578882783429231295762696271788860423436587787698988934984861202935990539379847343555499995317109476642770898289104497255673698934660855382205325271589324396849769837753773994826505339818357337273642808094466777978260975936927755835282055773747274989923888890972186",
+      "3410733418305335227134494161957833772720734342583907815777965857230785235776350079348821616448060332964287598941092720300137111079140374355797557141951999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+      "36355975273501489498306984305937029785249179955063810648993215729875427452599990993999638794969472859665383163959447270392964827798475986793199893323153954414879310134506628642749079746759793890780845157995727979619891780385396448574298444555727079938857404274429845395290282739864999791122795609588408080011723674564236534332033327274510273225754999239452779326944591899285269776343662449420224997529957539197818480840261499972414499574414434944144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144144",
+      "Unable to determine",
+      "a_{19",
+      "a_{19",
+      "885069880505499088977600991477126868864",
+      "13630151274475600791332234944896844455152757174061444695878851424074092686054663871347579725386789346291409122123922697992555094743572602563972984269147476859518608252537778495294288945963629427489937374927996587714469982191877463554959971984318522296674541748375757847599088947267064573465214589964555895706",
+      "3327577170127755944127071930412597275514205482514271573968531994530960276944807222224424572213857228515285141513233314797396887882814214153155699682035154783488",
+      "33053471414766588441531795577277349118497351680"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "",
+    "majority_answer": null,
+    "self_consistency_score": 0.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": []
+  },
+  {
+    "question": "Suppose you have two numbers $ a $ and $ b $, and it is known that $ a + b = s $ and $ ab = t $. Now, suppose you also know that $ a^2 + b^2 = 10 $ and $ a - b = 2 $. Find the values of $ a $ and $ b $.",
+    "majority_answer": "a = -1, b = -3 \\text{ or",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "a=-1, b=-3 \\text{ or",
+      "a=3, b=1",
+      "a = -1, b = -3 \\text{ or",
+      "a = -1, b = -3 \\text{ or",
+      "a=3, b=1 \\text{ or",
+      "a = -1, b = -3 \\text{ or",
+      "a = -1, b = -3 \\text{ or",
+      "a = 3, b = 1",
+      "a = -1, b = -3",
+      "a = -1, b = -3 \\text{ or"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two reprinted photos were found in the kitchen. One photo revealed how much money he was giving away, the other photo illustrated something about the relationship between the number of coins he gave in a week and the numbers given on the coins themselves. The couple is now at the beginning of a free-for-all fundraiser. The goal is to find out how much the couple must contribute to their family picnic, given the possibilities described.",
+    "majority_answer": "Insufficient Information",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "\\$10",
+      "Insufficient Information",
+      "\\$5",
+      "130",
+      "5",
+      "0.50",
+      "20",
+      "5",
+      "Insufficient Information",
+      "Insufficient Information"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Solve the equation $ 2x + 3 = 7x - 5 $ and find the value of $ (5x - 10)(x - 2) $.",
+    "majority_answer": "\\frac{4",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{4",
+      "\\frac{4",
+      "\\frac{4",
+      "\\frac{4",
+      "\\frac{4",
+      "\\frac{4",
+      "\\frac{4",
+      "\\frac{4",
+      "\\frac{4",
+      "\\frac{4"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A rectangular box has a volume $ V = x \\times y \\times z $, where $ x, y, z $ are the dimensions of the box. A student initially thought it's a cube, so he reason that all sides are the same. However, upon realizing that $ x \\neq y \\neq z $, he starts investigating different possible numbers for $ x, y, z $ to see if this condition holds true. But after realizing that a cube is still a cube, he moves to considering a rectangular prism where $ x, y, z $ are not necessarily the same. What is the smallest positive integer value of $ x, y, z $ such that the volume equation holds true for some integer values and satisfies the real-world condition (i.e., no side is zero)?",
+    "majority_answer": "6",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "6",
+      "1, 2, 3",
+      "6",
+      "1, 2, 3",
+      "1, 2, 3",
+      "1",
+      "1",
+      "6",
+      "6",
+      "6"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A box contains 12 balls, numbered from 1 to 12. Each ball has a red label and a blue label. The yellow label on each ball is the sum of the distinct prime factors of its number. What is the probability that a randomly chosen ball from the box has a label that is both a prime number and appears in the box?",
+    "majority_answer": "\\frac{11",
+    "self_consistency_score": 0.8,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{11",
+      "\\frac{11",
+      "\\frac{2",
+      "\\frac{11",
+      "\\frac{11",
+      "\\frac{5",
+      "\\frac{11",
+      "\\frac{11",
+      "\\frac{11",
+      "\\frac{11"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a game of chance, each player uses a die that is biased such that rolling a 3 or a 4 is more likely. What is the probability that a player rolls a composite number (a number created by rolling two or more dice)?",
+    "majority_answer": "\\frac{1",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "1/3",
+      "1/3",
+      "\\frac{1",
+      "1/3",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{1",
+      "\\frac{7",
+      "3/8",
+      "\\frac{1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Three players play a game involving points on a circular track with radius 1. Each player is starting from a point on the track and must move counter-clockwise and rotate around the track by a quarter turn (90 degrees, or \u03c0/2 radians) before their turn ends. The track has n arcs, with each arc having length $2\\pi$ radians and each point divided equally into one of n equal arcs. What is the probability that the last point is not picked during the game?",
+    "majority_answer": "27/64",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{n-1",
+      "27/64",
+      "\\left(1 - \\frac{2",
+      "27/64",
+      "27/64",
+      "27/64",
+      "\\left(\\frac{n-1",
+      "27/64",
+      "27/64",
+      "\\frac{(n-1)^3"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two small airplanes travel from A to B and B to A, respectively, at constant speeds (different speeds v1 and v2, where v1 \u2260 v2). The distance between A and B is S. How many times does the distance between the airplanes be less than the distance between AB and B and vice versa?",
+    "majority_answer": "2",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "2",
+      "2",
+      "0",
+      "1",
+      "1",
+      "2",
+      "2",
+      "2",
+      "1",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of 74 tourists traveled to a particular place. The tourist's vote for a specific topic was in favor of 30 individuals. Each tourist visited the place exactly once. How many different ways can the tourists have visited the place and votes for the topic?",
+    "majority_answer": "222275674073908100000",
+    "self_consistency_score": 0.1,
+    "total_samples": 10,
+    "all_answers": [
+      "222275674073908100000",
+      "1727737269765751000000",
+      "2222888920870156640",
+      "192225689727899246557436",
+      "22222504324550340",
+      "192225683794288040",
+      "1922255359797289868750",
+      "235571202895137200000",
+      "222229162875244464680",
+      "172742785992997560000"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "How many integers $ n $ are there such that if we remove all the digits in the number $ n $, then the remaining digits do not have any repeated digits?",
+    "majority_answer": "8877690",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "8877690",
+      "8877690",
+      "8877690",
+      "8927690",
+      "9873290",
+      "The problem is not well-defined.",
+      "8877690",
+      "8877690",
+      "The problem is not well-defined.",
+      "8877690"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A system of equations is presented, and the goal is to find the integer values of x and y that satisfy the system, where $ x $ and $ y $ are integers. The system is given as follows:\n\n$$\n\\begin{cases}\n2x + 3y = 9 \\\\\n4x - 5y = 13\n\\end{cases}\n$$\n\nFind the integer solutions for $ x $ and $ y $.",
+    "majority_answer": "No integer solutions",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "no integer solutions",
+      "No integer solutions",
+      "\\text{No integer solutions",
+      "No integer solutions",
+      "No integer solutions",
+      "No integer solutions",
+      "\\text{No integer solutions",
+      "\\text{No integer solutions",
+      "No integer solutions",
+      "\\text{No integer solutions"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a magical library, there are heaps of books. Each heap is divided by a door, and a magical spell casts an invisible spell that splits every book into two. Initially, there is one book in each heap. After some days, all heaps are empty except for three specific ones. How many books are in total?",
+    "majority_answer": "3",
+    "self_consistency_score": 0.8,
+    "total_samples": 10,
+    "all_answers": [
+      "3",
+      "3",
+      "3",
+      "3",
+      "6",
+      "3",
+      "3",
+      "3",
+      "7",
+      "3"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two people, A and B, each have a bag containing distinct marbles. A bag contains 40 marbles with numbers 1 through 40, and B's bag contains marbles with numbers from 1 to 35 (since 40 - 35 = 5). A speaks a secret message to B, where A's message contains the sum of the numbers of marbles in A's bag. Find the probability that B gets a sum of 20 or more.",
+    "majority_answer": "1",
+    "self_consistency_score": 0.8,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "0.9999999970896169",
+      "1",
+      "\\frac{16",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Let me think of a problem based on a combination of geometry and algebra. Imagine a square plate of side length 10, and within it, a smaller square of side length $ x $ such that the area of overlap is 80. Can you find the value of $ x $?",
+    "majority_answer": "4\\sqrt{5",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "4\\sqrt{5",
+      "4\\sqrt{5",
+      "4\\sqrt{5",
+      "4\\sqrt{5",
+      "4\\sqrt{5",
+      "4\\sqrt{5",
+      "4\\sqrt{5",
+      "4\\sqrt{5",
+      "4\\sqrt{5",
+      "4\\sqrt{5"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a square grid, each cell is marked with a number from 1 to n\u00b2. After performing the following operations:\n\n1. Flip the bits (0 turns right, 1 turn left) of an arbitrary cell  \n2. Flip the bits (0 turns up, 1 turns down) of the cell directly below a cell marked with only 1  \n3. Flip the bits (0 turns right, 1 turns left) of the cell directly to the right of a cell marked with only 0  \nRepeat these operations for each cell in the grid.  \nWhat is the result of these operations on the winning cell?",
+    "majority_answer": "flipped",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "",
+      "The cell's value is flipped if and only if (the cell above has a value of 1) XOR (the cell to the left has a value of 0).",
+      "Unknown",
+      "1",
+      "flipped",
+      "The bit of the winning cell is flipped.",
+      "Cannot be determined",
+      "flipped",
+      "The state of the winning cell is flipped if the number of cells above it with value 1 and the number of cells to its left with value 0 have the same parity. Otherwise, the state of the winning cell remains the same.",
+      "flipped"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A tailor makes a pair of earrings by folding three identical rectangular pieces of fabric. The lengths of the sides of the earrings are measured with the help of a compass and a measuring ruler. A circumference of the neck is the sum of the lengths of all the pieces used in each side of the pair. What is the total length of all the pieces used in the earrings?",
+    "majority_answer": "6",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "6",
+      "Cannot be determined",
+      "\\text{Cannot be determined",
+      "Unsolvable",
+      "6",
+      "6",
+      "Cannot be determined",
+      "6",
+      "6",
+      "6"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Solve for $ x $ in the equation $ 2x + 3 = 7x - 5 $.",
+    "majority_answer": "\\frac{8",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{8",
+      "\\frac{8",
+      "\\frac{8",
+      "\\frac{8",
+      "\\frac{8",
+      "\\frac{8",
+      "\\frac{8",
+      "\\frac{8",
+      "\\frac{8",
+      "\\frac{8"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two students, Ann and Brian, are playing a paper air balloon game where each has $6$ colored balloons. Ann places her balloons in the top of a round balloon, and Brian does the same but with a different configuration in a circular arc that only contains the points equidistant from the center of the circular arc. Ann places her balloons perfectly in contact with Brian's during the relaxing time. How many balanced configurations are there for Ann and Brian to have their balloons also touch each other?",
+    "majority_answer": "720",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "720",
+      "518400",
+      "720",
+      "12",
+      "720",
+      "86400",
+      "720",
+      "86400",
+      "720",
+      "720"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "If a number is written in centuries and years, how many different pairs of numbers can be represented by different sender and receiver in one hour if the number supports the full century cycle of its whole number system?",
+    "majority_answer": "12956400",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "9900",
+      "4950",
+      "129,599,640,000",
+      "129599640000",
+      "35994000",
+      "9900",
+      "12956400",
+      "12956400",
+      "99990000",
+      "12956400"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A cone has a base with radius $ r $ and height $ h $. A rating system is applied where $ R $ depends on the base radius $ r $ and height $ h $. The rating system satisfies $ R^2 = 2r^2 + 2rh + 3h^2 $. What is the relationship between $ R $, $ r $, and $ h $? Specifically, find the value of $ R $ in terms of $ r $ and $ h $, and determine whether the relationship is linear, quadratic, or cubic.",
+    "majority_answer": "\\sqrt{2r^2 + 2rh + 3h^2",
+    "self_consistency_score": 0.8,
+    "total_samples": 10,
+    "all_answers": [
+      "\\sqrt{2r^2 + 2rh + 3h^2",
+      "R = \\sqrt{2r^2 + 2rh + 3h^2",
+      "\\sqrt{2r^2 + 2rh + 3h^2",
+      "\\sqrt{2r^2 + 2rh + 3h^2",
+      "\\sqrt{2r^2 + 2rh + 3h^2",
+      "R = \\sqrt{2r^2 + 2rh + 3h^2",
+      "\\sqrt{2r^2 + 2rh + 3h^2",
+      "\\sqrt{2r^2 + 2rh + 3h^2",
+      "\\sqrt{2r^2 + 2rh + 3h^2",
+      "\\sqrt{2r^2 + 2rh + 3h^2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a town of 1000 children, each child has a unique hat with numbers from 1 to 1000. Each child's hat number is different, and every 2 people, a hat is used to toss one of them between them, increasing their chances of getting one. What is the probability that a child will receive exactly one more hat than they originally have?",
+    "majority_answer": "1/1000",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{999",
+      "1/500",
+      "1/1000",
+      "0",
+      "999 * (1/2)^{999",
+      "1/500",
+      "1/2",
+      "1/1000",
+      "1/1000",
+      "\\frac{999"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A cube has 24 smaller cubes, each with an integer edge length. The number of smaller cubes with edge lengths that are multiples of 2, 3, or 5 is exactly 16. How many smaller cubes have edge lengths that are multiples of 7?",
+    "majority_answer": "1",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "0",
+      "3",
+      "8",
+      "1",
+      "1",
+      "0",
+      "1",
+      "3",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A family of 10 students is playing a game where each student is given a single-digit number 1 through 10. They collect points by rolling each of their colored controllers, and the sum of the multipliers for the controllers in the set of controllers that contain the numbers 5 and 6 at the same time produces a score. A student's score depends on the number of favorable controllers each has. Let\u2019s say that the controller for number 5 is the only one with controller number 5, and the controller for number 6 is the only one with controller number 6. How many students score a full score?",
+    "majority_answer": "0",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a square ABCD with side length 2, point E is located such that AE = 3 and BE = 2\u221a3. The lines AE and BE intersect the diagonal AC and BD respectively. What is the length of the diagonal of the square?",
+    "majority_answer": "2\\sqrt{2",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "2\\sqrt{2",
+      "2\\sqrt{2",
+      "2\\sqrt{2",
+      "2\\sqrt{2",
+      "2\\sqrt{2",
+      "2\\sqrt{2",
+      "2\\sqrt{2",
+      "2\\sqrt{2",
+      "2\\sqrt{2",
+      "2\\sqrt{2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A person originates a new flamingo named Bob in disbelief, where the negro flag was folded in half and then removed, resulting in a new configuration. If a person is handed a randomly selected ace card with a black face, what is the probability that the card has the face showing up once on its optical character design?",
+    "majority_answer": "1",
+    "self_consistency_score": 0.8,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "1",
+      "1",
+      "0",
+      "0",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Let $ a $ and $ b $ be positive real numbers. Let $ f(x) = \\frac{\\sqrt{x}}{1 + \\sqrt{x}} $. Find the minimum value of $ f(f(x)) $ for $ x \\geq 1 $.",
+    "majority_answer": "\\sqrt{2",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "\\sqrt{2",
+      "\\sqrt{2",
+      "\\sqrt{2",
+      "\\sqrt{2",
+      "\\sqrt{2",
+      "\\sqrt{2",
+      "\\sqrt{2",
+      "\\sqrt{2",
+      "\\sqrt{2",
+      "\\sqrt{2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of 8 students participates in a competition where each student has a probability of 0.3 of scoring an A in a math competition and 0.7 of scoring an A in a computer programming competition. A student can choose to participate in both competitions as well. If the student chooses to participate in both, they will get double the score they get in a single competition. What is the expected score of a student who wants to maximize their score on both competitions?",
+    "majority_answer": "2",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "2.0",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A number of marbles is placed in a square formation. Each marble is small enough to be placed precisely in one of the eight directions from an existing marble. It is known that there are no marbles in the center and that the total number of marbles is three more than the number of marbles in the outer layer. What is the total number of marbles?",
+    "majority_answer": "15",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "15",
+      "15",
+      "15",
+      "15",
+      "15",
+      "15",
+      "15",
+      "9",
+      "15",
+      "15"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of 100 students is scheduled for a math competition. Each student is given a unique number from 1 to 100. The competition requires a special round where each student must solve a problem related to their number, and the only way to solve it is by solving their own number problem. In this round, three of the students must solve three different problems. The remaining students are only allowed to solve problems related to numbers that are not their numbers. What is the minimum number of rounds required to ensure all students solve at least one problem?",
+    "majority_answer": "1",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "2",
+      "2",
+      "1",
+      "2",
+      "1",
+      "1",
+      "3",
+      "1",
+      "2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two distinct integers $ x $ and $ y $ satisfy the equation $ x^2 - y = 1 $, and $ x^2 + y^2 = 1 $. Determine the number of integer pairs $ (x, y) $ that satisfy the system.",
+    "majority_answer": "3",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a city with 4000 houses, each house has a probability of 1/2 of being empty. What is the probability that at least one house remains vacant after 100 randomly selected out of 4000 houses have been chosen and removed?",
+    "majority_answer": "1",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "1 - 2^{-3900",
+      "1.0",
+      "1",
+      "1.0",
+      "1",
+      "1",
+      "1",
+      "1 - (1/2)^{100",
+      "1",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a math competition, a car is twice as fast as a cyclist, and both children start at the same time. The cyclist covers 30 km in 2 hours. After two hours, the cyclist takes a rest and continues, while the car continues to move. How far does the car travel in total before it stops?",
+    "majority_answer": "60",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "60",
+      "120",
+      "60",
+      "120",
+      "120",
+      "60",
+      "90",
+      "120",
+      "60",
+      "60"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of students is repeatedly told a sequence of numbers where the number \"6\" appears exactly once. The sequence consists of the first 10 numbers, and the students are told that every time a \"6\" appears, they hear a string of some poems. The first occurrence of \"6\" in the sequence is at position 3, and the employer wants to collaborate with this group to determine the poetic message they heard when four measurements are taken. The students will randomly select numbers from the given sequence for each measurement, and they will be asked to reveal the time\u2014how many measurements were taken before a \"6\" was heard. First, determine the time when the first \"6\" was heard and then calculate the expected number of measurements that result in \"6\" when selecting numbers from the sequence.",
+    "majority_answer": "0.4",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "0.4",
+      "0.4",
+      "0.4",
+      "0.4",
+      "0.4",
+      "0.4",
+      "0.4",
+      "0.4",
+      "0.4",
+      "0.4"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two people stand at the center of a square circular room. They move on a straight line. First, this person walks 30 meters, then a third of the distance from that starting point to the center, then the second person walks 30 meters. How many meters can they walk in total before they have to stop facing along the straight line?",
+    "majority_answer": "70",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "70",
+      "70",
+      "70",
+      "70",
+      "70",
+      "70",
+      "70",
+      "60",
+      "70",
+      "70"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of teachers and students at a school has a total of 700 students and 200 teachers. If 30% of the teachers are absent due to a flu, calculate the total number of students who are absent from school.",
+    "majority_answer": "0",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "60",
+      "Insufficient information",
+      "0",
+      "60",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a magical land where each stone has a unique number, you find that the product of the numbers on adjacent stones is always strictly greater than the numbers on non-adjacent stones. What is the number of such triangles where each vertex is a stone of the land, and each side consists of stones such that the product of the two adjacent stones is greater than the one opposite to them?",
+    "majority_answer": "Cannot be determined",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "Cannot be determined",
+      "The problem is ill-defined and has no finite solution.",
+      "4",
+      "0",
+      "\\binom{n",
+      "Cannot be determined",
+      "Cannot be determined",
+      "1",
+      "Cannot be determined",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A game of magic squares is played with a 4x4 magic square, and each cell contains a number from 1 to 49. The magic square has the property that the sum of the cells in each row, column, and the two main diagonals is the same. These four numbers that form the first row of the square are $ a, b, c, d $. How many different sets of numbers $ (a, b, c, d) $ are there?",
+    "majority_answer": "5085024",
+    "self_consistency_score": 0.2,
+    "total_samples": 10,
+    "all_answers": [
+      "5085024",
+      "5187072",
+      "5085984",
+      "5185440",
+      "11054112",
+      "10378368",
+      "5085024",
+      "211876",
+      "5187072",
+      "484288"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a geometric sequence where the difference between consecutive terms is never equal to the sum of the previous two terms, how many different possible starting points are there for such a sequence of length 5?",
+    "majority_answer": "3",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "3",
+      "infinitely many",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "\\infty",
+      "2",
+      "3"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two students, A and B, are playing with cards. Each card has a number corresponding to a number between 1 and 100. Each student starts with a different number of cards: A has 5 cards and B has 7 cards. A has a special rule: he can only draw a card with remainder 1 when drawing an even number of cards. B has a special rule: he can only draw a card with remainder 2 when drawing an odd number of cards. Determine the total number of valid cards that can be drawn from the set, assuming all cards are initially available.",
+    "majority_answer": "20",
+    "self_consistency_score": 0.2,
+    "total_samples": 10,
+    "all_answers": [
+      "76",
+      "83",
+      "1",
+      "93",
+      "20",
+      "67",
+      "100",
+      "20",
+      "100",
+      "99"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A square has sides of length 10, and there are 10 squares arranged so that each square is placed such that their top edges touch the sides of the square. What is the length of one side of the square that is smaller than the side of the larger square that has been placed next to it?",
+    "majority_answer": "1",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "Cannot be determined",
+      "1",
+      "No unique solution",
+      "1",
+      "Insufficient information",
+      "0.2",
+      "1",
+      "2/9",
+      "Cannot be determined",
+      "\\frac{2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A rectangular bin has a length $ L $, width $ W $, and height $ H $. The bin is filled with sand, and after each 1000 mL of sand is poured out and water is collected, a 10-liter container is filled with sand only. Initially, the bin is empty with sand (no water), and each container is only filled with sand and not with water. After pouring out 10 liters without filling the container initially, the sand level in the container decreases by 5 liters and the sand level is equal to the height of the water level in the container. What is the total capacity of the rectangular bin?",
+    "majority_answer": "Insufficient information",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "25",
+      "Insufficient information",
+      "20",
+      "Insufficient information",
+      "15",
+      "15",
+      "Inconclusive",
+      "Unsolvable",
+      "Insolvable",
+      "Insufficient information"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A person has 12 reusable bags of rice in total. Each bag has 5 kilograms of rice. One bag is removed, and the remaining eight bags are then sold as five kgs each. What is the total amount of rice the person now has?",
+    "majority_answer": "15",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "15",
+      "15",
+      "15",
+      "15",
+      "15",
+      "15",
+      "15",
+      "15",
+      "15",
+      "15"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a city, there are three hours of television shows. Each show can be paused or played, and each show is represented by different standers on a radio. The task is to determine the number of show combinations that result in exactly one selection of channels, assuming each channel is either on or off, and each channel is associated with a unique number from 1 to 4.",
+    "majority_answer": "8",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "518918400",
+      "3",
+      "8",
+      "4",
+      "8",
+      "12",
+      "16",
+      "8",
+      "8",
+      "4"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A and B are playing a game where each turn they choose a number from the set {1, 2, 3, 4, 5, 6} or a digit from the set {0, 5, 8}. They take two turns each. A wins if one of the numbers chosen on the first turn is a prime number and a digit chosen on the second turn is a multiple of 5. B wins if both numbers chosen on the first turn and the second turn are non-zero digits. What is the probability that A wins the game?",
+    "majority_answer": "1/3",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1/3",
+      "1/3",
+      "1/3",
+      "1/3",
+      "1/3",
+      "1/3",
+      "1/3",
+      "1/3",
+      "1/3",
+      "1/3"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a city, there are 36 students who have to travel to different degrees. Each degree requires a distinct and unique person to meet the requirements, and each student can only meet with one new person each week. If the students arrived in two different modes, one being the independent degree, and the other being the coordinate degree, how many students will remain after exactly six weeks of meetings?",
+    "majority_answer": "36",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "36",
+      "36",
+      "36",
+      "36",
+      "0",
+      "0",
+      "36",
+      "36",
+      "0"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two people, A and B, are playing a game where each round they pick a number from 1 to 10 inclusive. Each number picked must be unique to the person who picked it. They take turns picking the numbers until one of them has picked all 10 numbers. What is the probability that A will win on their first turn?",
+    "majority_answer": "0",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "0",
+      "\\frac{1",
+      "0",
+      "0",
+      null,
+      "0",
+      "0",
+      null,
+      "0"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a exhibition, there are numbered boxes. Each box contains an integer number from 1 to N, such that no two integers from the same bucket contain a number that is not in either the bucket or any number beyond it in the same or any time.",
+    "majority_answer": "2^{N-1",
+    "self_consistency_score": 0.2,
+    "total_samples": 10,
+    "all_answers": [
+      "Cannot determine",
+      "\\text{{1",
+      "Cannot be determined",
+      "\\binom{2N-1",
+      "N",
+      "2^{N-1",
+      "2^{N-1",
+      "Unsolvable without further clarification",
+      "N!",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A boy walks on a straight line with a speed of 4 meters per second, and his mother walks on the same line with a speed of 6 meters per second. He starts at a place $ P $, she starts at the same place $ Q $, and both start walking together. If the time taken by the boy to walk from $ P $ to the point 30 meters away from $ Q $ is reduced by half, how many meters can the mother walk away from $ Q $ before returning to $ P $?",
+    "majority_answer": "11.25",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "18",
+      null,
+      "11.25",
+      "The problem is flawed.",
+      "10",
+      "11.25",
+      "0",
+      "11.25",
+      "11.25"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A square has side length 4. A point is in the middle of its diagonal. The point is moved either clockwise or counterclockwise around a circle of radius $ r $, where $ r $ is the radius of the circle. Determine the smallest possible distance from the original diagonal to the new point after each move, assuming the circle is packed tightly around the circle.",
+    "majority_answer": "0",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "0",
+      "\\frac{r",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "How many ways can you arrange 5 distinct books on a shelf such that no two books with the same number of pages are next to each other?",
+    "majority_answer": "120",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120",
+      "120"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A rectangle is formed by concatenating three-digit numbers: 123 and 456. What is the area of the rectangle formed by this concatenation?",
+    "majority_answer": "56088",
+    "self_consistency_score": 0.7,
+    "total_samples": 10,
+    "all_answers": [
+      "579",
+      "56088",
+      "56088",
+      "56088",
+      "56088",
+      "123456",
+      "56088",
+      "6",
+      "56088",
+      "56088"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "\\boxed{A group of students decided to plant trees in a rectangular garden. The garden has two rows with n trees each, and each tree requires a space of 3 units in length and 1 unit in height. What is the minimum number of trees they need to plant so that the total area of the garden is sufficient to plant all these trees?}",
+    "majority_answer": "2",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Let $ a $ and $ b $ be two real numbers such that $ a + b = 10 $, $ ab = -30 $. What is the value of $ a^2 + b^2 $?",
+    "majority_answer": "160",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "160",
+      "160",
+      "160",
+      "160",
+      "160",
+      "160",
+      "160",
+      "160",
+      "160",
+      "160"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of 50 students participated in a mathematics competition. It is known that 40% of the students answered a question correctly. 15 students who answered the correct question got a point, 20 students who answered incorrectly got 3 points each, and 5 students who answered correctly got 1 point each. How many points was the total score of all the students?",
+    "majority_answer": "80",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "80",
+      "80",
+      "80",
+      "80",
+      "80",
+      "80",
+      "80",
+      "80",
+      "80",
+      "80"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a competition of 50 digits, some players have carefully chosen a sequence of numbers 1 to 5 such that no two chosen digits are in each other's sequences. Each number is used exactly once, and no digit appears in more than one sequence. Determine if there exists a 5-digit number such that it is not contain in any of the chosen sequences and is larger than any digit in the chosen sequences.",
+    "majority_answer": "Yes",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "Yes",
+      "Yes",
+      "Yes",
+      "Yes",
+      "Yes",
+      "yes",
+      "Yes",
+      "Yes",
+      "Yes",
+      "Yes"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two buses leave a city at 10 a.m. Each bus takes a certain amount of time to get to the destination. The first bus departs at 10 a.m. and arrives at 10 a.m. The second bus departs at 10 a.m. and arrives at 10 p.m. How many hours does each bus take to get from city to destination, and what percentage of the total journey did the second bus complete?",
+    "majority_answer": "100",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "100",
+      "100",
+      "100",
+      "100",
+      "100",
+      "100",
+      "100",
+      "100",
+      "100",
+      "100"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of people buys a bag of cheese. The bag contains $ n + 1 $ candies, $ n + 2 $ chocolates, and $ n + 3 $ apples. How many balls are in the bag if the number of candies is twice the number of apples?",
+    "majority_answer": "9",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "9",
+      "9",
+      "9",
+      "9",
+      "9",
+      "9",
+      "9",
+      "9",
+      "9",
+      "9"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A list of numbers is given, and a new number is calculated by multiplying the mean of the list of consecutive numbers from 3 to $ n $, and then adding 3n. Determine if the new number will be either greater or less than the mean of the list.",
+    "majority_answer": "greater",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "greater",
+      "greater",
+      "The new number will be greater than the mean of the list.",
+      "greater",
+      "greater",
+      "greater",
+      "greater",
+      "greater",
+      "greater",
+      "greater"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A collection of sticks consists of three colors: red, blue, and green, such that each color has at least one stick. A stick can be treated as a point and a $1$-unit line segment. A designer wants to create a visual representation such that any two colors, when compared side by side, form a line segment whose length is $12$. It is required that this line segment consists only of sticks of different colors. How many such representations can exist?",
+    "majority_answer": "1",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "2",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of students is planning to create a circular table where each seat is to be occupied by either 5 or 6 people, in such a way that no two people seated next to each other either on the table or on any of the surrounding ridges. How many such combinations of seats and arrangements are possible for a decagon with 10 seats?",
+    "majority_answer": "1024",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "1024",
+      "1024",
+      "11",
+      "1024",
+      "123",
+      "1024",
+      "11",
+      "11",
+      "11",
+      "1024"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A line segment has endpoints $ A $ and $ B $, and there is a point $ P $ outside the segment such that $ PA $ is twice the length of $ PB $. If the distance between $ A $ and $ B $ is $ d $, then what is the relationship between $ d $ and $ PA $?",
+    "majority_answer": "\\frac{2",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{2",
+      "\\frac{1",
+      "\\frac{2",
+      "\\frac{2",
+      "PA = \\frac{2d",
+      "\\frac{2",
+      "\\frac{2d",
+      "\\frac{2",
+      "PA < 2d < 3PA",
+      "\\frac{2d"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Find the number of ways to select 2 books from a collection of 10 books, where each book is labeled with a distinct number from 1 to 10, and the sum of the numbers on the selected books must be divisible by 3.",
+    "majority_answer": "24",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "24",
+      "15",
+      "15",
+      "24",
+      "15",
+      "24",
+      "24",
+      "15",
+      "15",
+      "24"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A rectangular prism has a height of 4, and its base dimensions are 6 and 12 meters. What is the volume of the prism in cubes meters?",
+    "majority_answer": "288",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "288",
+      "288",
+      "288",
+      "288",
+      "288",
+      "288",
+      "288",
+      "288",
+      "288",
+      "288"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a square with side length $ n $, points are placed on each side such that there are $ k $ total points (each side has $ k $ points). How many lattice points are there in total?",
+    "majority_answer": "(n+1)^2",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "n^2",
+      "(n+1)^2",
+      "(n+1)^2",
+      "k^2",
+      "n^2",
+      "(n+1)^2",
+      "4k-4",
+      "k^2",
+      "(n+1)^2",
+      "(n+1)^2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a town with $ n $ houses, each day there is a random occurrence of an event affecting all houses. Initially, no house is affected. On day 1, 10% of the houses get affected with the probability of $ \\frac{1}{n+1} $. On day 2, 10% of the remaining houses are affected as well, again with the same probability. After $ t $ days, some houses may still be unaffected. What is the expected number of unaffected houses?",
+    "majority_answer": "n\\left(1 - \\frac{0.1",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "n\\left(1 - \\frac{1",
+      "n\\left(1 - \\frac{0.1",
+      "n\\left(1 - \\frac{1",
+      "n\\left(1 - \\frac{0.1",
+      "n\\left(1 - \\frac{0.1",
+      "n(1 - \\frac{1",
+      "n\\left(\\frac{n+0.9",
+      "n(1 - \\frac{0.1",
+      "n\\left(1 - \\frac{0.1",
+      "n(1 - \\frac{0.1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two students, A and B, decide to spend a week working at a new store. A spends an equal amount of time and money on each item, while B spends an equal amount on the first item and three times on the second item. If the two students have a total of $280 for their shopping, how much is the total cost of their shopping?",
+    "majority_answer": "280",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "280",
+      "280",
+      "280",
+      "280",
+      "280",
+      "280",
+      "280",
+      "280",
+      "280",
+      "280"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Six cards are placed into an empty box. Each card has a distinct number of marbles from 1 to 6, and the total number of marbles in the box is an odd number. What is the minimum number of marbles that must be removed from the box to ensure that at least one marble is left?",
+    "majority_answer": "20",
+    "self_consistency_score": 0.9,
+    "total_samples": 10,
+    "all_answers": [
+      "0",
+      "20",
+      "20",
+      "20",
+      "20",
+      "20",
+      "20",
+      "20",
+      "20",
+      "20"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A rectangle with width $ w $ and height $ h $ is divided into $ m \\times n $ squares. Each square has a side length of $ s $, where $ w = m \\cdot s $, $ h = n \\cdot s $, and $ m, n, s $ are positive integers. Additionally, the sum of the lengths of all the sides of the rectangles is equal to the total length of the sides of the squares. Find the minimum possible value of $ \\frac{2m + h + n}{s} $.",
+    "majority_answer": "2",
+    "self_consistency_score": 0.8,
+    "total_samples": 10,
+    "all_answers": [
+      "4",
+      "2",
+      "2",
+      "2",
+      "4",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A rectangular mural that is 32 units long and 21 units wide is to be illuminated. How many different ways can signals be sent from the left corner to the right end of the mural across 130 rows and 50 columns, with each path consisting of only one or more dots, and using only the L-shape to reach the other end?",
+    "majority_answer": "Cannot be determined",
+    "self_consistency_score": 0.2,
+    "total_samples": 10,
+    "all_answers": [
+      "Cannot compute",
+      "0",
+      "Cannot be determined",
+      "Cannot be determined",
+      "The problem is not well-defined.",
+      "121813774491258172887351100800",
+      "206058823906083141335137925221402556066127450",
+      "",
+      "Cannot determine",
+      "Unable to determine"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A sequence of $ n $ numbers is given, where each number is equal to the sum of all the preceding numbers all raised to the second power. Let $ f(n) $ represent the sum of the sequence. Define $ a_1 = 2 $, $ a_2 = 3 $, and $ a_k = a_{k-1}^2 + 1 $ for $ k \\geq 3 $. Determine the value of $ f(n) $ for $ n = 4 $.",
+    "majority_answer": "116",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "128",
+      "116",
+      "128",
+      "200",
+      "200",
+      "116",
+      "116",
+      "200",
+      "116",
+      "116"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a 2D grid of size $ n \\times n $, each square has a value from 1 to $ n^2 $. A person starts at a corner of the grid and moves to a square adjacent to this corner, always moving to higher-numbered squares, avoiding higher-numbered squares in the first move, and making sure that no square is visited more than twice. What is the maximum number of moves the person can make before they finish the grid in this pattern?",
+    "majority_answer": "2n^2 - 2",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "2n^2 - 2",
+      "2n^2 - 2",
+      "2n^2-2",
+      "n^2-1",
+      "2n^2 - 3",
+      "2n^2 - 2",
+      "2n^2-2",
+      "2n^2-3",
+      "2n^2-3",
+      "2n^2 - 3"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of people shake hands with each other if they are at least one year old, but each person can only shake hands with their friends in a line standing in front of the person. Each person takes turns to shake hands, and after every round, they all double their handshakes count in the next round. The original handshake count column in the table below has values that will be part of the generated question. Does the number in the second column (Handshake Count) grow exponentially?",
+    "majority_answer": "Yes",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "Yes",
+      "Yes",
+      "Yes",
+      "Yes",
+      "Yes",
+      "Yes",
+      "Yes",
+      "Yes",
+      "Yes",
+      "Yes"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two dice are rolled, one is red and one is blue, and you have a target number. What is the probability of rolling a number that is not the same as the target number on the red die?",
+    "majority_answer": "\\frac{5",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "\\frac{5",
+      "\\frac{5",
+      "\\frac{5",
+      "\\frac{5",
+      "\\frac{5",
+      "\\frac{5",
+      "\\frac{5",
+      "\\frac{5",
+      "\\frac{5",
+      "\\frac{5"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A group of students is participating in a relay race where they have to collect 100 marbles, 20 more marbles than the number of marbles collected, and 10 more marbles than the number of marbles collected twice. Each student contributes an equal number of marbles to the total. How many marbles does each student contribute?",
+    "majority_answer": "Cannot be determined",
+    "self_consistency_score": 0.2,
+    "total_samples": 10,
+    "all_answers": [
+      "430",
+      "Cannot be determined",
+      "9",
+      "Cannot be determined",
+      "25",
+      "\\text{Cannot be determined",
+      "\\text{Cannot be solved",
+      "43",
+      "43",
+      "20"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two cards are each printed with a letter. One card has a red letter, and the other has the same letter but on a blue card. What is the probability that a letter selected at random from the two cards is red?",
+    "majority_answer": "1/2",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A glass of water has a volume of 120 cubic centimeters, and the dimensions of the glass are $ x $ cm by $ y $ cm by $ z $ cm. A carpenter is trying to fill the glass completely while not spilling any water. He starts filling the glass from the bottom, and his first placement is such that exactly half of the glass's volume is filled. How many times can he fill the glass before he manages to pour into a completely filled glass (i.e., the volume of the glass is filled from top to bottom)?",
+    "majority_answer": "2",
+    "self_consistency_score": 0.6,
+    "total_samples": 10,
+    "all_answers": [
+      "2",
+      "1",
+      "2",
+      "1",
+      "1",
+      "1",
+      "2",
+      "2",
+      "2",
+      "2"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Two unequal positive real numbers $ a $ and $ b $ satisfy the equation $ 3a + 4b + 3a^2 + 4b^2 = 100 $, where $ a > b $. Find the minimum possible value of $ a + b $.",
+    "majority_answer": "6.625",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "6.625",
+      "6.704",
+      "6.625",
+      "6.704",
+      "6.625",
+      "6.7",
+      "5",
+      "\\frac{\\sqrt{2849",
+      "6.704",
+      "6.06"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "In a competition where every participant must solve at least one type of puzzle and the total number of puzzles solved by all participants is equal to the total number of participants, what is the minimum number of puzzles required?",
+    "majority_answer": "1",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "A convex polyhedron has 12 triangular faces and 8 triangular and 12 hexagonal faces. How many vertices does this polyhedron have?",
+    "majority_answer": "36",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "36",
+      "36",
+      "36",
+      "36",
+      "36",
+      "36",
+      "36",
+      "36",
+      "36",
+      "36"
+    ],
+    "tool_calls": []
+  },
+  {
+    "question": "Each time you play a game, you select either a number or a symbol. If you choose a number, the probability that the number is divisible by 5 is 1/4, and if you select a symbol, the probability that it is a letter is 1/5. What is the expected value of the score you receive from the game?",
+    "majority_answer": "9/40",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "2.9",
+      "9/40",
+      "9/40",
+      "9/40",
+      "-11/20",
+      "2.5",
+      "2.5",
+      "-11/20",
+      "9/40",
+      "9/40"
+    ],
+    "tool_calls": []
+  }
+]

@@ -1,0 +1,310 @@
+[
+  {
+    "question": "How many ways can \\( n \\) distinct objects be arranged in a circle with \\( k \\) objects fixed in specific positions?",
+    "predict_answer": "n! / k",
+    "majority_answer": "(n-k)!",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "(n-k)!",
+      "(n-k)!",
+      "(n-k)!",
+      "(n-k)!",
+      "(n-k)!",
+      "(n-k)!",
+      "(n-k)!",
+      "(n-k)!",
+      "(n-k)!",
+      "(n-k)!"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "\\n{The full problem statement in English on one or more lines}\\n",
+    "predict_answer": null,
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "In a certain enchanted forest, there are 10 trees, each labeled with a distinct integer from 1 to 10. A mischievous fairy decides to play a game with the trees. She starts at tree number 1 and with each move, she can either move to any tree whose label is a multiple of her current position or a factor of her current position. For example, from tree 3, she can move to tree 1 or tree 6.\n\nWhat is the number of distinct sequences of tree visits the fairy could take if she must visit all the trees exactly once, starting from tree number 1?",
+    "predict_answer": "576",
+    "majority_answer": "12",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "12",
+      "8",
+      "8",
+      "8",
+      "36",
+      "12",
+      "12",
+      "0",
+      "12",
+      "8"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\(ABC\\) be an isosceles triangle with \\(AB = AC\\). Point \\(D\\) lies on the extension of \\(AC\\) beyond \\(C\\), such that \\(\\angle ABD = \\angle CBD\\). The incircle of \\(\\triangle ABC\\) touches \\(AB\\) at \\(E\\) and \\(AC\\) at \\(F\\). Given that \\(BD = AD\\), prove that the circumcircle of \\(\\triangle EDF\\) is tangent to the incircle of \\(\\triangle ABC\\).",
+    "predict_answer": "Final Answer: The circumcircle of \\(\\triangle EDF\\) is tangent to the incircle of \\(\\triangle ABC\\).",
+    "majority_answer": "No solution",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "\\text{The circumcircle of \\(\\triangle EDF\\) is tangent to the incircle of \\(\\triangle ABC\\).}",
+      "No solution",
+      "",
+      "Unable to determine",
+      "Unable to solve",
+      "Incomplete Solution",
+      "No solution found",
+      "No solution",
+      "Incomplete",
+      "No solution"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Find all integers \\( n \\) for which there exist positive integers \\( a \\) and \\( b \\) such that \\( n \\) divides both \\( a + b \\) and \\( a^2 + b^2 \\). Additionally, \\( a \\) and \\( b \\) must satisfy \\( a \\neq b \\).",
+    "predict_answer": "n = 1, 6",
+    "majority_answer": "\\mathbb{Z}^+",
+    "self_consistency_score": 0.4,
+    "total_samples": 10,
+    "all_answers": [
+      "\\mathbb{Z}^+",
+      "1, 2",
+      "n \\in \\mathbb{Z}^+",
+      "n \\in \\mathbb{Z}^+",
+      "1, 2",
+      "\\{1, 2, 4\\}",
+      "\\mathbb{Z}^+",
+      "n",
+      "\\mathbb{Z}^+",
+      "\\mathbb{Z}^+"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Find all positive integers \\( n \\) such that \\( n! + 5 \\) is a perfect square.",
+    "predict_answer": "final_answer",
+    "majority_answer": "\\text{no solutions}",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "\\text{no solutions}",
+      "no solutions",
+      "no solutions",
+      "no solutions",
+      "no solutions",
+      "no solutions",
+      "no solutions",
+      "no solution",
+      "no solutions",
+      "no solutions"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "{The full problem statement in English on one or more lines}",
+    "predict_answer": null,
+    "majority_answer": null,
+    "self_consistency_score": 1.0,
+    "total_samples": 0,
+    "all_answers": [],
+    "tool_calls": [],
+    "reused_from_history": true
+  },
+  {
+    "question": "Find all positive integers \\( n \\) such that there exists an integer \\( k \\) for which \\( 2^n + 3^n + 4^n = k^2 \\).",
+    "predict_answer": "final_answer=2",
+    "majority_answer": "1",
+    "self_consistency_score": 1.0,
+    "total_samples": 10,
+    "all_answers": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\( ABC \\) be a triangle with \\( AB = 13 \\), \\( BC = 14 \\), and \\( CA = 15 \\). Point \\( D \\) is on \\( BC \\) such that \\( BD = 6 \\) and \\( DC = 8 \\). Point \\( E \\) is on \\( CA \\) such that \\( CE = 9 \\) and \\( EA = 6 \\). Point \\( F \\) is the intersection of the lines \\( AD \\) and \\( BE \\). Find the area of triangle \\( DEF \\).",
+    "predict_answer": "28",
+    "majority_answer": "6.4",
+    "self_consistency_score": 0.2,
+    "total_samples": 10,
+    "all_answers": [
+      "6.4",
+      "864/115",
+      "\\frac{1584}{115}",
+      "6.4",
+      "\\frac{576}{85}",
+      "\\frac{9312}{391}",
+      "\\frac{11628}{575}",
+      "43.2",
+      "12.8",
+      "1.28"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Find all positive integers \\( n \\) such that the product \\( n(n + 1)(n + 2)(n + 3) + 1 \\) is a perfect square. Additionally, prove that for \\( n > 1 \\), the expression cannot be a perfect cube.",
+    "predict_answer": "final_answer",
+    "majority_answer": "n \\in \\mathbb{Z}^+",
+    "self_consistency_score": 0.5,
+    "total_samples": 10,
+    "all_answers": [
+      "n \\in \\mathbb{Z}^+",
+      "all positive integers",
+      "n \\in \\mathbb{Z}^+",
+      "\\{1, 2, 3, ...\\}",
+      "n \\in \\mathbb{Z}^+",
+      "n \\in \\mathbb{Z}^+",
+      "\\{1, 2, 3, ... \\}",
+      "\\text{All positive integers } n",
+      "n \\in \\mathbb{Z}^+",
+      "\\mathbb{Z}^+"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  },
+  {
+    "question": "Let \\( a, b, c \\) be positive real numbers such that \\( a + b + c = 3 \\). Prove that:\n\\[\n\\frac{a}{b} + \\frac{b}{c} + \\frac{c}{a} + \\frac{3}{abc} \\geq 8.\n\\]",
+    "predict_answer": "8",
+    "majority_answer": "The inequality is incorrect.",
+    "self_consistency_score": 0.3,
+    "total_samples": 10,
+    "all_answers": [
+      "The inequality is incorrect.",
+      "The inequality is false.",
+      "\\text{The inequality is incorrect.}",
+      "The inequality is false.",
+      "The inequality is false",
+      "The inequality is incorrect.",
+      "The problem statement is incorrect",
+      "\\text{The inequality is false}",
+      "False",
+      "The inequality is false"
+    ],
+    "tool_calls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "reused_from_history": false
+  }
+]
