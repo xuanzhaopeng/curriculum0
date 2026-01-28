@@ -2,6 +2,7 @@
 
 This project is build on top of [VeRL 0.7.0](https://github.com/verl-project/verl)
 
+![alt text](./plots/question_diversity.png)
 
 ## Machine#1 (2xCPU with SandboxFusion)
 
