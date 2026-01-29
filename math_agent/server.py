@@ -10,12 +10,12 @@ logger = logging.getLogger("MathAgentServer")
 
 if __name__ == "__main__":
     # Environment Variables
-    API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("LLM_API_KEY")
+    API_KEY = os.getenv("OPENAI_API_KEY") or os.getenv("LLM_API_KEY")
     if not API_KEY:
-        logger.error("GEMINI_API_KEY (or LLM_API_KEY) not set in environment.")
+        logger.error("OPENAI_API_KEY (or LLM_API_KEY) not set in environment.")
         exit(1)
         
-    MODEL = os.getenv("MODEL_NAME", "gemini-2.0-flash")
+    MODEL = os.getenv("MODEL_NAME", "qwen-flash")
     SANDBOX_URL = os.getenv("SANDBOX_URL", "http://localhost:8080")
     PORT = int(os.getenv("PORT", 8000))
     HOST = "0.0.0.0"

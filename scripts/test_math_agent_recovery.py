@@ -6,9 +6,9 @@ from math_agent.agent import MathAgent
 logging.basicConfig(level=logging.INFO)
 
 def test_recovery():
-    api_key = os.getenv("GEMINI_API_KEY")
+    api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
-        print("Please set GEMINI_API_KEY")
+        print("Please set OPENAI_API_KEY")
         return
 
     agent = MathAgent(api_key=api_key)

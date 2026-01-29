@@ -27,7 +27,7 @@ A powerful math-solving agent that uses **Planning**, **Chain of Thought (CoT)**
 1. **Configure Environment Variables:**
    Set your LLM API key (e.g., Gemini API Key):
    ```bash
-   export GEMINI_API_KEY="your_api_key_here"
+   export OPENAI_API_KEY="your_api_key_here"
    ```
 
 2. **Launch the Server:**
@@ -97,10 +97,10 @@ You can send a POST request to the `/solve` endpoint.
 ```bash
 curl -X POST "http://localhost:8000/solve" \
      -H "Content-Type: application/json" \
-     -H "X-API-Key: $GEMINI_API_KEY" \
+     -H "X-API-Key: $OPENAI_API_KEY" \
      -d '{
        "problem": "Find the sum of all prime numbers between 1 and 50.",
-       "model": "gemini-2.0-flash",
+       "model": "qwen-flash",
        "max_turns": 5
      }'
 ```
@@ -111,7 +111,7 @@ curl -X POST "http://localhost:8000/solve" \
 | `problem` | String | The math question to solve. | (Required) |
 | `max_turns` | Integer | Max reasoning/tool-use loops. | `5` |
 | `sandbox_url` | String | URL of the SandboxFusion service. | `http://localhost:8080` |
-| `model` | String | LLM model name. | `gemini-2.0-flash` |
+| `model` | String | LLM model name. | `qwen-flash` |
 | `base_url` | String | OpenAI-compatible base URL. | Gemini OpenAI Endpoint |
 
 ### API Endpoints

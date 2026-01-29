@@ -5,9 +5,9 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 export PYTHONPATH="$PROJECT_ROOT"
 
 # Check for API Key
-if [ -z "$GEMINI_API_KEY" ]; then
-    echo "Error: GEMINI_API_KEY is not set."
-    echo "Please run: export GEMINI_API_KEY='your_key_here'"
+if [ -z "$OPENAI_API_KEY" ]; then
+    echo "Error: OPENAI_API_KEY is not set."
+    echo "Please run: export OPENAI_API_KEY='your_key_here'"
     exit 1
 fi
 

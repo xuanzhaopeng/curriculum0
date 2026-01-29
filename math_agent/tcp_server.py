@@ -96,12 +96,12 @@ class AsyncTCPServer:
 
 if __name__ == "__main__":
     # Initialize Agent
-    API_KEY = os.getenv("GEMINI_API_KEY")
+    API_KEY = os.getenv("OPENAI_API_KEY")
     if not API_KEY:
-        logger.error("GEMINI_API_KEY not set")
+        logger.error("OPENAI_API_KEY not set")
         exit(1)
         
-    MODEL = os.getenv("MODEL_NAME", "gemini-2.0-flash")
+    MODEL = os.getenv("MODEL_NAME", "qwen-flash")
     SANDBOX_URL = os.getenv("SANDBOX_URL", "http://localhost:8080")
     
     agent = MathAgent(

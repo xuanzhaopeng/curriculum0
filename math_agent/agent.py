@@ -14,8 +14,8 @@ class MathAgent:
     def __init__(
         self, 
         api_key: str, 
-        base_url: str = "https://generativelanguage.googleapis.com/v1beta/openai/",
-        model: str = "gemini-2.0-flash",
+        base_url: str = "https://dashscope-us.aliyuncs.com/compatible-mode/v1",
+        model: str = "qwen-flash",
         sandbox_url: str = "http://localhost:8080"
     ):
         """
@@ -197,7 +197,7 @@ if __name__ == "__main__":
     import os
     logging.basicConfig(level=logging.INFO)
     
-    API_KEY = os.getenv("GEMINI_API_KEY", "your-api-key")
+    API_KEY = os.getenv("OPENAI_API_KEY", "your-api-key")
     agent = MathAgent(api_key=API_KEY)
     
     # test_problem = "What is the 10th Fibonacci number?"
