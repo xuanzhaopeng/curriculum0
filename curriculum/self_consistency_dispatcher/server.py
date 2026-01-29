@@ -21,7 +21,7 @@ class DispatchRequest(BaseModel):
     question: str
     n: int = 10
     max_turns: int = 5
-    model: str = "qwen-flash"
+    model: str = "qwen-flash-us"
 
 class DispatchResponse(BaseModel):
     question: str

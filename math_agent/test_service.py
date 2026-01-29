@@ -17,7 +17,7 @@ def test_math_agent_tcp():
     payload = {
         "problem": "Calculate the 100th Fibonacci number using a list-based approach.",
         "max_turns": 5,
-        "model": "qwen-flash"
+        "model": "qwen-flash-us"
     }
     
     try:

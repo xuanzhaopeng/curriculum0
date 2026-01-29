@@ -15,7 +15,7 @@ class MathAgent:
         self, 
         api_key: str, 
         base_url: str = "https://dashscope-us.aliyuncs.com/compatible-mode/v1",
-        model: str = "qwen-flash",
+        model: str = "qwen-flash-us",
         sandbox_url: str = "http://localhost:8080"
     ):
         """
