@@ -4,6 +4,7 @@ import struct
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
+from tqdm import tqdm
 
 def call_math_agent_tcp(problem, host="localhost", port=8000, max_turns=5):
     """Call the Math Agent TCP service with a single problem."""
@@ -84,14 +85,16 @@ def test_parallel_math_agent():
         futures = {executor.submit(call_math_agent_tcp, p, host, port): i for i, p in enumerate(problems)}
         
         results = []
-        for future in as_completed(futures):
-            idx = futures[future]
-            try:
-                result = future.result()
-                results.append((idx, result))
-            except Exception as e:
-                print(f"Error processing question {idx}: {e}")
-                results.append((idx, {"error": str(e), "problem": problems[idx]}))
+        with tqdm(total=len(problems), desc="Processing questions") as pbar:
+            for future in as_completed(futures):
+                idx = futures[future]
+                try:
+                    result = future.result()
+                    results.append((idx, result))
+                except Exception as e:
+                    print(f"Error processing question {idx}: {e}")
+                    results.append((idx, {"error": str(e), "problem": problems[idx]}))
+                pbar.update(1)
     
     # Sort by original index
     results.sort(key=lambda x: x[0])
