@@ -33,7 +33,7 @@ A powerful math-solving agent that uses **Planning**, **Chain of Thought (CoT)**
 2. **Launch the Server:**
    Run the server from the root of the repository to ensure package imports work correctly:
    ```bash
-   # From the repository root (Agent0-curriculum)
+   # From the repository root (curriculum0)
    export PYTHONPATH=$PYTHONPATH:$(pwd)
    python -m math_agent.server
    ```

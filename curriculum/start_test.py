@@ -41,7 +41,7 @@ class Runner:
         # Init the dataset
         # =======================
         ## FIXME: Move this hardcoded path to config
-        train_dataloader = create_dataloader(config=config.data, question_dir="/workspace/Agent0-curriculum/questions", tokenizer=tokenizer, processor=processor)
+        train_dataloader = create_dataloader(config=config.data, question_dir="/workspace/curriculum0/questions", tokenizer=tokenizer, processor=processor)
 
         # =======================
         # Set up Ray roles, pools and mappings

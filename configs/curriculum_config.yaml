@@ -6,7 +6,7 @@
 # ============================================================================
 reward:
   reward_type: batch # sequential or batch, currently only support batch.
-  reward_function: /workspace/Agent0-curriculum/curriculum/reward_function/curriculum.py
+  reward_function: /workspace/curriculum0/curriculum/reward_function/curriculum.py
   reward_function_name: compute_score
   num_cpus: 1
   skip_special_tokens: True
@@ -41,7 +41,7 @@ data:
   apply_chat_template_kwargs:  {
     enable_thinking: False # disable thinking
   }
-  custom_format_prompt: /workspace/Agent0-curriculum/format_prompt/questioner.jinja # custom field
+  custom_format_prompt: /workspace/curriculum0/format_prompt/questioner.jinja # custom field
   custom_fake_data_size: 12000 # custom field
 
 # ============================================================================
@@ -258,7 +258,7 @@ trainer:
   test_freq: 0
   critic_warmup: 0
   default_hdfs_dir: null # hdfs checkpoint path
-  default_local_dir: /workspace/Agent0-curriculum/checkpoints/${trainer.project_name}/${trainer.experiment_name} # local checkpoint path
+  default_local_dir: /workspace/curriculum0/checkpoints/${trainer.project_name}/${trainer.experiment_name} # local checkpoint path
   resume_mode: auto # or disable or resume_path if resume_from_path is set
   resume_from_path: null
   max_actor_ckpt_to_keep: 1

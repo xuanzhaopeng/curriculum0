@@ -3,7 +3,7 @@
 # Usage: ./download_remote_questions.sh [remote_user@host] [remote_path] [local_path] [port]
 
 REMOTE_TARGET=${1:-"root@194.68.245.20"}
-REMOTE_PATH=${2:-"/workspace/Agent0-curriculum/questions"}
+REMOTE_PATH=${2:-"/workspace/curriculum0/questions"}
 LOCAL_PATH=${3:-"./"}
 PORT=${4:-"22074"}
 

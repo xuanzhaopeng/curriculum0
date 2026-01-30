@@ -1,4 +1,4 @@
-# Install the verl into agent0-curriculum environment
+# Install the verl into curriculum0 environment
 cd /workspace
 
 VERL_DIR="/workspace/verl"
