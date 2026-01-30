@@ -59,8 +59,8 @@ def test_parallel_math_agent():
         host = "localhost"
         port = 8000
 
-    # 10 very complex math problems that REQUIRE Python tool usage
-    problems = [
+    # 50 math problems (repeating the 10 core problems to reach 50)
+    core_problems = [
         "Find the sum of all prime numbers less than 10000.",
         "Calculate the 1000th Fibonacci number modulo 1000000007.",
         "What is the sum of all proper divisors of 1000000? (A proper divisor is a divisor less than the number itself)",
@@ -72,6 +72,7 @@ def test_parallel_math_agent():
         "Find the number of integer solutions to x² + y² + z² = 1000 where x, y, z are non-negative.",
         "Calculate the expected value of the maximum when rolling 10 fair six-sided dice (simulate with 100000 trials)."
     ]
+    problems = core_problems * 5
     
     print(f"Testing Math Agent at {host}:{port} with {len(problems)} questions in parallel...")
     print("=" * 80)
@@ -79,7 +80,7 @@ def test_parallel_math_agent():
     start_time = time.time()
     
     # Execute in parallel
-    with ThreadPoolExecutor(max_workers=10) as executor:
+    with ThreadPoolExecutor(max_workers=50) as executor:
         futures = {executor.submit(call_math_agent_tcp, p, host, port): i for i, p in enumerate(problems)}
         
         results = []
