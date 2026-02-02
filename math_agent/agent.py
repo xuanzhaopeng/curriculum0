@@ -71,7 +71,7 @@ class MathAgent:
             )
             return response.choices[0].message.content
         except Exception as e:
-            logger.error(f"LLM generation failed: {e}")
+            logger.error(f"[!!!!!!!!!!!!!!!!!!!!!!!!!!] LLM generation failed: {e}")
             return "Error: Unable to generate response in 120 seconds"
 
     def _extract_final_answer(self, response: str) -> Optional[str]:

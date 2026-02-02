@@ -53,6 +53,7 @@ bash scripts/start_ray_master.sh
 ```bash
 # clean up previous data in case you want to start from begining
 rm -rf questions
+rm -rf raw_questions
 rm -rf metrics
 rm -rf checkpoints/curriculum_agent
 
