@@ -44,7 +44,8 @@ def _call_self_consistency_dispatcher(question: str) -> DispatcherResponse:
         }
 
     try:
-        response = requests.post(DISPATCHER_URL, json=payload, timeout=300)
+        # default dispatcher timeout is 800s
+        response = requests.post(DISPATCHER_URL, json=payload, timeout=1000)
         response.raise_for_status()
         return response.json()
     except Exception as e:
