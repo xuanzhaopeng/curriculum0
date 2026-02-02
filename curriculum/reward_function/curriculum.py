@@ -11,6 +11,7 @@ import time
 from collections import Counter
 from sklearn.cluster import AgglomerativeClustering
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+from curriculum.reward_function.prompt_optimizer import PromptOptimizer
 
 DISPATCHER_URL = "http://localhost:8001/dispatch"
 
@@ -161,6 +162,55 @@ def load_historical_questions(directory="questions"):
             pass
             
     return historical_data[:100]
+
+def _print_reward_summary(predicts, invalid_indices, sc_results_valid, valid_indices):
+    """Prints a summary of the reward calculation results."""
+    print("\n" + "="*50)
+    print("REWARD FUNCTION SUMMARY")
+    print("="*50)
+    print(f"* Total Generated Tests: {len(predicts)}")
+    print(f"* Invalid Format: {len(invalid_indices)}")
+    
+    reused_count = 0
+    if valid_indices:
+        reused_count = len([r for r in sc_results_valid if r.get('reused_from_history', False)])
+    print(f"* Duplicated with Historical Bad/Good Cases: {reused_count}")
+    
+    if valid_indices:
+        sc_scores = [r.get("self_consistency_score", 0.0) for r in sc_results_valid]
+        bucket_counts = {round(x * 0.1, 1): 0 for x in range(11)}
+        for score in sc_scores:
+            # handle floating point drift or ensure bucket is key
+            # simpler approach: bin by 0.1
+            bin_idx = int(round(score * 10))
+            if 0 <= bin_idx <= 10:
+                key = round(bin_idx * 0.1, 1)
+                bucket_counts[key] = bucket_counts.get(key, 0) + 1
+        
+        print("\n* Self-Consistency Score Distribution (Valid Tests):")
+        for k in sorted(bucket_counts.keys()):
+             print(f"  - SC {k:.1f}: {bucket_counts[k]} tests")
+    
+    print("="*50 + "\n")
+
+    # Save summary to file
+    summary_data = {
+        "total_generated": len(predicts),
+        "invalid_format": len(invalid_indices),
+        "reused_history": reused_count,
+        "valid_count": len(valid_indices) if valid_indices else 0,
+        "sc_distribution": {str(k): v for k, v in bucket_counts.items()} if valid_indices else {}
+    }
+    
+    os.makedirs("questions", exist_ok=True)
+    summary_path = f'questions/batch_summary_{int(time.time())}.json'
+    try:
+        with open(summary_path, 'w') as f:
+            json.dump(summary_data, f, indent=4)
+        print(f"Saved batch summary to {summary_path}")
+    except Exception as e:
+        print(f"Failed to save batch summary: {e}")
+
 
 """
     Input: predicts is a list of questions
@@ -354,5 +404,15 @@ def compute_score(predicts: List[str]) -> List[Dict[str, float]]:
                 "avg_tool_calls": float(avg_tool_calls)
             })
             valid_idx_counter += 1
+
+    # Print Summary
+    _print_reward_summary(predicts, invalid_indices, sc_results_valid, valid_indices)
+
+    # Automatically optimize prompt for next batch
+    try:
+        optimizer = PromptOptimizer()
+        optimizer.optimize()
+    except Exception as eobj:
+        print(f"⚠️⚠️⚠️ Failed to run prompt optimizer: {eobj}")
 
     return final_scores

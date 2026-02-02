@@ -66,7 +66,7 @@ class MathAgent:
             model=self.model,
             messages=messages,
             temperature=0.1,
-            timeout=60.0 # 2 minute timeout per turn
+            timeout=120.0 # 2 minute timeout per turn
         )
         return response.choices[0].message.content
 
