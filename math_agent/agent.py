@@ -67,11 +67,20 @@ class MathAgent:
                 model=self.model,
                 messages=messages,
                 temperature=0.1,
-                timeout=300 # 5 minute timeout per turn
+                timeout=300, # 5 minute timeout per turn
+                stream=True
             )
-            return response.choices[0].message.content
+            
+            full_content = ""
+            for chunk in response:
+                if chunk.choices and len(chunk.choices) > 0:
+                    delta = chunk.choices[0].delta
+                    if delta.content:
+                        full_content += delta.content
+            
+            return full_content
         except Exception as e:
-            logger.error(f"[!!!!!!!!!!!!!!!!!!!!!!!!!!] LLM generation failed: {e}")
+            logger.error(f"[!!!!!!!!!!!!! LLM] generation failed: {e}")
             return "Error: Unable to generate response in 300 seconds"
 
     def _extract_final_answer(self, response: str) -> Optional[str]:
