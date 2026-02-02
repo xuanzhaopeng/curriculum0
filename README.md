@@ -40,7 +40,7 @@ bash scripts/install_metrics.sh
 ### Start Distripution Service
 ```bash
 # replace to the CPU machine's TPC 8000 part mapping
-export MATH_AGENT_URL=tcp://213.173.105.83:23735
+export MATH_AGENT_URL=tcp://213.173.105.83:11491
 bash scripts/start_disptacher.sh
 ```
 

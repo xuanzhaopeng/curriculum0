@@ -21,8 +21,8 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True CUDA_VISIBLE_DEVICES=0,1 python
     hydra.job.chdir=False \
     actor_rollout_ref.model.path=Qwen/Qwen3-4B-Base \
     trainer.experiment_name=4b_base \
-    trainer.total_epochs=40 \
-    trainer.total_training_steps=40 \
+    trainer.total_epochs=1 \
+    trainer.total_training_steps=1 \
     trainer.n_gpus_per_node=2 \
     data.train_batch_size=32 \
     data.max_prompt_length=1024 \
