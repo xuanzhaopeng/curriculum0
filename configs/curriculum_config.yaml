@@ -41,7 +41,7 @@ data:
   apply_chat_template_kwargs:  {
     enable_thinking: False # disable thinking
   }
-  custom_format_prompt: /workspace/curriculum0/format_prompt/questioner.jinja # custom field
+  custom_format_prompt: /workspace/curriculum0/format_prompt/prompt_0.jinja # custom field
   custom_fake_data_size: 12000 # custom field
 
 # ============================================================================

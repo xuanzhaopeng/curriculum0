@@ -104,15 +104,21 @@ class PromptOptimizer:
         system_instruction = (
             "You are an expert meta-optimizer for LLM prompts. "
             "Your goal is to improve a system prompt used to generate high-quality reasoning tasks.\n"
-            "We want the generated tasks to be:\n"
+            "You must DYNAMICALLY ADJUST the difficulty based on the provided QUANTITATIVE METRICS (Self-Consistency Score 'SC').\n\n"
+            "### ADJUSTMENT STRATEGY:\n"
+            "1. **If Avg SC > 0.7 (Too Easy)**: \n"
+            "   - ACTION: INCREASE DIFFICULTY significantly. Ask for more complex steps, obscure theorems, or multi-layered logic.\n"
+            "2. **If Avg SC < 0.3 (Too Hard/Ambiguous)**: \n"
+            "   - ACTION: DECREASE DIFFICULTY. Simplify constraints, ensure clarity, use standard concepts.\n"
+            "3. **If 0.3 <= Avg SC <= 0.7 (Optimal)**: \n"
+            "   - ACTION: MAINTAIN DIFFICULTY. Focus on increasing NOVELTY and CREATIVITY to avoid repetition.\n\n"
+            "### CORE REQUIREMENTS:\n"
             "1. **Format Valid**: Ensure STRICT adherence to the XML tags <question>...</question> and \\boxed{...}.\n"
-            "2. **Optimal Difficulty**: The tasks should be challengning but solvable, targeting a self-consistency score close to 0.5.\n"
-             "   (Score 1.0 = too easy/memorized. Score 0.0 = too hard/ambiguous/buggy).\n"
-            "3. **Novel and Creative**: Avoid standard or repetitive templates.\n"
-            "4. **Clear and Unambiguous**.\n\n"
-            "You will be given the CURRENT PROMPT and QUANTITATIVE METRICS from the last batch.\n"
-            "Metrics include format validity rates and self-consistency score distribution.\n"
-            "Analyze the weaknesses (e.g., high invalid format rate, deviation from 0.5 difficulty) and write a NEW, IMPROVED PROMPT template."
+            "2. **Novelty**: Avoid standard or repetitive templates.\n"
+            "3. **Clarity**: Unambiguous problem statements.\n\n"
+            "You will be given the CURRENT PROMPT and QUANTITATIVE METRICS.\n"
+            "Analyze the metrics first to determine the direction (Harder/Easier/Same), then write the NEW PROMPT template.\n"
+            "If the current prompt is performing perfectly (SC ~ 0.5, valid format, high novelty) and NO changes are needed, return ONLY the string 'NO CHANGE'."
         )
         
         user_content = (
@@ -145,6 +151,11 @@ class PromptOptimizer:
                 if lines[-1].startswith("```"):
                     lines = lines[:-1]
                 new_prompt_content = "\n".join(lines)
+
+            # Check for NO CHANGE
+            if not new_prompt_content.strip() or new_prompt_content.strip() == "NO CHANGE":
+                print("Optimizer decided to keep the prompt unchanged.")
+                new_prompt_content = current_prompt_content
 
             # 5. Save new prompt
             next_n = current_n + 1
