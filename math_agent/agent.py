@@ -62,13 +62,17 @@ class MathAgent:
 
     def _generate_response(self, messages: List[Dict[str, str]]) -> str:
         """Helper to get completion from LLM using native SDK retry/timeout."""
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-            temperature=0.1,
-            timeout=120.0 # 2 minute timeout per turn
-        )
-        return response.choices[0].message.content
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=0.1,
+                timeout=120.0 # 2 minute timeout per turn
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            logger.error(f"LLM generation failed: {e}")
+            return "Error: Unable to generate response in 120 seconds"
 
     def _extract_final_answer(self, response: str) -> Optional[str]:
         """Extract the content inside \boxed{} using mathruler."""
