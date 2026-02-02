@@ -67,12 +67,12 @@ class MathAgent:
                 model=self.model,
                 messages=messages,
                 temperature=0.1,
-                timeout=120.0 # 2 minute timeout per turn
+                timeout=300 # 5 minute timeout per turn
             )
             return response.choices[0].message.content
         except Exception as e:
             logger.error(f"[!!!!!!!!!!!!!!!!!!!!!!!!!!] LLM generation failed: {e}")
-            return "Error: Unable to generate response in 120 seconds"
+            return "Error: Unable to generate response in 300 seconds"
 
     def _extract_final_answer(self, response: str) -> Optional[str]:
         """Extract the content inside \boxed{} using mathruler."""
