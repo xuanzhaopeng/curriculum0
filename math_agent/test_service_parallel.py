@@ -7,7 +7,8 @@ import time
 from tqdm import tqdm
 
 def call_math_agent_tcp(problem, host="localhost", port=8000, max_turns=3):
-    """Call the Math Agent TCP service with a single problem."""
+    """Call the Math Agent TCP service with a single problem. Returns (response, duration_seconds)."""
+    start_time = time.time()
     payload = {
         "problem": problem,
         "max_turns": max_turns,
@@ -27,28 +28,36 @@ def call_math_agent_tcp(problem, host="localhost", port=8000, max_turns=3):
         sock.sendall(req_bytes)
         
         # Receive Header
-        header_data = sock.recv(4)
-        if not header_data:
-            return {"error": "No data received", "problem": problem}
+        resp_len_data = sock.recv(4)
+        if not resp_len_data:
+            return {"error": "No response length", "problem": problem}, 0.0
             
-        resp_len = struct.unpack('>I', header_data)[0]
+        resp_len = struct.unpack('>I', resp_len_data)[0]
         
         # Receive Body
-        body_data = b""
-        while len(body_data) < resp_len:
-            packet = sock.recv(resp_len - len(body_data))
+        chunks = []
+        bytes_recd = 0
+        while bytes_recd < resp_len:
+            packet = sock.recv(min(resp_len - bytes_recd, 4096)) # Use 4096 as a reasonable chunk size
             if not packet:
-                break
-            body_data += packet
+                break # Connection closed before all data received
+            chunks.append(packet)
+            bytes_recd += len(packet)
             
-        response = json.loads(body_data.decode('utf-8'))
+        resp_bytes = b''.join(chunks)
+        response = json.loads(resp_bytes.decode('utf-8'))
         response["problem"] = problem
         
         sock.close()
-        return response
+        
+        end_time = time.time()
+        duration = end_time - start_time
+        return response, duration
         
     except Exception as e:
-        return {"error": str(e), "problem": problem}
+        end_time = time.time()
+        duration = end_time - start_time
+        return {"error": str(e), "problem": problem}, duration
 
 def test_parallel_math_agent():
     """Test the Math Agent with 10 different questions in parallel."""
@@ -89,11 +98,12 @@ def test_parallel_math_agent():
             for future in as_completed(futures):
                 idx = futures[future]
                 try:
-                    result = future.result()
-                    results.append((idx, result))
+                    result, duration = future.result()
+                    results.append((idx, result, duration))
                 except Exception as e:
                     print(f"Error processing question {idx}: {e}")
-                    results.append((idx, {"error": str(e), "problem": problems[idx]}))
+                    # For exceptions not caught by call_math_agent_tcp, duration is unknown
+                    results.append((idx, {"error": str(e), "problem": problems[idx]}, 0.0)) 
                 pbar.update(1)
     
     # Sort by original index
