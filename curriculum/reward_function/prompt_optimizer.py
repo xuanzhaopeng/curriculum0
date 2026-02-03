@@ -12,8 +12,8 @@ class PromptOptimizer:
     def __init__(self, 
                  prompt_dir: str = "/workspace/curriculum0/format_prompt",
                  results_dir: str = "/workspace/curriculum0/results",
-                 model_name: str = "qwen-plus-us",
-                 api_base_url: str = "https://dashscope-us.aliyuncs.com/compatible-mode/v1",
+                 model_name: str = "qwen-plus-latest",
+                 api_base_url: str = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
                  api_key: Optional[str] = None):
         
         self.prompt_dir = prompt_dir

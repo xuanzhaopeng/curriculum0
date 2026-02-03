@@ -36,7 +36,7 @@ The service will start on `http://0.0.0.0:8001`.
   "question": "What is 2+2?",
   "n": 10,
   "max_turns": 5,
-  "model": "qwen-flash-us"
+  "model": "qwen-flash"
 }
 ```
 

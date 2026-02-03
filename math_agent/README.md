@@ -100,7 +100,7 @@ curl -X POST "http://localhost:8000/solve" \
      -H "X-API-Key: $OPENAI_API_KEY" \
      -d '{
        "problem": "Find the sum of all prime numbers between 1 and 50.",
-       "model": "qwen-flash-us",
+       "model": "qwen-flash",
        "max_turns": 5
      }'
 ```
@@ -111,7 +111,7 @@ curl -X POST "http://localhost:8000/solve" \
 | `problem` | String | The math question to solve. | (Required) |
 | `max_turns` | Integer | Max reasoning/tool-use loops. | `5` |
 | `sandbox_url` | String | URL of the SandboxFusion service. | `http://localhost:8080` |
-| `model` | String | LLM model name. | `qwen-flash-us` |
+| `model` | String | LLM model name. | `qwen-flash` |
 | `base_url` | String | OpenAI-compatible base URL. | Gemini OpenAI Endpoint |
 
 ### API Endpoints

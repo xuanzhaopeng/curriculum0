@@ -14,8 +14,8 @@ class MathAgent:
     def __init__(
         self, 
         api_key: str, 
-        base_url: str = "https://dashscope-us.aliyuncs.com/compatible-mode/v1",
-        model: str = "qwen-flash-us",
+        base_url: str = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+        model: str = "qwen-flash",
         sandbox_url: str = "http://localhost:8080"
     ):
         """
@@ -68,7 +68,10 @@ class MathAgent:
                 messages=messages,
                 temperature=0.1,
                 timeout=300, # 5 minute timeout per turn
-                stream=True
+                stream=True,
+                extra_body={
+                    "enable_thinking": False
+                }
             )
             
             full_content = ""

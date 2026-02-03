@@ -101,7 +101,7 @@ if __name__ == "__main__":
         logger.error("OPENAI_API_KEY not set")
         exit(1)
         
-    MODEL = os.getenv("MODEL_NAME", "qwen-flash-us")
+    MODEL = os.getenv("MODEL_NAME", "qwen-flash")
     SANDBOX_URL = os.getenv("SANDBOX_URL", "http://localhost:8080")
     
     agent = MathAgent(

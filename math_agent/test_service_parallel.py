@@ -11,7 +11,7 @@ def call_math_agent_tcp(problem, host="localhost", port=8000, max_turns=5):
     payload = {
         "problem": problem,
         "max_turns": max_turns,
-        "model": "qwen-flash-us"
+        "model": "qwen-flash"
     }
     
     try:
