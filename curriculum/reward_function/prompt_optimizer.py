@@ -96,8 +96,8 @@ class PromptOptimizer:
         if not summary_file:
             print("⚠️ No batch summary found. Cannot optimize.")
             return
-
-        print(f"Using batch summary from: {summary_file}")
+        
+        print(f"✅ Using batch summary from: {summary_file}")
         summary_content = self.load_batch_summary(summary_file)
 
         # 3. Construct Meta-Prompt
