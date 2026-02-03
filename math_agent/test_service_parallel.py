@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 from tqdm import tqdm
 
-def call_math_agent_tcp(problem, host="localhost", port=8000, max_turns=5):
+def call_math_agent_tcp(problem, host="localhost", port=8000, max_turns=3):
     """Call the Math Agent TCP service with a single problem."""
     payload = {
         "problem": problem,
