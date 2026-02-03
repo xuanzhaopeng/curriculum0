@@ -115,7 +115,7 @@ def test_parallel_math_agent():
     print(f"\nCompleted {len(results)} questions in {end_time - start_time:.2f} seconds")
     print("=" * 80)
     
-    for idx, result in results:
+    for idx, result, duration in results:
         print(f"\n[Question {idx + 1}] {result.get('problem', 'Unknown')}")
         if "error" in result:
             print(f"  ❌ Error: {result['error']}")
@@ -126,8 +126,8 @@ def test_parallel_math_agent():
     print("\n" + "=" * 80)
     print(f"Summary:")
     print(f"  Total: {len(results)}")
-    print(f"  Success: {len([r for _, r in results if 'error' not in r])}")
-    print(f"  Failed: {len([r for _, r in results if 'error' in r])}")
+    print(f"  Success: {len([r for _, r, _ in results if 'error' not in r])}")
+    print(f"  Failed: {len([r for _, r, _ in results if 'error' in r])}")
     print(f"  Avg time: {(end_time - start_time) / len(results):.2f}s per question")
 
 if __name__ == "__main__":
