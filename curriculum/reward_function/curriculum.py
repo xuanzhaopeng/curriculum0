@@ -28,8 +28,8 @@ def _call_self_consistency_dispatcher(question: str) -> DispatcherResponse:
     """Calls the self-consistency dispatcher for a single question."""
     payload = {
         "question": question,
-        "n": 10, # Sampling n=5 for efficiency in the reward function
-        "max_turns": 5
+        "n": 8, # Sampling n=5 for efficiency in the reward function
+        "max_turns": 3
     }
 
     if question == "":
